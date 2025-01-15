@@ -1,31 +1,31 @@
-// import { useContext, } from "react";
+import { useContext, } from "react";
 import { NavLink } from "react-router-dom";
 import Image1 from "../assets/Deshventure.png";
 import { FaUserCircle} from "react-icons/fa";
-// import { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../Provider/AuthProvider";
 const Navbar = () => {
-//   const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
 const linkDrop = (
   <>
-    <li className="hover:bg-gradient-to-r hover:from-yellow-900 hover:via-orange-800 hover:to-red-900 hover:text-white font-semibold mb-1 hover:rounded-2xl">
+    <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold mb-1 hover:rounded-2xl">
     <NavLink
       to="Dashboard"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
       Dashboard
     </NavLink>
   </li>
-  <li className="hover:bg-gradient-to-r hover:from-yellow-900 hover:via-orange-800 hover:to-red-900 hover:text-white font-semibold mb-1 hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold mb-1 hover:rounded-2xl">
     <NavLink
       to="myArtifacts"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -37,12 +37,12 @@ const linkDrop = (
 
   const links = (
 <>
-  <li className="hover:bg-gradient-to-r hover:from-yellow-900 hover:via-orange-800 hover:to-red-900 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="/"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -50,12 +50,12 @@ const linkDrop = (
     </NavLink>
   </li>
   
-  <li className="hover:bg-gradient-to-r hover:from-yellow-900 hover:via-orange-800 hover:to-red-900 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="allTrips"
       className={({ isActive }) =>
         isActive
-          ? " bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-white font-semibold rounded-2xl px-3 py-2"
+          ? " bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -63,13 +63,13 @@ const linkDrop = (
 </NavLink>
   </li>
 
-  {/* {user?.email && ( */}
-  <li className="hover:bg-gradient-to-r hover:from-yellow-900 hover:via-orange-800 hover:to-red-900 hover:text-white font-semibold hover:rounded-2xl">
+  {user?.email && (
+  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="community"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -77,17 +77,17 @@ const linkDrop = (
     </NavLink>
   </li>
   
-    {/* )} */}
+    )}
 
 
 
 
-  <li className="hover:bg-gradient-to-r hover:from-yellow-900 hover:via-orange-800 hover:to-red-900 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="aboutUs"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -146,9 +146,9 @@ const linkDrop = (
         <div className="flex items-center   rounded-3xl">
 
 
+        {user?.email ? (
 
-
-        <div className="dropdown dropdown-end">
+<div className="dropdown dropdown-end">
   {/* Dropdown button */}
   <button
     tabIndex={0}
@@ -158,9 +158,9 @@ const linkDrop = (
     <div className="w-10 rounded-full">
       <img
         className="w-12 h-12 rounded-full border-2 border-yellow-700"
-        // alt={user?.displayName}
-        // src={user?.photoURL}
-        src={Image1}
+        alt={user?.displayName}
+        src={user?.photoURL}
+        
       />
     </div>
   </button>
@@ -170,34 +170,34 @@ const linkDrop = (
     tabIndex={0}
     className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 shadow dropdown-start"
   >
-    <li>
-        <h3>
-            Name
-        </h3>
-        <h3>
-            Email
-        </h3>
-    </li>
     {linkDrop}
-    <li className="w-[7rem] mt-3 ml-10">
+    <li className="w-28 mt-3 ml-10">
       <button
-        // onClick={logOut}
-        className="px-4 py-2 text-center rounded-3xl md:text-lg text-sm font-semibold border-yellow-800 hover:bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 text-black hover:text-white border"
+        onClick={logOut}
+        className="px-4 py-2 text-center rounded-3xl md:text-lg text-sm font-semibold border-lime-500 hover:bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-black hover:text-white border"
       >
         Log Out
       </button>
     </li>
   </ul>
 </div>
-<NavLink
+
+
+  
+          ) : 
+          
+          (
+            
+            <div className="flex items-center gap-2">
+            <FaUserCircle className="size-10  text-lime-500" />
+            <NavLink
               to="login"
-              className="px-5 py-2  rounded-3xl md:text-xl text-lg font-semibold bg-gradient-to-r from-yellow-900 via-orange-800 to-red-900 border text-white"
+              className="px-5 py-2  rounded-3xl md:text-xl text-lg font-semibold bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 border text-white"
             >
               Log In
             </NavLink>
-
-
-{/* add the condition of Navhere in here */}
+            </div>
+          )}
 
 
         </div>
