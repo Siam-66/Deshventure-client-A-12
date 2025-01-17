@@ -1,0 +1,98 @@
+[
+    {
+      "name":"Cox's Bazar",
+      "gallery": ["https://i.ibb.co.com/rcv7nw9/Cox-s-Bazar1.jpg", "https://i.ibb.co.com/zVZMVw1/Cox-s-Bazar2.jpg", "https://i.ibb.co.com/F7GZpmf/Cox-s-Bazar3.jpg"], 
+      "aboutTour": "Explore the serene beauty of Cox's Bazar, the world's longest unbroken sandy sea beach. Witness stunning sunsets, savor fresh seafood, and enjoy a peaceful escape from city life.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Arrive at Cox's Bazar and check in to your hotel. Spend the evening relaxing at the beach and enjoying the sunset." },
+        { "day": "Day 2", "details": "Visit Himchari Waterfall and Inani Beach. Enjoy a boat ride in the afternoon." },
+        { "day": "Day 3", "details": "Explore the local markets for souvenirs and relax on the beach before departure." }
+      ],
+      "price": "15000 BDT"
+    },
+    {
+      "name":"Sundarbans",
+      "gallery": ["https://i.ibb.co.com/VWNpPwk/Sundarbans1.jpg", "https://i.ibb.co.com/XsYPhzD/Sundarbans2.jpg", "https://i.ibb.co.com/xfvqYrd/Sundarbans3.jpg"],
+      "aboutTour": "Discover the enchanting beauty of the Sundarbans, the largest mangrove forest in the world, and home to the Royal Bengal Tiger. Experience nature at its best with lush greenery and exotic wildlife.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Depart from Khulna and board the river cruise. Explore the small channels of the Sundarbans." },
+        { "day": "Day 2", "details": "Visit Kotka Beach and the watchtower. Enjoy a guided jungle walk to spot wildlife." },
+        { "day": "Day 3", "details": "Explore local villages and learn about the unique mangrove ecosystem before returning to Khulna." }
+      ],
+      "price": "18000 BDT"
+    },
+    {
+      "name":"Sajek Valley",
+      "gallery": ["https://i.ibb.co.com/qdLzxJD/Sajek-Valley1.jpg", "https://i.ibb.co.com/cCHx0Bz/Sajek-Valley2.jpg", "https://i.ibb.co.com/Tqp3Bh6/Sajek-Valley3.jpg"],
+      "aboutTour": "Embark on an adventurous journey to Sajek Valley, a picturesque hill station in the Chittagong Hill Tracts. Enjoy breathtaking views, tribal culture, and peaceful surroundings.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Depart for Sajek Valley from Khagrachari. Enjoy the scenic drive and arrive at your cottage. Relax and enjoy the sunset." },
+        { "day": "Day 2", "details": "Visit Konglak Hill for an early morning sunrise view. Explore the local tribal village and enjoy a barbecue dinner in the evening." }
+      ],
+      "price": "12000 BDT"
+    },
+    {
+      "name":"Mahasthangarh",
+      "gallery": ["https://i.ibb.co.com/YDP3Gtx/Mahasthangarh1.jpg", "https://i.ibb.co.com/sFBvdx4/Mahasthangarh2.jpg", "https://i.ibb.co.com/bgKCQ30/Mahasthangarh3.jpg"],
+      "aboutTour": "Step into history at the ancient city of Mahasthangarh. Explore ruins from the Pundranagara civilization, one of the earliest urban centers in Bengal.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Arrive at Bogura and check in to your hotel. Visit the Mahasthangarh archaeological site and museum." },
+        { "day": "Day 2", "details": "Explore Govinda Bhita and nearby temples before returning home." }
+      ],
+      "price": "8000 BDT"
+    },
+    {
+      "name":"Saint Martin's Island",
+      "gallery": ["https://i.ibb.co.com/s3bzG5R/Saint-Martin1.jpg", "https://i.ibb.co.com/m85sx4R/Saint-Martin2.jpg", "https://i.ibb.co.com/47GPkgf/Saint-Martin3.jpg"],
+      "aboutTour": "Enjoy a tranquil getaway to Saint Martin's Island, the only coral island in Bangladesh. Relax on pristine beaches and soak in the island's peaceful vibes.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Depart from Teknaf and take a ferry to Saint Martin's Island. Relax on the beach and enjoy fresh seafood." },
+        { "day": "Day 2", "details": "Explore the island, visit Chera Dwip, and enjoy snorkeling in the crystal-clear water." },
+        { "day": "Day 3", "details": "Relax in the morning and return to Teknaf by ferry." }
+      ],
+      "price": "17000 BDT"
+    },
+    {
+      "name":"Jaflong",
+      "gallery": ["https://i.ibb.co.com/R2KsG7x/Jaflong1.jpg", "https://i.ibb.co.com/MfdXr1F/Jaflong2.jpg", "https://i.ibb.co.com/WHZ6SwZ/Jaflong3.jpg"],
+      "aboutTour": "Explore the green wonders of Jaflong, surrounded by tea gardens, rolling hills, and the serene Dawki River on the border of Meghalaya, India.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Arrive at Sylhet and head to Jaflong. Enjoy a boat ride on the Dawki River and visit the stone collection points." },
+        { "day": "Day 2", "details": "Visit the Zero Point and explore local tea gardens before heading back." }
+      ],
+      "price": "11000 BDT"
+    },
+    {
+      "name":"Ratargul Swamp Forest",
+      "gallery": ["https://i.ibb.co.com/BNq1HyC/Ratargul-Swamp-Forest1.jpg", "https://i.ibb.co.com/c3SHGfJ/Ratargul-Swamp-Forest2.jpg", "https://i.ibb.co.com/b1V61R2/Ratargul-Swamp-Forest3.jpg"],
+      "aboutTour": "Experience the natural beauty and serenity of Ratargul Swamp Forest, the only freshwater swamp forest in Bangladesh. A perfect spot for nature lovers.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Arrive at Sylhet and check in to your hotel. Visit the Ratargul Swamp Forest and enjoy a boat ride through the lush greenery." },
+        { "day": "Day 2", "details": "Explore nearby landmarks like Bisnakandi or Pangthumai Waterfall before returning." }
+      ],
+      "price": "9500 BDT"
+    },
+
+    {
+      "name":"Kuakata",
+      "gallery": ["https://i.ibb.co.com/d7T3xYS/Kuakata1.jpg", "https://i.ibb.co.com/1b5hS2N/Kuakata2.jpg", "https://i.ibb.co.com/qnM640w/Kuakata3.jpg"],
+      "aboutTour": "Enjoy the mesmerizing beauty of Kuakata, known as the 'Daughter of the Sea,' where you can witness both sunrise and sunset from the same beach.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Arrive at Kuakata and relax at the beach. Enjoy the evening sunset view." },
+        { "day": "Day 2", "details": "Visit Fatrar Char and Kuakata Buddhist Temple. Enjoy local delicacies and explore the local market." },
+        { "day": "Day 3", "details": "Relax in the morning before departing for home." }
+      ],
+      "price": "13000 BDT"
+    },
+    {
+      "name":"Paharpur",
+      "gallery": ["https://i.ibb.co.com/xGxZqCX/heritage-of-Paharpur1.jpg", "https://i.ibb.co.com/4NkD7yp/heritage-of-Paharpur2.jpg", "https://i.ibb.co.com/CKxpN1s/heritage-of-Paharpur3.jpg"],
+      "aboutTour": "Discover the natural beauty and cultural heritage of Paharpur, a historic site known for its ancient Buddhist monastery and architectural significance.",
+      "tourPlan": [
+        { "day": "Day 1", "details": "Arrive at Paharpur and visit the main archaeological site of the ancient monastery." },
+        { "day": "Day 2", "details": "Explore surrounding landmarks and cultural sites before heading back." }
+      ],
+      "price": "9000 BDT"
+    }
+  ]
+  
