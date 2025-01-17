@@ -11,7 +11,7 @@ import AddPackage from "../Dashboard/Admin/AddPackage";
 import Dashboards from "../Dashboard/Dashboards";
 import AllTripsPage from "../Pages/AllTripsPage";
 import PackageDetailsPage from "../Pages/PackageDetailsPage";
-
+import AboutUs from "../Pages/AboutUs";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +35,10 @@ export const router = createBrowserRouter([
                 fetch(`http://localhost:5000/allTour/${params.id}`).then((res) =>
                     res.json()
                 ),
+            },
+            {
+                path:"aboutUs",
+                element:<AboutUs></AboutUs>,
             },
             {
                 path:"login",

@@ -1,55 +1,103 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddPackage = () => {
-  const [gallery, setGallery] = useState(["", "", ""]);
+  const [name, setName] = useState("");
+  const [gallery, setGallery] = useState([""]);
   const [aboutTour, setAboutTour] = useState("");
   const [tourPlan, setTourPlan] = useState([{ day: "", details: "" }]);
   const [price, setPrice] = useState("");
 
-  // Handle gallery image URL changes
   const handleGalleryChange = (index, value) => {
     const updatedGallery = [...gallery];
     updatedGallery[index] = value;
     setGallery(updatedGallery);
   };
 
-  // Add a new day to the tour plan
   const addTourDay = () => {
     setTourPlan([...tourPlan, { day: "", details: "" }]);
   };
 
-  // Handle changes in the tour plan
   const handleTourPlanChange = (index, field, value) => {
     const updatedTourPlan = [...tourPlan];
     updatedTourPlan[index][field] = value;
     setTourPlan(updatedTourPlan);
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const resetForm = () => {
+    setName("");
+    setGallery([""]);
+    setAboutTour("");
+    setTourPlan([{ day: "", details: "" }]);
+    setPrice("");
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
+      name,
       gallery,
       aboutTour,
       tourPlan,
       price,
     };
-    console.log("Form Data Submitted:", formData);
-    alert("Form submitted successfully!");
+
+    try {
+      const response = await fetch("http://localhost:5000/addtour", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Submitted!",
+          text: "Your package has been submitted successfully.",
+        });
+        resetForm(); // Reset the form
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Failed!",
+          text: "Failed to submit your package. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "An error occurred while submitting the form.",
+      });
+    }
   };
 
   return (
     <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Package Details Form</h2>
+      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Package Details Form</h2>
 
-      {/* Gallery Section */}
+      {/* Name Section */}
+      <div className="mb-6">
+        <label className="block text-gray-600 font-semibold text-lg mb-1">Package Name</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter package name"
+          className="w-full px-3 py-2 border rounded-md text-gray-800"
+          required
+        />
+      </div>
+
+      {/* Updated Gallery Section */}
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-700 mb-2">Gallery</h3>
         {gallery.map((url, index) => (
-          <div key={index} className="mb-3">
-            <label className="block text-gray-600 text-sm mb-1">
-              Image URL {index + 1}
-            </label>
+          <div key={index} className="mb-4">
+            <label className="block text-gray-600 text-sm mb-1">Image URL {index + 1}</label>
             <input
               type="url"
               value={url}
@@ -60,18 +108,21 @@ const AddPackage = () => {
             />
           </div>
         ))}
+        <button
+          type="button"
+          onClick={() => setGallery([...gallery, ""])}
+          className="text-blue-600 text-sm hover:underline"
+        >
+          + Add another image
+        </button>
       </div>
-
-
 
       {/* Tour Plan Section */}
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-700 mb-2">Tour Plan</h3>
         {tourPlan.map((plan, index) => (
           <div key={index} className="mb-4">
-            <label className="block text-gray-600 text-sm mb-1">
-              Day {index + 1}
-            </label>
+            <label className="block text-gray-600 text-sm mb-1">Day {index + 1}</label>
             <input
               type="text"
               value={plan.day}
@@ -82,27 +133,21 @@ const AddPackage = () => {
             />
             <textarea
               value={plan.details}
-              onChange={(e) =>
-                handleTourPlanChange(index, "details", e.target.value)
-              }
+              onChange={(e) => handleTourPlanChange(index, "details", e.target.value)}
               placeholder={`Enter details for day ${index + 1}`}
               className="w-full px-3 py-2 border rounded-md text-gray-800 h-20"
               required
             />
           </div>
         ))}
-        <button
-          type="button"
-          onClick={addTourDay}
-          className="text-blue-600 text-sm hover:underline"
-        >
+        <button type="button" onClick={addTourDay} className="text-blue-600 text-sm hover:underline">
           + Add another day
         </button>
       </div>
 
       {/* Price Section */}
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">Price</h3>
+        <label className="block text-gray-600 font-semibold text-lg mb-1">Price</label>
         <input
           type="text"
           value={price}
@@ -113,9 +158,9 @@ const AddPackage = () => {
         />
       </div>
 
-            {/* About The Tour Section */}
-            <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">About The Tour</h3>
+      {/* About The Tour Section */}
+      <div className="mb-6">
+        <label className="block text-gray-600  font-semibold text-lg mb-1">About The Tour</label>
         <textarea
           value={aboutTour}
           onChange={(e) => setAboutTour(e.target.value)}
@@ -129,7 +174,7 @@ const AddPackage = () => {
       <div className="text-center">
         <button
           type="submit"
-          className="bg-blue-600 text-white px-6 py-2 rounded-md shadow hover:bg-blue-700 transition"
+          className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white w-full py-2 text-xl rounded-md shadow transition"
         >
           Submit
         </button>

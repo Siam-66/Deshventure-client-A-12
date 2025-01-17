@@ -4,7 +4,7 @@ import "animate.css"; // Importing Animate.css
 const Banner = () => {
   return (
     <div
-      className="relative h-[200px] sm:h-[300px] md:h-[350px] lg:h-[500px] flex items-center justify-center text-center"
+      className="relative h-[200px] sm:h-[300px] md:h-[350px] lg:h-[500px] flex items-center justify-center text-center mb-10"
       style={{
         backgroundImage: `url(https://i.ibb.co/tBGfDq2/slider.jpg)`,
         backgroundSize: "cover",

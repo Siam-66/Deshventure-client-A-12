@@ -62,6 +62,7 @@ const PackageDetailsPage = () => {
 
   return (
     <div className="p-4">
+      <h1 className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-600 bg-clip-text text-transparent text-center text-3xl font-bold mb-10">Package Details</h1>
       {/* Gallery */}
       <div className="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {packageData.gallery?.map((image, index) => (
@@ -99,11 +100,11 @@ const PackageDetailsPage = () => {
       </div>
 
       {/* Booking Form */}
-      <div className="booking-form mt-6">
-        <h2 className="text-xl font-semibold">Book This Tour</h2>
+      <div className="booking-form mt-10">
+        <h2 className="text-2xl font-semibold text-center my-6">Book This Tour</h2>
         <form className="flex flex-col gap-4">
           <div>
-            <label>Package Name:</label>
+            <label className="font-semibold">Package Name:</label>
             <input
               type="text"
               value={packageData.name}
@@ -112,7 +113,7 @@ const PackageDetailsPage = () => {
             />
           </div>
           <div>
-            <label>Tourist Name:</label>
+            <label className="font-semibold">Tourist Name:</label>
             <input
               type="text"
               value={user?.displayName || ""}
@@ -121,7 +122,7 @@ const PackageDetailsPage = () => {
             />
           </div>
           <div>
-            <label>Tourist Email:</label>
+            <label className="font-semibold">Tourist Email:</label>
             <input
               type="text"
               value={user?.email || ""}
@@ -130,7 +131,7 @@ const PackageDetailsPage = () => {
             />
           </div>
           <div>
-            <label>Price:</label>
+            <label className="font-semibold">Price:</label>
             <input
               type="text"
               value={packageData.price}
@@ -139,7 +140,7 @@ const PackageDetailsPage = () => {
             />
           </div>
           <div>
-            <label>Tour Date:</label>
+            <label className="font-semibold pr-2">Tour Date:</label>
             <DatePicker
               selected={tourDate}
               onChange={(date) => setTourDate(date)}
@@ -147,7 +148,7 @@ const PackageDetailsPage = () => {
             />
           </div>
           <div>
-            <label>Tour Guide:</label>
+            <label className="font-semibold">Tour Guide:</label>
             <select
               value={tourGuide}
               onChange={(e) => setTourGuide(e.target.value)}
@@ -166,7 +167,7 @@ const PackageDetailsPage = () => {
           <button
             type="button"
             onClick={handleBookNow}
-            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white px-4 py-2 rounded-md mt-5"
           >
             Book Now
           </button>
