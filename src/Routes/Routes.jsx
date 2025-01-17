@@ -32,9 +32,9 @@ export const router = createBrowserRouter([
                 path: "/packageDetailsPage/:id",
                 element: <PackageDetailsPage />,
                 loader: ({ params }) =>
-                  fetch(`http://localhost:5000/allTour/${params.id}`).then((res) =>
+                fetch(`http://localhost:5000/allTour/${params.id}`).then((res) =>
                     res.json()
-                  ),
+                ),
             },
             {
                 path:"login",

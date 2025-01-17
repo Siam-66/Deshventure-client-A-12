@@ -5,19 +5,19 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const PackageDetailsPage = () => {
-  const { id } = useParams(); // Get the package ID from the URL
+  const { id } = useParams(); 
   const { user } = useContext(AuthContext);
-  const packageData = useLoaderData(); // Load data using the loader
+  const packageData = useLoaderData(); 
   const [tourDate, setTourDate] = useState(new Date());
   const [tourGuide, setTourGuide] = useState("");
   const [bookingSuccess, setBookingSuccess] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null); // State for selected image
+  const [selectedImage, setSelectedImage] = useState(null); 
 
   if (!packageData) {
     return <div>Loading package details...</div>;
   }
 
-  const tourGuides = ["Guide 1", "Guide 2", "Guide 3"]; // Example tour guides
+  const tourGuides = ["Guide 1", "Guide 2", "Guide 3"]; 
 
   const handleBookNow = async () => {
     if (!user) {
@@ -53,11 +53,11 @@ const PackageDetailsPage = () => {
   };
 
   const handleImageClick = (image) => {
-    setSelectedImage(image); // Set the clicked image to show in full size
+    setSelectedImage(image); 
   };
 
   const handleCloseModal = () => {
-    setSelectedImage(null); // Close the modal when clicked outside or the close button
+    setSelectedImage(null); 
   };
 
   return (
@@ -68,7 +68,7 @@ const PackageDetailsPage = () => {
           <div
             key={index}
             className="overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer"
-            onClick={() => handleImageClick(image)} // Click event to open modal
+            onClick={() => handleImageClick(image)} 
           >
             <img
               src={image}

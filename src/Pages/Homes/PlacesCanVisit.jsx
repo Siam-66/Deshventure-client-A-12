@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const PlacesCanVisit = () => {
     const photos = [
@@ -10,7 +11,17 @@ const PlacesCanVisit = () => {
     ];
   
     return (
+    
+      <div className="mt-16">
+        <h1 className="text-3xl font-bold text-center ">
+        Places Can be Visited
+        </h1>
+        <p className="text-center text-gray-600 mt-4 px-4 md:px-12 lg:px-32">
+  Discover stunning destinations, from serene beaches to vibrant cities, and create unforgettable memories!
+</p>
+
       <div className="flex gap-1 mt-10">
+        
         {photos.map((photo) => (
           <div
             key={photo.id}
@@ -34,6 +45,13 @@ const PlacesCanVisit = () => {
           </div>
         ))}
       </div>
+      <div className="flex justify-center items-center mt-5">
+<Link to="/allTripsPage" className=" btn bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white" >
+            Package Details
+            </Link>
+      </div>
+      
+</div>
     );
   };
   
