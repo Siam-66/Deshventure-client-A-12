@@ -1,9 +1,10 @@
+// AuthProvider.jsx
 import {
     createContext,
     useEffect,
     useState
-    } from "react";
-import {
+  } from "react";
+  import {
     getAuth,
     createUserWithEmailAndPassword,
     onAuthStateChanged,
@@ -12,94 +13,84 @@ import {
     updateProfile,
     GoogleAuthProvider,
     signInWithPopup
-} from "firebase/auth";
-import app from "../firebase/firebase.config";
-
-  // Create the Auth Context
-export const AuthContext = createContext();
-    const auth = getAuth(app);
-
-    const AuthProvider = ({ children }) => {
+  } from "firebase/auth";
+  import app from "../firebase/firebase.config";
+  
+  export const AuthContext = createContext();
+  
+  const auth = getAuth(app);
+  
+  const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
-    console.log("User:", user);
-    console.log("Loading:", loading);
-
-    // Create new user with email and password
-    const createNewUser = (email, password) => {
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
-    };
-
-    // Login user with email and password
-    const userLogin = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
-    };
-
-    // Logout the user
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth).then(() => {
-        setUser(null);
-        setLoading(false);
-        });
-    };
-
-    // Update the user's profile (e.g., displayName, photoURL)
-    const updateUserProfile = (updatedData) => {
-        return updateProfile(auth.currentUser, updatedData).then(() => {
-        setUser({ ...auth.currentUser, ...updatedData });
-        });
-    };
-
+  
     // Google sign-in method
-    const googleSignIn = () => {
-    setLoading(true);
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider)
-    .then((result) => {
-    const loggedUser = result.user;
-        setUser(loggedUser);
+    const googleSignIn = async () => {
+      setLoading(true);
+      try {
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        setUser(result.user);
         setLoading(false);
-        return loggedUser;
-        })
-        .catch((error) => {
+        return result.user; // Return the user object directly
+      } catch (error) {
         console.error("Google Sign-In Error:", error);
         setLoading(false);
         throw error;
-        });
+      }
     };
-
-    // Monitor the authenticated user state
+  
+    // Rest of your AuthProvider code remains the same
+    const createNewUser = (email, password) => {
+      setLoading(true);
+      return createUserWithEmailAndPassword(auth, email, password);
+    };
+  
+    const userLogin = (email, password) => {
+      setLoading(true);
+      return signInWithEmailAndPassword(auth, email, password);
+    };
+  
+    const logOut = () => {
+      setLoading(true);
+      return signOut(auth).then(() => {
+        setUser(null);
+        setLoading(false);
+      });
+    };
+  
+    const updateUserProfile = (updatedData) => {
+      return updateProfile(auth.currentUser, updatedData).then(() => {
+        setUser({ ...auth.currentUser, ...updatedData });
+      });
+    };
+  
     useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         console.log("Auth state changed:", currentUser);
         setLoading(false);
-    });
-
-    return () => unsubscribe();
+      });
+  
+      return () => unsubscribe();
     }, []);
-
-    // Provide the auth information to children
+  
     const authInfo = {
-    user,
-    setUser,
-    createNewUser,
-    userLogin,
-    googleSignIn,
-    logOut,
-    loading,
-    updateUserProfile
+      user,
+      setUser,
+      createNewUser,
+      userLogin,
+      googleSignIn,
+      logOut,
+      loading,
+      updateUserProfile
     };
-
+  
     return (
-    <AuthContext.Provider value={authInfo}>
+      <AuthContext.Provider value={authInfo}>
         {children}
-    </AuthContext.Provider>
+      </AuthContext.Provider>
     );
-};
-
-export default AuthProvider;
+  };
+  
+  export default AuthProvider;

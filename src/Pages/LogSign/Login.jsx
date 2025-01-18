@@ -47,7 +47,8 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center my-16 ">
       <Helmet>
-          <title> Log in / Celestora</title>
+          <title> Log in / Deshventure
+          </title>
       </Helmet>
       <ToastContainer />
       <div className="card bg-base-200 w-full max-w-sm shrink-0">

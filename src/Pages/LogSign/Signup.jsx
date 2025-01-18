@@ -57,6 +57,17 @@ const Signup = () => {
         (user);
         return updateUserProfile({ displayName: name, photoURL: photo });
       })
+
+      .then(() => {
+        const userData = { name, email, photo, role: "tourist" };
+        return fetch("http://localhost:5000/allUserData", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        });
+      })
+
+
       .then(() => {
         navigate("/");
       })
@@ -69,7 +80,7 @@ const Signup = () => {
   return (
     <div className="flex items-center justify-center my-16 ">
       <Helmet>
-          <title> Sign up / Celestora</title>
+          <title> Sign up / Deshventure</title>
       </Helmet>
       <div className="card bg-base-200 w-full max-w-sm shrink-0">
         <form onSubmit={handleSubmit} className="card-body">

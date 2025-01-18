@@ -7,11 +7,14 @@ import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Pages/LogSign/Login";
 import Signup from "../Pages/LogSign/Signup";
 import ForgetPassword from "../Pages/LogSign/ForgetPassword";
-import AddPackage from "../Dashboard/Admin/AddPackage";
-import Dashboards from "../Dashboard/Dashboards";
 import AllTripsPage from "../Pages/AllTripsPage";
 import PackageDetailsPage from "../Pages/PackageDetailsPage";
 import AboutUs from "../Pages/AboutUs";
+import PrivateRoute from "../Routes/PrivateRoute";
+
+import AddPackage from "../Dashboard/Admin/AddPackage";
+import Dashboards from "../Dashboard/Dashboards";
+import ManageProfile from "../Dashboard/Tourist/ManageProfile";
 
 export const router = createBrowserRouter([
     {
@@ -30,7 +33,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/packageDetailsPage/:id",
-                element: <PackageDetailsPage />,
+                element:<PrivateRoute>
+                    <PackageDetailsPage />
+                </PrivateRoute>,
                 loader: ({ params }) =>
                 fetch(`http://localhost:5000/allTour/${params.id}`).then((res) =>
                     res.json()
@@ -52,15 +57,28 @@ export const router = createBrowserRouter([
                 path:"forgetPassword",
                 element:<ForgetPassword></ForgetPassword>,
             },
-            {
-                path:"addPackage",
-                element:<AddPackage></AddPackage>,
-            },
+
             {
                 path:"dashboards",
                 element:<Dashboards></Dashboards>,
             }
 
+        ]
+    },
+
+    {
+        path:"dashboards",
+        element:<Dashboards></Dashboards>,
+        errorElement: <ErrorPage />,
+        children:[
+            {
+                path:"addPackage",
+                element:<AddPackage></AddPackage>,
+            },
+            {
+                path:"manageProfile",
+                element:<ManageProfile></ManageProfile>,
+            },
         ]
     },
     
