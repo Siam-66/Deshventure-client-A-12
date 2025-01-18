@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
-const JoinAsTourGuide = () => {
+const JoinAsTourGuideComponent = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [applicationData, setApplicationData] = useState({
@@ -54,7 +54,7 @@ const JoinAsTourGuide = () => {
 
   return (
     <div id="becomeGuide"
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      className="h-[40rem] flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage: `url("https://i.ibb.co.com/XYYD2bM/application.jpg")`,
       }}
@@ -103,7 +103,7 @@ const JoinAsTourGuide = () => {
           </div>
           <button
             type="submit"
-            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-600 text-lg text-white  px-4 py-2 rounded-md w-full"
+            className="bg-gradient-to-r from-green-600 to-lime-500 text-lg text-white  px-4 py-2 rounded-md w-full"
           >
             Submit Application
           </button>
@@ -117,6 +117,7 @@ const JoinAsTourGuide = () => {
           </p>
           )}
       </div>
+    
 
       {/* Success Modal */}
       {showModal && (
@@ -143,4 +144,4 @@ const JoinAsTourGuide = () => {
   );
 };
 
-export default JoinAsTourGuide;
+export default JoinAsTourGuideComponent;

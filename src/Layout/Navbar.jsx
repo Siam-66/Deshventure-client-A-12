@@ -8,24 +8,24 @@ const Navbar = () => {
 
 const linkDrop = (
   <>
-    <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold mb-1 hover:rounded-2xl">
+    <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold mb-1 hover:rounded-2xl">
     <NavLink
       to="dashboards"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
       Dashboard
     </NavLink>
   </li>
-  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold mb-1 hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold mb-1 hover:rounded-2xl">
     <NavLink
       to="myArtifacts"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -37,12 +37,12 @@ const linkDrop = (
 
   const links = (
 <>
-  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="/"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -50,12 +50,12 @@ const linkDrop = (
     </NavLink>
   </li>
   
-  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="allTripsPage"
       className={({ isActive }) =>
         isActive
-          ? " bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
+          ? " bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -64,12 +64,12 @@ const linkDrop = (
   </li>
 
   {user?.email && (
-  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="community"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -82,12 +82,12 @@ const linkDrop = (
 
 
 
-  <li className="hover:bg-gradient-to-r hover:from-green-600 via-lime-500 to-emerald-300 hover:text-white font-semibold hover:rounded-2xl">
+  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
       to="aboutUs"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white font-semibold rounded-2xl px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
           : "px-3 py-2"
       }
     >
@@ -174,7 +174,7 @@ const linkDrop = (
     <li className="w-28 mt-3 ml-10">
       <button
         onClick={logOut}
-        className="px-4 py-2 text-center rounded-3xl md:text-lg text-sm font-semibold border-lime-500 hover:bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-black hover:text-white border"
+        className="px-4 py-2 text-center rounded-3xl md:text-lg text-sm font-semibold border-lime-500 hover:bg-gradient-to-r from-green-600 to-lime-500 text-black hover:text-white border"
       >
         Log Out
       </button>
@@ -192,7 +192,7 @@ const linkDrop = (
             <FaUserCircle className="size-10  text-lime-500" />
             <NavLink
               to="login"
-              className="px-5 py-2  rounded-3xl md:text-xl text-lg font-semibold bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 border text-white"
+              className="px-5 py-2  rounded-3xl md:text-xl text-lg font-semibold bg-gradient-to-r from-green-600 to-lime-500 border text-white"
             >
               Log In
             </NavLink>

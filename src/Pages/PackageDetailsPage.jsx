@@ -3,21 +3,23 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const PackageDetailsPage = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const { user } = useContext(AuthContext);
-  const packageData = useLoaderData(); 
+  const packageData = useLoaderData();
   const [tourDate, setTourDate] = useState(new Date());
   const [tourGuide, setTourGuide] = useState("");
   const [bookingSuccess, setBookingSuccess] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null); 
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   if (!packageData) {
     return <div>Loading package details...</div>;
   }
 
-  const tourGuides = ["Guide 1", "Guide 2", "Guide 3"]; 
+  const tourGuides = ["Guide 1", "Guide 2", "Guide 3"];
 
   const handleBookNow = async () => {
     if (!user) {
@@ -52,33 +54,64 @@ const PackageDetailsPage = () => {
     }
   };
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image); 
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
   };
 
   const handleCloseModal = () => {
-    setSelectedImage(null); 
+    setSelectedImageIndex(null);
   };
 
+  const navigateImage = (direction) => {
+    const newIndex = selectedImageIndex + direction;
+    if (newIndex >= 0 && newIndex < packageData.gallery.length) {
+      setSelectedImageIndex(newIndex);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (selectedImageIndex === null) return;
+    if (e.key === 'ArrowLeft') navigateImage(-1);
+    if (e.key === 'ArrowRight') navigateImage(1);
+    if (e.key === 'Escape') handleCloseModal();
+  };
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, [selectedImageIndex]);
+
   return (
-    <div className="p-4">
-      <h1 className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-600 bg-clip-text text-transparent text-center text-3xl font-bold mb-10">Package Details</h1>
+    <div className="p-4 max-w-7xl mx-auto">
+      <h1 className="bg-gradient-to-r from-green-700 via-lime-500 to-emerald-700 bg-clip-text text-transparent text-center text-4xl font-bold mb-10">Package Details</h1>
       {/* Gallery */}
-      <div className="gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+
+{/* Gallery with corrected icon */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
         {packageData.gallery?.map((image, index) => (
           <div
             key={index}
-            className="overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition duration-300 cursor-pointer"
-            onClick={() => handleImageClick(image)} 
+            className={`group relative overflow-hidden rounded-xl cursor-pointer
+              ${index % 3 === 0 ? 'md:col-span-2 lg:col-span-1' : ''}
+              ${index % 5 === 0 ? 'row-span-2' : ''}`}
+            onClick={() => handleImageClick(index)}
           >
-            <img
-              src={image}
-              alt={`Gallery Image ${index + 1}`}
-              className="w-full h-48 object-cover"
-            />
+            <div className="aspect-[4/3] overflow-hidden">
+              <img
+                src={image}
+                alt={`Gallery Image ${index + 1}`}
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                onLoad={() => setIsLoading(false)}
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-center justify-center">
+              <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
+            </div>
           </div>
         ))}
       </div>
+
 
       {/* About Tour */}
       <div className="about mt-6">
@@ -100,9 +133,9 @@ const PackageDetailsPage = () => {
       </div>
 
       {/* Booking Form */}
-      <div className="booking-form mt-10">
+      <div className="booking-form  mt-10">
         <h2 className="text-2xl font-semibold text-center my-6">Book This Tour</h2>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col card-body gap-4">
           <div>
             <label className="font-semibold">Package Name:</label>
             <input
@@ -164,13 +197,16 @@ const PackageDetailsPage = () => {
               ))}
             </select>
           </div>
-          <button
+          <div className="flex justify-center">
+                      <button
             type="button"
             onClick={handleBookNow}
-            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white px-4 py-2 rounded-md mt-5"
+            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white text-xl py-3 w-1/3 rounded-md mt-5"
           >
             Book Now
           </button>
+          </div>
+
         </form>
       </div>
 
@@ -196,29 +232,47 @@ const PackageDetailsPage = () => {
       )}
 
       {/* Modal for Full Image */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50"
-          onClick={handleCloseModal} // Close the modal when clicking outside
-        >
-          <div
-            className="bg-white p-4 rounded-lg"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
-          >
-            <img
-              src={selectedImage}
-              alt="Selected Gallery"
-              className="max-w-full max-h-full"
-            />
+
+            {selectedImageIndex !== null && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm flex items-center justify-center">
+          <div className="relative w-full h-full flex items-center justify-center p-4">
             <button
-              className="absolute top-4 right-4 text-white text-xl"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
               onClick={handleCloseModal}
             >
-              ×
+              <X size={32} />
+            </button>
+            
+            <button
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+              onClick={() => navigateImage(-1)}
+              disabled={selectedImageIndex === 0}
+            >
+              <ChevronLeft size={48} className={selectedImageIndex === 0 ? 'opacity-50' : 'opacity-100'} />
+            </button>
+
+            <div className="relative max-w-5xl max-h-[80vh]">
+              <img
+                src={packageData.gallery[selectedImageIndex]}
+                alt={`Gallery Image ${selectedImageIndex + 1}`}
+                className="max-w-full max-h-[80vh] object-contain"
+              />
+              <div className="absolute bottom-0 left-0 right-0 text-center text-white bg-black bg-opacity-50 py-2">
+                Image {selectedImageIndex + 1} of {packageData.gallery.length}
+              </div>
+            </div>
+
+            <button
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+              onClick={() => navigateImage(1)}
+              disabled={selectedImageIndex === packageData.gallery.length - 1}
+            >
+              <ChevronRight size={48} className={selectedImageIndex === packageData.gallery.length - 1 ? 'opacity-50' : 'opacity-100'} />
             </button>
           </div>
         </div>
       )}
+
     </div>
   );
 };

@@ -1,4 +1,3 @@
-// GoogleLoginButton.jsx
 import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -13,7 +12,6 @@ const GoogleLoginButton = () => {
     try {
       const result = await googleSignIn();
       
-      // The result is now the user object from Firebase
       const userData = {
         name: result.displayName,
         email: result.email,
@@ -23,7 +21,6 @@ const GoogleLoginButton = () => {
 
       console.log("Prepared user data:", userData);
 
-      // Send to your backend
       const response = await fetch("http://localhost:5000/allUserData", {
         method: "POST",
         headers: {
@@ -41,7 +38,6 @@ const GoogleLoginButton = () => {
       const data = await response.json();
       console.log("Database save successful:", data);
 
-      // Navigate after successful save
       const from = location?.state?.from?.pathname || "/";
       navigate(from, { replace: true });
 

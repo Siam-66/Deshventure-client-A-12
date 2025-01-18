@@ -1,5 +1,7 @@
-import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
+
+
 import Banner from "./Homes/Banner";
+import JoinAsTourGuideComponent from "./Homes/JoinAsTourGuideComponent";
 import OverviewSection from "./Homes/OverviewSection";
 import PlacesCanVisit from "./Homes/PlacesCanVisit";
 import TourismTravelGuide from "./Homes/TourismTravelGuide";
@@ -13,7 +15,7 @@ const Home = () => {
             <TourismTravelGuide></TourismTravelGuide>
             <PlacesCanVisit></PlacesCanVisit>
             <WhyChooseUs></WhyChooseUs>
-            <JoinAsTourGuide></JoinAsTourGuide>
+            <JoinAsTourGuideComponent></JoinAsTourGuideComponent>
         </div>
     );
 };

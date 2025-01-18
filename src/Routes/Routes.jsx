@@ -15,6 +15,10 @@ import PrivateRoute from "../Routes/PrivateRoute";
 import AddPackage from "../Dashboard/Admin/AddPackage";
 import Dashboards from "../Dashboard/Dashboards";
 import ManageProfile from "../Dashboard/Tourist/ManageProfile";
+import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
+import ManageProfileGuide from "../Dashboard/TourGuide/ManageProfileGuide";
+
+
 
 export const router = createBrowserRouter([
     {
@@ -78,6 +82,14 @@ export const router = createBrowserRouter([
             {
                 path:"manageProfile",
                 element:<ManageProfile></ManageProfile>,
+            },
+            {
+                path:"joinAsTourGuide",
+                element:<JoinAsTourGuide></JoinAsTourGuide>,
+            },
+            {
+                path:"manageProfileGuide",
+                element:<ManageProfileGuide></ManageProfileGuide>,
             },
         ]
     },

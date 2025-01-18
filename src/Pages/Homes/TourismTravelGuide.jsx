@@ -46,7 +46,7 @@ const TourismTravelGuide = () => {
   <button
     className={`tab ${
       activeTab === 0
-        ? "tab-active bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white"
+        ? "tab-active bg-gradient-to-r from-green-600 to-lime-500  text-white"
         : ""
     }`}
     onClick={() => setActiveTab(0)}
@@ -56,7 +56,7 @@ const TourismTravelGuide = () => {
   <button
     className={`tab ${
       activeTab === 1
-        ? "tab-active bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white"
+        ? "tab-active bg-gradient-to-r from-green-600 to-lime-500  text-white"
         : ""
     }`}
     onClick={() => setActiveTab(1)}
@@ -80,12 +80,12 @@ const TourismTravelGuide = () => {
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
                     {pkg.name}
                   </h3>
-                  <p className="text-gray-600 mb-2">{pkg.aboutTour}</p>
+                  <p className="text-gray-600 h-[9rem] mb-2">{pkg.aboutTour}</p>
                   <p className="text-green-600 font-semibold mb-4">
                     Price: {pkg.price}
                   </p>
                   <button
-                    className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white px-4 py-2 rounded-md shadow transition"
+                    className="bg-gradient-to-r from-green-600 to-lime-500 text-white px-4 py-2 rounded-md shadow transition"
                     onClick={() => navigate(`/packageDetailsPage/${pkg._id}`)}
                   >
                     View Details

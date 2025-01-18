@@ -31,7 +31,7 @@ const AllTripsPage = () => {
               <p className="text-justify">{pkg.aboutTour}</p>
               <p className="text-lg font-bold text-green-600 mt-2">Price: {pkg.price}</p>
               <div className="card-actions justify-end">
-              <Link className="btn bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white" to={`/packageDetailsPage/${pkg._id}`}>
+              <Link className="btn bg-gradient-to-r from-green-600 to-lime-500 text-white" to={`/packageDetailsPage/${pkg._id}`}>
             Package Details
             </Link>
               </div>

@@ -30,7 +30,7 @@ const Dashboards = () => {
                     <li><NavLink to="/dashboards/">
                     <GiLoveMystery />Manage Stories </NavLink></li>
                     
-                    <li><NavLink to="/dashboards/">
+                    <li><NavLink to="/dashboards/joinAsTourGuide">
                     <ImHappy2 />Join as tour guide </NavLink></li>
                     
 
@@ -39,7 +39,7 @@ const Dashboards = () => {
 
                     <p>Tour Guide</p>
 
-                    <li><NavLink to="/dashboards/">
+                    <li><NavLink to="/dashboards/manageProfileGuide">
                     <FaHouseUser />Manage  profile </NavLink></li>
 
                     <li><NavLink to="/dashboards/">

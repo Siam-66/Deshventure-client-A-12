@@ -1,4 +1,3 @@
-// AuthProvider.jsx
 import {
     createContext,
     useEffect,
@@ -32,7 +31,7 @@ import {
         const result = await signInWithPopup(auth, provider);
         setUser(result.user);
         setLoading(false);
-        return result.user; // Return the user object directly
+        return result.user; 
       } catch (error) {
         console.error("Google Sign-In Error:", error);
         setLoading(false);

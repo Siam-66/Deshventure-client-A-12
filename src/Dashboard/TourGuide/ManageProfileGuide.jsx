@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
-const ManageProfile = () => {
+const ManageProfileGuide = () => {
   const { user } = useContext(AuthContext);
   const [profileData, setProfileData] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -72,11 +71,7 @@ const ManageProfile = () => {
         >
           Edit Profile
         </button>
-        <Link to="/dashboards/joinAsTourGuide">
-          <button className="btn mt-4 w-full text-xl font-bold bg-gradient-to-r from-green-600 to-lime-500 text-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-            Apply as Tour Guide
-          </button>
-        </Link>
+
       </div>
 
       {/* Modal */}
@@ -128,4 +123,4 @@ const ManageProfile = () => {
   );
 };
 
-export default ManageProfile;
+export default ManageProfileGuide;

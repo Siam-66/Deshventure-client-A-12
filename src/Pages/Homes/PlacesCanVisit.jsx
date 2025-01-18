@@ -45,9 +45,9 @@ const PlacesCanVisit = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center items-center mt-5">
-<Link to="/allTripsPage" className=" btn bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white" >
-            Package Details
+      <div className="flex justify-center items-center mt-7">
+<Link to="/community" className=" btn bg-gradient-to-r from-green-600 to-lime-500 text-lg text-white" >
+See others story
             </Link>
       </div>
       
