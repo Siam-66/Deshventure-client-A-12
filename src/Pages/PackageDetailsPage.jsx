@@ -201,7 +201,7 @@ const PackageDetailsPage = () => {
                       <button
             type="button"
             onClick={handleBookNow}
-            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white text-xl py-3 w-1/3 rounded-md mt-5"
+            className="bg-gradient-to-r from-green-600 to-lime-500  text-white text-xl py-3 w-1/3 rounded-md mt-5"
           >
             Book Now
           </button>
@@ -217,7 +217,7 @@ const PackageDetailsPage = () => {
             <h2 className="text-xl font-semibold">Booking Confirmed!</h2>
             <p>Your booking has been successfully confirmed.</p>
             <div className="modal-action flex justify-between">
-                <Link className="btn px-5 bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white">
+                <Link to="/dashboards/myBookings" className="btn px-5 bg-gradient-to-r from-green-600 to-lime-500  text-white">
                 My Bookings
                 </Link>
               <button

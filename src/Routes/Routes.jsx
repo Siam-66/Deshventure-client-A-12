@@ -16,6 +16,7 @@ import AddPackage from "../Dashboard/Admin/AddPackage";
 import Dashboards from "../Dashboard/Dashboards";
 import ManageProfile from "../Dashboard/Tourist/ManageProfile";
 import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
+import MyBookings from "../Dashboard/Tourist/MyBookings";
 import ManageProfileGuide from "../Dashboard/TourGuide/ManageProfileGuide";
 
 
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
             {
                 path:"manageProfileGuide",
                 element:<ManageProfileGuide></ManageProfileGuide>,
+            },
+            {
+                path:"myBookings",
+                element:<MyBookings></MyBookings>,
             },
         ]
     },

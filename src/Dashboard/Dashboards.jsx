@@ -21,7 +21,7 @@ const Dashboards = () => {
                     <li><NavLink to="/dashboards/manageProfile">
                     <FaHouseUser />Manage  profile </NavLink></li>
 
-                    <li><NavLink to="/dashboards/">
+                    <li><NavLink to="/dashboards/myBookings">
                     <MdSaveAs />My Bookings </NavLink></li>
 
                     <li><NavLink to="/dashboards/">
