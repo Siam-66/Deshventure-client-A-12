@@ -100,11 +100,12 @@ const ManageUsers = () => {
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-              <td className="border border-gray-200 px-4 py-2">{user.name}</td>
-              <td className="border border-gray-200 px-4 py-2">{user.email}</td>
-              <td className="border border-gray-200 px-4 py-2">
+                <td className="border border-gray-200 px-4 py-2">
                 <img src={user.photo} alt={user.name} className="w-12 h-12 rounded-full" />
               </td>
+              <td className="border border-gray-200 px-4 py-2">{user.name}</td>
+              <td className="border border-gray-200 px-4 py-2">{user.email}</td>
+ 
               <td className="border border-gray-200 px-4 py-2">{user.role}</td>
             </tr>
           ))}
@@ -113,22 +114,23 @@ const ManageUsers = () => {
 
       {/* Pagination */}
       <div className="flex justify-center items-center mt-4">
-        <button
-          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-          disabled={page === 1}
-          className="px-4 py-2 bg-gray-200 rounded"
-        >
-          Previous
-        </button>
-        <span className="px-4">{page}</span>
-        <button
-          onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={page === totalPages}
-          className="px-4 py-2 bg-gray-200 rounded"
-        >
-          Next
-        </button>
-      </div>
+  <button
+    onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+    disabled={page === 1}
+    className="px-4 py-2 bg-gray-400 hover:bg-green-600 hover:text-white text-black  rounded-l-lg"
+  >
+    Prev
+  </button>
+  <span className="px-4 py-2 text-lg font-medium text-black">{page}</span>
+  <button
+    onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+    disabled={page === totalPages}
+    className="px-4 py-2 bg-gray-400 hover:bg-green-600 text-black  rounded-r-lg"
+  >
+    Next
+  </button>
+</div>
+
     </div>
   );
 };

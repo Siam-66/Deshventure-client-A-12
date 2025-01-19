@@ -12,7 +12,6 @@ const TourismTravelGuide = () => {
         const response = await fetch("http://localhost:5000/allTour");
         const data = await response.json();
         setPackages(data);
-        // Get random 3 packages from the fetched data
         const randomIndexes = [];
         while (randomIndexes.length < 3) {
           const randomIndex = Math.floor(Math.random() * data.length);
@@ -41,7 +40,6 @@ const TourismTravelGuide = () => {
           Explore our exclusive travel packages and meet our experienced tour guides.
         </p>
 
-        {/* Tabs */}
         <div className="tabs tabs-boxed justify-center mb-8">
   <button
     className={`tab ${
@@ -73,7 +71,7 @@ const TourismTravelGuide = () => {
               {randomPackages.map((pkg) => (
                 <div key={pkg._id} className="card bg-white shadow-lg rounded-md p-4">
                   <img
-                    src={pkg.gallery[0]} // Assuming the first image is in the gallery array
+                    src={pkg.gallery[0]} 
                     alt={pkg.name}
                     className="rounded-md w-full h-48 object-cover mb-4"
                   />

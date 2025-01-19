@@ -22,7 +22,7 @@ const JoinAsTourGuide = () => {
 
     if (!user) {
       alert("You need to log in to submit the application.");
-      navigate("/login"); // Redirect to login route
+      navigate("/login"); 
       return;
     }
 
@@ -31,7 +31,7 @@ const JoinAsTourGuide = () => {
       name: user.displayName,
       email: user.email,
       photo: user.photoURL,
-      role: "tourist", // Default role as "tourist"
+      role: "tourist", 
     };
 
     try {
@@ -43,7 +43,7 @@ const JoinAsTourGuide = () => {
 
       if (response.ok) {
         setShowModal(true);
-        setApplicationData({ title: "", reason: "", cvLink: "" }); // Reset form
+        setApplicationData({ title: "", reason: "", cvLink: "" });
       } else {
         alert("Failed to submit application. Please try again.");
       }

@@ -84,10 +84,8 @@ const PackageDetailsPage = () => {
   return (
     <div className="p-4 max-w-7xl mx-auto">
       <h1 className="bg-gradient-to-r from-green-700 via-lime-500 to-emerald-700 bg-clip-text text-transparent text-center text-4xl font-bold mb-10">Package Details</h1>
-      {/* Gallery */}
 
 
-{/* Gallery with corrected icon */}
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
         {packageData.gallery?.map((image, index) => (
           <div
@@ -113,13 +111,11 @@ const PackageDetailsPage = () => {
       </div>
 
 
-      {/* About Tour */}
       <div className="about mt-6">
         <h2 className="text-xl font-semibold">About the Tour</h2>
         <p>{packageData.aboutTour}</p>
       </div>
 
-      {/* Tour Plan */}
       <div className="tour-plan mt-6">
         <h2 className="text-xl font-semibold">Tour Plan</h2>
         <ul>
@@ -132,7 +128,6 @@ const PackageDetailsPage = () => {
         </ul>
       </div>
 
-      {/* Booking Form */}
       <div className="booking-form  mt-10">
         <h2 className="text-2xl font-semibold text-center my-6">Book This Tour</h2>
         <form className="flex flex-col card-body gap-4">

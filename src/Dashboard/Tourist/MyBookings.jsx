@@ -1,17 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { AuthContext } from "../../Provider/AuthProvider";
-import Modal from "react-modal"; // Install Modal with `npm install react-modal`
-
-const stripePromise = loadStripe("your_stripe_publishable_key");
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
-  const [selectedBooking, setSelectedBooking] = useState(null); // Booking selected for payment
-  const [paymentStatus, setPaymentStatus] = useState(""); // Status message
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [selectedBooking, setSelectedBooking] = useState(null); 
+  const [paymentStatus, setPaymentStatus] = useState(""); 
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   // Fetch bookings from the database
   useEffect(() => {
@@ -24,34 +19,54 @@ const MyBookings = () => {
   }, [user]);
 
   // Handle payment submission
-  const handlePayment = async (booking) => {
-    try {
-      const response = await fetch("http://localhost:5000/payment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bookingId: booking._id, amount: booking.price }),
-      });
-      const data = await response.json();
-      if (data.success) {
-        setBookings((prevBookings) =>
-          prevBookings.map((b) =>
-            b._id === booking._id ? { ...b, status: "in review" } : b
-          )
-        );
-        setPaymentStatus("Payment successful!");
-      } else {
-        setPaymentStatus("Payment failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Payment Error:", error);
-      setPaymentStatus("An error occurred while processing the payment.");
-    } finally {
+const handlePayment = async (booking) => {
+  setPaymentStatus("Processing payment...");
+  
+  try {
+    const response = await fetch("http://localhost:5000/payment", {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ 
+        bookingId: booking._id, 
+        amount: parseFloat(booking.price)
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setBookings(prevBookings =>
+        prevBookings.map(b =>
+          b._id === booking._id
+            ? { ...b, status: "in review", paymentId: data.paymentId }
+            : b
+        )
+      );
+      setPaymentStatus("Payment successful!");
+      
+      // Refresh bookings data
+      const updatedBookings = await fetch("http://localhost:5000/bookings?email=" + user.email)
+        .then(res => res.json());
+      setBookings(updatedBookings);
+    } else {
+      setPaymentStatus(data.error || "Payment failed. Please try again.");
+    }
+  } catch (error) {
+    console.error("Payment Error:", error);
+    setPaymentStatus("An error occurred while processing the payment. Please try again.");
+  } finally {
+    setTimeout(() => {
       setIsModalOpen(false);
       setSelectedBooking(null);
-    }
-  };
+      setTimeout(() => setPaymentStatus(""), 500);
+    }, 500);
+  }
+};
 
-  // Handle cancellation
+
+  // when cancellation
   const handleCancel = (id) => {
     fetch(`http://localhost:5000/bookings/${id}`, { method: "DELETE" })
       .then((res) => res.json())
@@ -109,36 +124,34 @@ const MyBookings = () => {
         </tbody>
       </table>
 
-      {/* Payment Confirmation Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        contentLabel="Payment Confirmation"
-        className="modal bg-white p-4 rounded shadow-md"
-        overlayClassName="modal-overlay"
-      >
-        <h3 className="text-lg font-bold">Confirm Payment</h3>
-        {selectedBooking && (
-          <>
-            <p>Package: {selectedBooking.packageName}</p>
-            <p>Amount: {selectedBooking.price} BDT</p>
-          </>
-        )}
-        <div className="mt-4">
-          <button
-            onClick={() => handlePayment(selectedBooking)}
-            className="btn btn-primary mr-2"
-          >
-            Confirm Payment
-          </button>
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="btn btn-secondary"
-          >
-            Cancel
-          </button>
+      {/*for Payment Confirmation */}
+      {isModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="text-lg font-bold">Confirm Payment</h3>
+            {selectedBooking && (
+              <>
+                <p>Package: {selectedBooking.packageName}</p>
+                <p>Amount: {selectedBooking.price} BDT</p>
+              </>
+            )}
+            <div className="mt-4">
+              <button
+                onClick={() => handlePayment(selectedBooking)}
+                className="btn btn-primary mr-2"
+              >
+                Confirm Payment
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="btn btn-secondary"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-      </Modal>
+      )}
 
       {paymentStatus && <p className="mt-4 text-green-600">{paymentStatus}</p>}
     </div>

@@ -1,7 +1,6 @@
 import React from "react";
 
 const OverviewSection = () => {
-  // Array of video links
   const videoLinks = [
     "https://www.youtube.com/embed/Z44fFqBQQtg",
     "https://www.youtube.com/embed/X5yOjH0wpg8",
@@ -14,18 +13,15 @@ const OverviewSection = () => {
   return (
     <section className="relative bg-gray-100 py-10">
       <div className="container mx-auto text-center px-6">
-        {/* Heading */}
         <h2 className="text-3xl font-bold mb-6 text-gray-800">
           Discover Bangladesh
         </h2>
 
-        {/* Subtext */}
         <p className="text-gray-600 text-lg mb-5 lg:px-[15rem]">
           Explore the beauty, adventure, and unique experiences waiting for you. 
           Our platform is your gateway to breathtaking destinations and unforgettable memories.
         </p>
 
-        {/* Videos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {videoLinks.map((link, index) => (
             <div key={index} className="flex justify-center">
@@ -37,16 +33,15 @@ const OverviewSection = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 style={{
-                  width: "100%", // Full width by default
-                  maxWidth: "450px", // Max width for all devices
-                  height: "195px", // Auto adjusts height to maintain ratio
+                  width: "100%", 
+                  maxWidth: "450px", 
+                  height: "195px", 
                 }}
               ></iframe>
             </div>
           ))}
         </div>
 
-        {/* Call-to-Action */}
         <div className="mt-10">
           <a
             href="https://www.youtube.com/results?search_query=best+place+to+travel+in+bangladesh"

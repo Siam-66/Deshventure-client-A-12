@@ -14,6 +14,8 @@ import PrivateRoute from "../Routes/PrivateRoute";
 
 import AddPackage from "../Dashboard/Admin/AddPackage";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import ManageCandidates from "../Dashboard/Admin/ManageCandidates";
+
 
 import Dashboards from "../Dashboard/Dashboards";
 import ManageProfile from "../Dashboard/Tourist/ManageProfile";
@@ -101,6 +103,10 @@ export const router = createBrowserRouter([
             {
                 path:"manageUsers",
                 element:<ManageUsers></ManageUsers>,
+            },
+            {
+                path:"manageCandidates",
+                element:<ManageCandidates></ManageCandidates>,
             },
         ]
     },

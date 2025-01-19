@@ -57,7 +57,7 @@ const AddPackage = () => {
           title: "Submitted!",
           text: "Your package has been submitted successfully.",
         });
-        resetForm(); // Reset the form
+        resetForm(); 
       } else {
         Swal.fire({
           icon: "error",

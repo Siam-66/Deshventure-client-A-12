@@ -27,14 +27,12 @@ const PlacesCanVisit = () => {
             key={photo.id}
             className="relative w-1/6 overflow-visible rounded-sm group"
           >
-            {/* Image */}
             <img
               src={photo.src}
               alt={photo.name}
               className="h-full w-[16rem] object-cover transition-transform duration-500 group-hover:scale-110"
             />
   
-            {/* Overlay with Name */}
             <div
               className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
             >

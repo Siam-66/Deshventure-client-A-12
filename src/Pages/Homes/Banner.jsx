@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "animate.css"; // Importing Animate.css
+import "animate.css"; 
 import { Link } from "react-router-dom";
 
 const Banner = () => {

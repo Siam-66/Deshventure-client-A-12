@@ -22,7 +22,7 @@ const JoinAsTourGuideComponent = () => {
 
     if (!user) {
       alert("You need to log in to submit the application.");
-      navigate("/login"); // Redirect to login route
+      navigate("/login"); 
       return;
     }
 
@@ -31,7 +31,7 @@ const JoinAsTourGuideComponent = () => {
       name: user.displayName,
       email: user.email,
       photo: user.photoURL,
-      role: "tourist", // Default role as "tourist"
+      role: "tourist", 
     };
 
     try {
