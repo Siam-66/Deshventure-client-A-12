@@ -13,6 +13,8 @@ import AboutUs from "../Pages/AboutUs";
 import PrivateRoute from "../Routes/PrivateRoute";
 
 import AddPackage from "../Dashboard/Admin/AddPackage";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
+
 import Dashboards from "../Dashboard/Dashboards";
 import ManageProfile from "../Dashboard/Tourist/ManageProfile";
 import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
@@ -95,6 +97,10 @@ export const router = createBrowserRouter([
             {
                 path:"myBookings",
                 element:<MyBookings></MyBookings>,
+            },
+            {
+                path:"manageUsers",
+                element:<ManageUsers></ManageUsers>,
             },
         ]
     },

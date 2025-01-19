@@ -65,7 +65,7 @@ const Dashboards = () => {
             </>
           )}
 
-          {userRole === "tourGuide" && (
+          {userRole === "tour-guide" && (
             <>
               <p className="font-bold text-xl mb-4 text-white">Tour Guide Dashboard</p>
               <li>
