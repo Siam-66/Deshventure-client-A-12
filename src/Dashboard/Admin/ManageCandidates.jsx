@@ -39,7 +39,7 @@ const ManageCandidates = () => {
         try {
           await axios.post(`http://localhost:5000/applications/accept/${id}`);
           Swal.fire("Accepted!", "User role has been updated.", "success");
-          fetchApplications(currentPage); 
+          fetchApplications(currentPage); // Refresh the applications list
         } catch (error) {
           Swal.fire("Error", "Failed to accept the application.", "error");
         }
@@ -61,7 +61,7 @@ const ManageCandidates = () => {
         try {
           await axios.delete(`http://localhost:5000/applications/reject/${id}`);
           Swal.fire("Rejected!", "Application has been deleted.", "success");
-          fetchApplications(currentPage); 
+          fetchApplications(currentPage); // Refresh the applications list
         } catch (error) {
           Swal.fire("Error", "Failed to reject the application.", "error");
         }
@@ -69,7 +69,7 @@ const ManageCandidates = () => {
     });
   };
 
-  // Pagination 
+  // Pagination logic
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

@@ -95,7 +95,7 @@ const Dashboards = () => {
             <>
               <p className="font-bold text-xl mb-4 text-white">Admin Dashboard</p>
               <li>
-                <NavLink to="/dashboards/adminProfile">
+                <NavLink to="/dashboards/manageProfileAdmin">
                   <FaHouseUser />Manage Profile
                 </NavLink>
               </li>

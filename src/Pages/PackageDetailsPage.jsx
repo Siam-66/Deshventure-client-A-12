@@ -1,12 +1,15 @@
-import React, { useState, useContext } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Maximize2, ChevronLeft, ChevronRight, X, ChevronDown } from "lucide-react";
+import { RiArrowGoBackLine } from "react-icons/ri";
+
 
 const PackageDetailsPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const packageData = useLoaderData();
   const [tourDate, setTourDate] = useState(new Date());
@@ -14,16 +17,32 @@ const PackageDetailsPage = () => {
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [tourGuides, setTourGuides] = useState([]);
+
+  // Fetch tour guides
+  useEffect(() => {
+    fetch("http://localhost:5000/tour-guides")
+      .then((res) => res.json())
+      .then((data) => {
+        setTourGuides(data);
+      })
+      .catch((error) => console.error("Error fetching tour guides:", error));
+  }, []);
 
   if (!packageData) {
     return <div>Loading package details...</div>;
   }
 
-  const tourGuides = ["Guide 1", "Guide 2", "Guide 3"];
+
 
   const handleBookNow = async () => {
     if (!user) {
       alert("You need to log in to book this package.");
+      return;
+    }
+
+    if (!tourGuide) {
+      alert("Please select a tour guide before booking.");
       return;
     }
 
@@ -83,10 +102,12 @@ const PackageDetailsPage = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <h1 className="bg-gradient-to-r from-green-700 via-lime-500 to-emerald-700 bg-clip-text text-transparent text-center text-4xl font-bold mb-10">Package Details</h1>
+      <h1 className="bg-gradient-to-r from-green-700 via-lime-500 to-emerald-700 bg-clip-text text-transparent text-center text-4xl font-bold mb-10">
+        Package Details
+      </h1>
 
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+      {/* Gallery Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
         {packageData.gallery?.map((image, index) => (
           <div
             key={index}
@@ -110,12 +131,50 @@ const PackageDetailsPage = () => {
         ))}
       </div>
 
+      {/* Tour Guides Section */}
+      <div className="my-16">
+        <h2 className="text-2xl font-semibold mb-6 text-center">Our Tour Guides</h2>
+        <div className="relative">
+          <div className="overflow-x-auto pb-4">
+            <div className="flex space-x-6 px-4">
+              {tourGuides.map((guide) => (
 
+              
+
+                <div
+                  key={guide._id}
+                  className="flex flex-col items-center space-y-2 cursor-pointer min-w-[150px]"
+                  
+                >
+                <Link to={`/tourGuideProfile/${guide._id}`}>
+                  <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-green-500 ring-offset-2">
+                    <img
+                      src={guide.photo}
+                      alt={guide.name}
+                      className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+                    />
+                  </div>
+                  <span className="font-medium text-center">{guide.name}</span>
+                  <hr />
+                  <span className="text-sm text-gray-600">Tour Guide</span>
+                  </Link>
+                </div>
+                
+              ))}
+            </div>
+          </div>
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent" />
+        </div>
+      </div>
+
+      {/* About Section */}
       <div className="about mt-6">
         <h2 className="text-xl font-semibold">About the Tour</h2>
         <p>{packageData.aboutTour}</p>
       </div>
 
+      {/* Tour Plan Section */}
       <div className="tour-plan mt-6">
         <h2 className="text-xl font-semibold">Tour Plan</h2>
         <ul>
@@ -128,7 +187,8 @@ const PackageDetailsPage = () => {
         </ul>
       </div>
 
-      <div className="booking-form  mt-10">
+      {/* Booking Form */}
+      <div className="booking-form mt-10">
         <h2 className="text-2xl font-semibold text-center my-6">Book This Tour</h2>
         <form className="flex flex-col card-body gap-4">
           <div>
@@ -175,34 +235,44 @@ const PackageDetailsPage = () => {
               className="border p-2 w-full rounded-md"
             />
           </div>
-          <div>
+          <div className="relative">
             <label className="font-semibold">Tour Guide:</label>
-            <select
-              value={tourGuide}
-              onChange={(e) => setTourGuide(e.target.value)}
-              className="border p-2 w-full rounded-md"
-            >
-              <option value="" disabled>
-                Select a guide
-              </option>
-              {tourGuides.map((guide, index) => (
-                <option key={index} value={guide}>
-                  {guide}
+            <div className="border rounded-md">
+              <select
+                value={tourGuide}
+                onChange={(e) => setTourGuide(e.target.value)}
+                className="w-full p-2 appearance-none bg-transparent"
+              >
+                <option value="" disabled>
+                  Select a guide
                 </option>
-              ))}
-            </select>
+                {tourGuides.map((guide) => (
+                  <option key={guide._id} value={guide.name}>
+                    {guide.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-3 top-[38px] pointer-events-none">
+                <ChevronDown className="h-5 w-5 text-gray-400" />
+              </div>
+            </div>
           </div>
           <div className="flex justify-center">
-                      <button
-            type="button"
-            onClick={handleBookNow}
-            className="bg-gradient-to-r from-green-600 to-lime-500  text-white text-xl py-3 w-1/3 rounded-md mt-5"
-          >
-            Book Now
-          </button>
+            <button
+              type="button"
+              onClick={handleBookNow}
+              className="bg-gradient-to-r from-green-600 to-lime-500 text-white text-xl py-3 w-1/3 rounded-md mt-5"
+            >
+              Book Now
+            </button>
           </div>
-
         </form>
+        <div className="flex justify-center">
+        <Link to="/allTripsPage" className="btn  bg-gradient-to-r text-center from-green-600 to-lime-500 text-white text-xl py-3  rounded-md mt-5">
+        <RiArrowGoBackLine />Go Back
+        </Link>
+        </div>
+
       </div>
 
       {/* Booking Success Modal */}
@@ -212,9 +282,12 @@ const PackageDetailsPage = () => {
             <h2 className="text-xl font-semibold">Booking Confirmed!</h2>
             <p>Your booking has been successfully confirmed.</p>
             <div className="modal-action flex justify-between">
-                <Link to="/dashboards/myBookings" className="btn px-5 bg-gradient-to-r from-green-600 to-lime-500  text-white">
+              <Link
+                to="/dashboards/myBookings"
+                className="btn px-5 bg-gradient-to-r from-green-600 to-lime-500 text-white"
+              >
                 My Bookings
-                </Link>
+              </Link>
               <button
                 onClick={() => setBookingSuccess(false)}
                 className="btn px-5 bg-gradient-to-r from-red-700 to-rose-400 text-white"
@@ -226,9 +299,8 @@ const PackageDetailsPage = () => {
         </div>
       )}
 
-      {/* Modal for Full Image */}
-
-            {selectedImageIndex !== null && (
+      {/* Full Image Modal */}
+      {selectedImageIndex !== null && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm flex items-center justify-center">
           <div className="relative w-full h-full flex items-center justify-center p-4">
             <button
@@ -237,13 +309,16 @@ const PackageDetailsPage = () => {
             >
               <X size={32} />
             </button>
-            
+
             <button
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
               onClick={() => navigateImage(-1)}
               disabled={selectedImageIndex === 0}
             >
-              <ChevronLeft size={48} className={selectedImageIndex === 0 ? 'opacity-50' : 'opacity-100'} />
+              <ChevronLeft
+                size={48}
+                className={selectedImageIndex === 0 ? 'opacity-50' : 'opacity-100'}
+              />
             </button>
 
             <div className="relative max-w-5xl max-h-[80vh]">
@@ -262,12 +337,18 @@ const PackageDetailsPage = () => {
               onClick={() => navigateImage(1)}
               disabled={selectedImageIndex === packageData.gallery.length - 1}
             >
-              <ChevronRight size={48} className={selectedImageIndex === packageData.gallery.length - 1 ? 'opacity-50' : 'opacity-100'} />
+              <ChevronRight
+                size={48}
+                className={
+                  selectedImageIndex === packageData.gallery.length - 1
+                    ? 'opacity-50'
+                    : 'opacity-100'
+                }
+              />
             </button>
           </div>
         </div>
       )}
-
     </div>
   );
 };

@@ -11,16 +11,20 @@ import AllTripsPage from "../Pages/AllTripsPage";
 import PackageDetailsPage from "../Pages/PackageDetailsPage";
 import AboutUs from "../Pages/AboutUs";
 import PrivateRoute from "../Routes/PrivateRoute";
+import TourGuideProfile from "../Pages/TourGuideProfile";
 
 import AddPackage from "../Dashboard/Admin/AddPackage";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import ManageCandidates from "../Dashboard/Admin/ManageCandidates";
+import ManageProfileAdmin from "../Dashboard/Admin/ManageProfileAdmin";
+
 
 
 import Dashboards from "../Dashboard/Dashboards";
 import ManageProfile from "../Dashboard/Tourist/ManageProfile";
 import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
 import MyBookings from "../Dashboard/Tourist/MyBookings";
+
 import ManageProfileGuide from "../Dashboard/TourGuide/ManageProfileGuide";
 
 
@@ -70,6 +74,15 @@ export const router = createBrowserRouter([
             {
                 path:"dashboards",
                 element:<Dashboards></Dashboards>,
+            },
+
+            {
+                path: "tourGuideProfile/:id",
+                element: <TourGuideProfile />,
+                loader: ({ params }) =>
+                fetch(`http://localhost:5000/allUserData/${params.id}`).then((res) =>
+                    res.json()
+                ),
             }
 
         ]
@@ -107,6 +120,10 @@ export const router = createBrowserRouter([
             {
                 path:"manageCandidates",
                 element:<ManageCandidates></ManageCandidates>,
+            },
+            {
+                path:"manageProfileAdmin",
+                element:<ManageProfileAdmin></ManageProfileAdmin>,
             },
         ]
     },
