@@ -1,4 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 import { FaHouseUser } from "react-icons/fa";
 import { MdSaveAs } from "react-icons/md";
 import { GiLoveMystery } from "react-icons/gi";
@@ -9,76 +11,126 @@ import { PiUserGearFill } from "react-icons/pi";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
 const Dashboards = () => {
-    return (
-        <div className="flex">
-            <div className="W-64 main-h-screen bg-green-600">
-                <ul className="menu">
+  const { user } = useContext(AuthContext);
+  const [userRole, setUserRole] = useState(null);
 
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      if (user?.email) {
+        try {
+          const response = await fetch(`http://localhost:5000/getRole?email=${user.email}`);
+          const data = await response.json();
+          setUserRole(data.role);
+        } catch (error) {
+          console.error("Error fetching user role:", error);
+        }
+      }
+    };
 
+    fetchUserRole();
+  }, [user]);
 
-                    <p>Tourist</p>
+  return (
+    <div className="flex">
+      <div className="w-64 min-h-screen bg-green-600">
+        <ul className="menu">
+          {userRole === "tourist" && (
+            <>
+              <p className="font-bold text-xl mb-4 text-white">Tourist Dashboard</p>
+              <li>
+                <NavLink to="/dashboards/manageProfile">
+                  <FaHouseUser />Manage Profile
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/myBookings">
+                  <MdSaveAs />My Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/addStories">
+                  <BsChatSquareHeartFill />Add Stories
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/manageStories">
+                  <GiLoveMystery />Manage Stories
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/joinAsTourGuide">
+                  <ImHappy2 />Join as Tour Guide
+                </NavLink>
+              </li>
+            </>
+          )}
 
-                    <li><NavLink to="/dashboards/manageProfile">
-                    <FaHouseUser />Manage  profile </NavLink></li>
+          {userRole === "tourGuide" && (
+            <>
+              <p className="font-bold text-xl mb-4 text-white">Tour Guide Dashboard</p>
+              <li>
+                <NavLink to="/dashboards/manageProfileGuide">
+                  <FaHouseUser />Manage Profile
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/assignedTours">
+                  <MdSaveAs />My Assigned Tours
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/addStories">
+                  <BsChatSquareHeartFill />Add Stories
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/manageStories">
+                  <GiLoveMystery />Manage Stories
+                </NavLink>
+              </li>
+            </>
+          )}
 
-                    <li><NavLink to="/dashboards/myBookings">
-                    <MdSaveAs />My Bookings </NavLink></li>
+          {userRole === "admin" && (
+            <>
+              <p className="font-bold text-xl mb-4 text-white">Admin Dashboard</p>
+              <li>
+                <NavLink to="/dashboards/adminProfile">
+                  <FaHouseUser />Manage Profile
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/addPackage">
+                  <BsDatabaseFillAdd />Add Package
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/manageUsers">
+                  <PiUserGearFill />Manage Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboards/manageCandidates">
+                  <FaHouseUser />Manage Candidates
+                </NavLink>
+              </li>
+            </>
+          )}
 
-                    <li><NavLink to="/dashboards/">
-                    <BsChatSquareHeartFill />Add  Stories </NavLink></li>
+          <div className="divider"></div>
 
-                    <li><NavLink to="/dashboards/">
-                    <GiLoveMystery />Manage Stories </NavLink></li>
-                    
-                    <li><NavLink to="/dashboards/joinAsTourGuide">
-                    <ImHappy2 />Join as tour guide </NavLink></li>
-                    
-
-
-
-
-                    <p>Tour Guide</p>
-
-                    <li><NavLink to="/dashboards/manageProfileGuide">
-                    <FaHouseUser />Manage  profile </NavLink></li>
-
-                    <li><NavLink to="/dashboards/">
-                    <MdSaveAs />My Bookings </NavLink></li>
-
-                    <li><NavLink to="/dashboards/">
-                    <BsChatSquareHeartFill />Add  Stories </NavLink></li>
-
-                    <li><NavLink to="/dashboards/">
-                    <GiLoveMystery />Manage Stories </NavLink></li>
-
-
-
-                    <p>Admin</p>
-                    
-                    <li><NavLink to="/dashboards/">
-                    <FaHouseUser />Manage  profile </NavLink></li>
-
-                    <li><NavLink to="/dashboards/addPackage">
-                    <BsDatabaseFillAdd />Add Package </NavLink></li>
-
-                    <li><NavLink to="/dashboards/">
-                    <PiUserGearFill />Manage Users </NavLink></li>
-
-                    <li><NavLink to="/dashboards/">
-                    <FaHouseUser />Manage Candidates </NavLink></li>
-
-                    <div className="divider"></div>
-
-                    <li><NavLink to="/">
-                    <RiArrowGoBackLine />Go back home </NavLink></li>
-
-                </ul>
-            </div>
-            <div className="flex-1">
-                <Outlet></Outlet>
-            </div>
-        </div>
-    );
+          <li>
+            <NavLink to="/">
+              <RiArrowGoBackLine />Go Back Home
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+      <div className="flex-1">
+        <Outlet></Outlet>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboards;
