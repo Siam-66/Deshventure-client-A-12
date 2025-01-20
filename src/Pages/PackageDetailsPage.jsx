@@ -40,12 +40,20 @@ const PackageDetailsPage = () => {
       alert("You need to log in to book this package.");
       return;
     }
-
+  
     if (!tourGuide) {
       alert("Please select a tour guide before booking.");
       return;
     }
-
+  
+    // Find the selected guide object - now it will work because we're storing the ID
+    const selectedGuide = tourGuides.find((guide) => guide._id === tourGuide);
+  
+    if (!selectedGuide) {
+      alert("Selected tour guide not found. Please try again.");
+      return;
+    }
+  
     const bookingData = {
       packageName: packageData.name,
       touristName: user.displayName,
@@ -53,10 +61,14 @@ const PackageDetailsPage = () => {
       touristImage: user.photoURL,
       price: packageData.price,
       tourDate,
-      tourGuideName: tourGuide,
+      tourGuide: {
+        id: selectedGuide._id,  // Include the guide's ID
+        name: selectedGuide.name,
+        email: selectedGuide.email,
+      },
       status: "pending",
     };
-
+  
     try {
       const response = await fetch("http://localhost:5000/bookings", {
         method: "POST",
@@ -73,6 +85,7 @@ const PackageDetailsPage = () => {
     }
   };
 
+  
   const handleImageClick = (index) => {
     setSelectedImageIndex(index);
   };
@@ -235,28 +248,30 @@ const PackageDetailsPage = () => {
               className="border p-2 w-full rounded-md"
             />
           </div>
-          <div className="relative">
-            <label className="font-semibold">Tour Guide:</label>
-            <div className="border rounded-md">
-              <select
-                value={tourGuide}
-                onChange={(e) => setTourGuide(e.target.value)}
-                className="w-full p-2 appearance-none bg-transparent"
-              >
-                <option value="" disabled>
-                  Select a guide
-                </option>
-                {tourGuides.map((guide) => (
-                  <option key={guide._id} value={guide.name}>
-                    {guide.name}
-                  </option>
-                ))}
-              </select>
-              <div className="absolute right-3 top-[38px] pointer-events-none">
-                <ChevronDown className="h-5 w-5 text-gray-400" />
-              </div>
-            </div>
-          </div>
+
+<div className="relative">
+    <label className="font-semibold">Tour Guide:</label>
+    <div className="border rounded-md">
+      <select
+        value={tourGuide}
+        onChange={(e) => setTourGuide(e.target.value)}
+        className="w-full p-2 appearance-none bg-transparent"
+      >
+        <option value="" disabled>
+          Select a guide
+        </option>
+        {tourGuides.map((guide) => (
+          <option key={guide._id} value={guide._id}>  {/* Change value to guide._id */}
+            {guide.name}
+          </option>
+        ))}
+      </select>
+      <div className="absolute right-3 top-[38px] pointer-events-none">
+        <ChevronDown className="h-5 w-5 text-gray-400" />
+      </div>
+    </div>
+  </div>
+
           <div className="flex justify-center">
             <button
               type="button"

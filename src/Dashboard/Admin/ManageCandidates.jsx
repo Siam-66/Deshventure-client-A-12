@@ -144,7 +144,7 @@ const ManageCandidates = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-400 hover:bg-green-600 hover:text-white text-black rounded-l-lg"
+          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg "
         >
           Prev
         </button>
@@ -160,7 +160,7 @@ const ManageCandidates = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-400 hover:bg-green-600 hover:text-white text-black rounded-r-lg"
+          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg "
         >
           Next
         </button>

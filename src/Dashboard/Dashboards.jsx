@@ -48,7 +48,7 @@ const Dashboards = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboards/addStories">
+                <NavLink to="/dashboards/AddStory">
                   <BsChatSquareHeartFill />Add Stories
                 </NavLink>
               </li>
@@ -74,7 +74,7 @@ const Dashboards = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboards/assignedTours">
+                <NavLink to="/dashboards/myAssignedTours">
                   <MdSaveAs />My Assigned Tours
                 </NavLink>
               </li>

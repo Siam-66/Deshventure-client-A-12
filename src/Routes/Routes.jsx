@@ -24,8 +24,11 @@ import Dashboards from "../Dashboard/Dashboards";
 import ManageProfile from "../Dashboard/Tourist/ManageProfile";
 import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
 import MyBookings from "../Dashboard/Tourist/MyBookings";
+import AddStory from "../Dashboard/Tourist/AddStory";
+
 
 import ManageProfileGuide from "../Dashboard/TourGuide/ManageProfileGuide";
+import MyAssignedTours from "../Dashboard/TourGuide/MyAssignedTours";
 
 
 
@@ -124,6 +127,14 @@ export const router = createBrowserRouter([
             {
                 path:"manageProfileAdmin",
                 element:<ManageProfileAdmin></ManageProfileAdmin>,
+            },
+            {
+                path:"myAssignedTours",
+                element:<MyAssignedTours></MyAssignedTours>,
+            },
+            {
+                path:"addStory",
+                element:<AddStory></AddStory>,
             },
         ]
     },
