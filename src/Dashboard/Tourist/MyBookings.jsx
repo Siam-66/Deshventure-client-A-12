@@ -9,12 +9,10 @@ const MyBookings = () => {
   const [paymentStatus, setPaymentStatus] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
-  // Add pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const limit = 10; // Items per page
+  const limit = 10; 
 
-  // Add this function to check booking count
   const checkBookingCount = async (email) => {
     try {
       const response = await fetch(`http://localhost:5000/bookings/count?email=${email}`);
@@ -26,7 +24,7 @@ const MyBookings = () => {
     }
   };
 
-  // Updated fetch bookings to handle pagination
+  // updated fetch bookings 
   useEffect(() => {
     if (user?.email) {
       fetch(`http://localhost:5000/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`)
@@ -39,16 +37,15 @@ const MyBookings = () => {
         })
         .catch((error) => console.error("Error fetching bookings:", error));
     }
-  }, [user, currentPage]); // Add currentPage to dependencies
+  }, [user, currentPage]); 
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
     }
   };
 
-  // Handle payment submission
+  //  payment submission
   const handlePayment = async (booking) => {
     setPaymentStatus("Processing payment...");
     
@@ -65,7 +62,6 @@ const MyBookings = () => {
       const data = await response.json();
   
       if (data.success) {
-        // Update bookings state
         setBookings(prevBookings =>
           prevBookings.map(b =>
             b._id === booking._id
@@ -76,12 +72,11 @@ const MyBookings = () => {
         
         setPaymentStatus("Payment successful!");
         
-        // Check booking count after successful payment
+        // check booking count 
         const bookingCount = await checkBookingCount(user.email);
         if (bookingCount === 3) {
           setShowCelebration(true);
         } else {
-          // Close modal after a delay if no celebration
           setTimeout(() => {
             setIsModalOpen(false);
             setSelectedBooking(null);
@@ -107,19 +102,17 @@ const MyBookings = () => {
     }
   };
 
-  // Handle cancellation with pagination refresh
+  // handle cancellation
   const handleCancel = (id) => {
     fetch(`http://localhost:5000/bookings/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then(() => {
-        // Refresh the current page after cancellation
         fetch(`http://localhost:5000/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`)
           .then((res) => res.json())
           .then((response) => {
             if (response.success) {
               setBookings(response.data.bookings);
               setTotalPages(response.data.totalPages);
-              // If current page is empty and not the first page, go to previous page
               if (response.data.bookings.length === 0 && currentPage > 1) {
                 setCurrentPage(prev => prev - 1);
               }
@@ -235,7 +228,6 @@ const MyBookings = () => {
 
       {paymentStatus && <p className="mt-4 text-green-600">{paymentStatus}</p>}
     
-    {/* Add this just before the final closing div */}
 <CelebrationModal 
   isOpen={showCelebration} 
   onClose={() => {

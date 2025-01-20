@@ -10,7 +10,6 @@ const CelebrationModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       setIsAnimating(true);
-      // Auto-close after animation
       const timer = setTimeout(() => {
         setIsAnimating(false);
         setTimeout(onClose, 500);

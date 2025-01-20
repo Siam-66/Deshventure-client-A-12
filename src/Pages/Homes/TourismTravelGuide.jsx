@@ -5,6 +5,9 @@ const TourismTravelGuide = () => {
   const navigate = useNavigate();
   const [packages, setPackages] = useState([]);
   const [randomPackages, setRandomPackages] = useState([]);
+  const [tourGuides, setTourGuides] = useState([]);
+  const [randomTourGuides, setRandomTourGuides] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     const fetchPackages = async () => {
@@ -19,16 +22,33 @@ const TourismTravelGuide = () => {
             randomIndexes.push(randomIndex);
           }
         }
-        setRandomPackages(randomIndexes.map(index => data[index]));
+        setRandomPackages(randomIndexes.map((index) => data[index]));
       } catch (error) {
         console.error("Failed to fetch packages:", error);
       }
     };
 
-    fetchPackages();
-  }, []);
+    const fetchTourGuides = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/tour-guides");
+        const data = await response.json();
+        setTourGuides(data);
+        const randomIndexes = [];
+        while (randomIndexes.length < 6) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          if (!randomIndexes.includes(randomIndex)) {
+            randomIndexes.push(randomIndex);
+          }
+        }
+        setRandomTourGuides(randomIndexes.map((index) => data[index]));
+      } catch (error) {
+        console.error("Error fetching tour guides:", error);
+      }
+    };
 
-  const [activeTab, setActiveTab] = useState(0);
+    fetchPackages();
+    fetchTourGuides();
+  }, []);
 
   return (
     <section className="py-10 bg-gray-100">
@@ -41,37 +61,39 @@ const TourismTravelGuide = () => {
         </p>
 
         <div className="tabs tabs-boxed justify-center mb-8">
-  <button
-    className={`tab ${
-      activeTab === 0
-        ? "tab-active bg-gradient-to-r from-green-600 to-lime-500  text-white"
-        : ""
-    }`}
-    onClick={() => setActiveTab(0)}
-  >
-    Our Packages
-  </button>
-  <button
-    className={`tab ${
-      activeTab === 1
-        ? "tab-active bg-gradient-to-r from-green-600 to-lime-500  text-white"
-        : ""
-    }`}
-    onClick={() => setActiveTab(1)}
-  >
-    Meet Our Tour Guides
-  </button>
-</div>
-
+          <button
+            className={`tab ${
+              activeTab === 0
+                ? "tab-active bg-gradient-to-r from-green-600 to-lime-500 text-xl  text-white"
+                : " text-xl "
+            }`}
+            onClick={() => setActiveTab(0)}
+          >
+            Our Packages
+          </button>
+          <button
+            className={`tab ${
+              activeTab === 1
+                ? "tab-active bg-gradient-to-r from-green-600 to-lime-500 text-xl  text-white"
+                : "text-xl"
+            }`}
+            onClick={() => setActiveTab(1)}
+          >
+            Meet Our Tour Guides
+          </button>
+        </div>
 
         {/* Tab Content */}
         <div>
           {activeTab === 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {randomPackages.map((pkg) => (
-                <div key={pkg._id} className="card bg-white shadow-lg rounded-md p-4">
+                <div
+                  key={pkg._id}
+                  className="card bg-white shadow-lg rounded-md p-4"
+                >
                   <img
-                    src={pkg.gallery[0]} 
+                    src={pkg.gallery[0]}
                     alt={pkg.name}
                     className="rounded-md w-full h-48 object-cover mb-4"
                   />
@@ -95,8 +117,30 @@ const TourismTravelGuide = () => {
 
           {activeTab === 1 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Replace with actual guide data */}
-              {/* Your tour guides content goes here */}
+              {randomTourGuides.map((guide) => (
+                <div
+                  key={guide._id}
+                  className="flex flex-col items-center space-y-4 p-4 bg-white shadow-lg rounded-md"
+                >
+                  <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-green-500 ring-offset-2">
+                    <img
+                      src={guide.photo}
+                      alt={guide.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {guide.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{guide.bio}</p>
+                  <button
+                    className="bg-gradient-to-r from-green-600 to-lime-500 text-white px-4 py-2 rounded-md shadow transition"
+                    onClick={() => navigate(`/tourGuideProfile/${guide._id}`)}
+                  >
+                    View Details
+                  </button>
+                </div>
+              ))}
             </div>
           )}
         </div>

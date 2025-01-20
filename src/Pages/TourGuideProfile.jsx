@@ -42,12 +42,9 @@ const TourGuideProfile = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white rounded-lg shadow-xl overflow-hidden">
-        {/* Header/Banner Section */}
         <div className="h-48 bg-gradient-to-r from-green-600 to-lime-500"></div>
 
-        {/* Profile Info Section */}
         <div className="relative px-6 pb-6">
-          {/* Profile Image */}
           <div className="absolute -top-16 left-6">
             <div className="w-32 h-32 rounded-full border-4 border-white overflow-hidden">
               <img
@@ -58,7 +55,6 @@ const TourGuideProfile = () => {
             </div>
           </div>
 
-          {/* Name and Basic Info */}
           <div className="pt-20">
             <h1 className="text-3xl font-bold text-gray-800">{guideData.name}</h1>
             <p className="text-gray-600 flex items-center gap-2 mt-2">
@@ -67,7 +63,6 @@ const TourGuideProfile = () => {
             </p>
           </div>
 
-          {/* Contact and Details Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -96,7 +91,6 @@ const TourGuideProfile = () => {
             </div>
           </div>
 
-          {/* About Section */}
           <div className="mt-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">About</h2>
             <p className="text-gray-600 leading-relaxed">
@@ -105,7 +99,6 @@ const TourGuideProfile = () => {
             </p>
           </div>
 
-          {/* Skills/Specialties Section */}
           <div className="mt-8">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Specialties</h2>
             <div className="flex flex-wrap gap-2">
@@ -121,7 +114,6 @@ const TourGuideProfile = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="mt-8 flex gap-4">
             <Link
               to="/"
