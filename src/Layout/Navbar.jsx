@@ -66,7 +66,7 @@ const linkDrop = (
   {user?.email && (
   <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold hover:rounded-2xl">
     <NavLink
-      to="community"
+      to="CommunityPage"
       className={({ isActive }) =>
         isActive
           ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"

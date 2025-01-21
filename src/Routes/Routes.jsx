@@ -12,6 +12,7 @@ import PackageDetailsPage from "../Pages/PackageDetailsPage";
 import AboutUs from "../Pages/AboutUs";
 import PrivateRoute from "../Routes/PrivateRoute";
 import TourGuideProfile from "../Pages/TourGuideProfile";
+import CommunityPage from "../Pages/CommunityPage";
 
 import AddPackage from "../Dashboard/Admin/AddPackage";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
                 fetch(`http://localhost:5000/allTour/${params.id}`).then((res) =>
                     res.json()
                 ),
+            },
+            {
+                path:"communityPage",
+                element:<CommunityPage></CommunityPage>,
             },
             {
                 path:"aboutUs",

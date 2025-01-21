@@ -23,6 +23,8 @@ const AddStory = () => {
       title,
       storyText,
       images,
+      name:user?.displayName,
+      photo:user?.photoURL,
       email: user?.email,
       timestamp: new Date(),
     };

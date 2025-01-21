@@ -79,12 +79,12 @@ const Dashboards = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboards/addStoryGuide">
+                <NavLink to="/dashboards/addStory">
                   <BsChatSquareHeartFill />Add Stories
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboards/manageStoriesGuide">
+                <NavLink to="/dashboards/manageStories">
                   <GiLoveMystery />Manage Stories
                 </NavLink>
               </li>
