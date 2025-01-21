@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
-const AddStory = () => {
+const AddStoryGuide = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -42,7 +42,7 @@ const AddStory = () => {
           title: "Success!",
           text: "Your story has been published successfully.",
         });
-        navigate("/dashboards/manageStories"); 
+        navigate("/dashboards/manageStoriesGuide"); 
 
       }
     } catch (error) {
@@ -122,4 +122,4 @@ const AddStory = () => {
   );
 };
 
-export default AddStory;
+export default AddStoryGuide;

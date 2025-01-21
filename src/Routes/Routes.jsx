@@ -25,12 +25,15 @@ import ManageProfile from "../Dashboard/Tourist/ManageProfile";
 import JoinAsTourGuide from "../Dashboard/Tourist/JoinAsTourGuide";
 import MyBookings from "../Dashboard/Tourist/MyBookings";
 import AddStory from "../Dashboard/Tourist/AddStory";
+import ManageStories from "../Dashboard/Tourist/ManageStories";
+import EditStory from "../Dashboard/Tourist/EditStory";
 
 
 import ManageProfileGuide from "../Dashboard/TourGuide/ManageProfileGuide";
 import MyAssignedTours from "../Dashboard/TourGuide/MyAssignedTours";
-
-
+import ManageStoriesGuide from "../Dashboard/TourGuide/ManageStoriesGuide";
+import EditStoryGuide from "../Dashboard/TourGuide/EditStoryGuide";
+import AddStoryGuide from "../Dashboard/TourGuide/AddStoryGuide";  
 
 export const router = createBrowserRouter([
     {
@@ -135,6 +138,27 @@ export const router = createBrowserRouter([
             {
                 path:"addStory",
                 element:<AddStory></AddStory>,
+            },
+            {
+                path:"manageStories",
+                element:<ManageStories></ManageStories>,
+            },
+            {
+                path:"editStory/:id",
+                element:<EditStory></EditStory>,
+
+            },
+            {
+                path:"addStoryGuide",
+                element:<AddStoryGuide></AddStoryGuide>,
+            },
+            {
+                path:"manageStoriesGuide",
+                element:<ManageStoriesGuide></ManageStoriesGuide>,
+            },
+            {
+                path:"editStoryGuide/:id",
+                element:<EditStoryGuide></EditStoryGuide>,
             },
         ]
     },
