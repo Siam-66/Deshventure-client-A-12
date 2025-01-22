@@ -1,7 +1,7 @@
 # DeshVenture - Your Ultimate Travel Companion
 
 ## 🌐 Live Link
-[**Live Link**](https://deshventure-tour.web.app/)
+[**Live Link**](https://deshventure.netlify.app/)
 
 ## 🔑 Admin Access
 ```
