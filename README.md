@@ -1,29 +1,22 @@
 # DeshVenture - Your Ultimate Travel Companion
 
 ## 🌐 Live Link
-```javascript
-[**Live Link**](https://deshventure.netlify.app/)
-
-
-```
+[**Live Link**](https://deshventure-tour.web.app/)
 
 ## 🔑 Admin Access
-```javascript
-Admin Email: [admin66@demo.com]
-Admin Password: [Admin66444888]
 ```
-
-
+Admin Email: admin66@demo.com
+Admin Password: Admin66444888
+```
 
 ## ⭐ Key Features
 
-```markdown
 ### 1. User Authentication & Roles
 - Multi-role authentication system (Tourist, Tour Guide, Admin)
 - JWT token-based security
 - Google sign-in integration
 - Protected route management
-- Role-specific dashboards 
+- Role-specific dashboards
 
 ### 2. Tour Package System
 - Dynamic package displays with MongoDB random selection
@@ -80,12 +73,10 @@ Admin Password: [Admin66444888]
 - JWT authentication
 - Protected routes
 - Secure data transmission
-```
 
 ## 🛠 Technologies Used
 
-```javascript
-Frontend:
+### Frontend:
 - React.js
 - Tailwind CSS
 - Framer Motion
@@ -96,7 +87,7 @@ Frontend:
 - React Share
 - React DatePicker
 
-Backend:
+### Backend:
 - Node.js
 - Express.js
 - MongoDB
