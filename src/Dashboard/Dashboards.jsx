@@ -40,13 +40,16 @@ const Dashboards = () => {
             </Helmet>
       <div className="w-full md:w-64 md:min-h-screen bg-green-600">
         <ul className="menu p-4">
-          <img className="w-60" src={Image1} alt="Sunflower Logo" />
+          <div>
+            <img className="w-60" src={Image1} alt="Sunflower Logo" />
+          </div>
+          
           
           {userRole === "tourist" && (
             <>
-              <p className="font-bold text-center text-xl mb-4 text-white">Tourist Dashboard</p>
+              <p className="font-bold  text-xl mb-4 text-white">Tourist Dashboard</p>
               <li className="mb-2">
-                <NavLink to="/dashboards/manageProfile"  className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                <NavLink to="/dashboards/manageProfile"  className=" block px-4 py-2 text-white hover:bg-green-700 rounded">
                   <FaHouseUser className="inline mr-2"/>Manage Profile
                 </NavLink>
               </li>
@@ -75,7 +78,7 @@ const Dashboards = () => {
 
           {userRole === "tour-guide" && (
             <>
-              <p className="font-bold text-center text-xl mb-4 text-white">Tour Guide Dashboard</p>
+              <p className="font-bold  text-xl mb-4 text-white">Tour Guide Dashboard</p>
               <li className="mb-2">
                 <NavLink to="/dashboards/manageProfileGuide"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
                   <FaHouseUser className="inline mr-2"/>Manage Profile
@@ -101,7 +104,7 @@ const Dashboards = () => {
 
           {userRole === "admin" && (
             <>
-              <p className="font-bold  text-center text-xl mb-4 text-white">Admin Dashboard</p>
+              <p className="font-bold   text-xl mb-4 text-white">Admin Dashboard</p>
               <li className="mb-2">
                 <NavLink to="/dashboards/manageProfileAdmin"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
                   <FaHouseUser className="inline mr-2"/>Manage Profile
