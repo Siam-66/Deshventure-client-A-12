@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const AllTripsPage = () => {
@@ -19,6 +20,10 @@ const AllTripsPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Helmet>
+          <title> All Trips Page / Deshventure
+          </title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-green-600 via-lime-500 to-emerald-600 bg-clip-text text-transparent">All Trips</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {packages.map((pkg) => (

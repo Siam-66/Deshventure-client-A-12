@@ -13,6 +13,9 @@ import AboutUs from "../Pages/AboutUs";
 import PrivateRoute from "../Routes/PrivateRoute";
 import TourGuideProfile from "../Pages/TourGuideProfile";
 import CommunityPage from "../Pages/CommunityPage";
+import TermsOfUse from "../Component/TermsOfUse";
+import PrivacyPolicy from "../Component/PrivacyPolicy ";
+import UserAgreement from "../Component/UserAgreement";
 
 import AddPackage from "../Dashboard/Admin/AddPackage";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
@@ -94,7 +97,20 @@ export const router = createBrowserRouter([
                 fetch(`http://localhost:5000/allUserData/${params.id}`).then((res) =>
                     res.json()
                 ),
-            }
+            },
+
+            {
+                path:"termsOfUse",
+                element:<TermsOfUse></TermsOfUse>,
+            },
+            {
+                path:"privacyPolicy",
+                element:<PrivacyPolicy></PrivacyPolicy>,
+            },
+            {
+                path:"userAgreement",
+                element:<UserAgreement></UserAgreement>,
+            },
 
         ]
     },
@@ -106,64 +122,94 @@ export const router = createBrowserRouter([
         children:[
             {
                 path:"addPackage",
-                element:<AddPackage></AddPackage>,
+                element: <PrivateRoute>  
+                <AddPackage></AddPackage>
+                </PrivateRoute>,
             },
             {
                 path:"manageProfile",
-                element:<ManageProfile></ManageProfile>,
+                element: <PrivateRoute>  
+                <ManageProfile></ManageProfile>
+                </PrivateRoute>,
             },
             {
                 path:"joinAsTourGuide",
-                element:<JoinAsTourGuide></JoinAsTourGuide>,
+                element: <PrivateRoute>  
+                <JoinAsTourGuide></JoinAsTourGuide>
+                </PrivateRoute>,
             },
             {
                 path:"manageProfileGuide",
-                element:<ManageProfileGuide></ManageProfileGuide>,
+                element: <PrivateRoute>  
+                <ManageProfileGuide></ManageProfileGuide>
+                </PrivateRoute>,
             },
             {
                 path:"myBookings",
-                element:<MyBookings></MyBookings>,
+                element: <PrivateRoute>  
+                <MyBookings></MyBookings>
+                </PrivateRoute>,
             },
             {
                 path:"manageUsers",
-                element:<ManageUsers></ManageUsers>,
+                element: <PrivateRoute>  
+                <ManageUsers></ManageUsers>
+                </PrivateRoute>,
             },
             {
                 path:"manageCandidates",
-                element:<ManageCandidates></ManageCandidates>,
+                element: <PrivateRoute>  
+                <ManageCandidates></ManageCandidates>
+                </PrivateRoute>,
             },
             {
                 path:"manageProfileAdmin",
-                element:<ManageProfileAdmin></ManageProfileAdmin>,
+                element: <PrivateRoute>  
+                <ManageProfileAdmin></ManageProfileAdmin>
+                </PrivateRoute>,
             },
             {
                 path:"myAssignedTours",
-                element:<MyAssignedTours></MyAssignedTours>,
+                element: <PrivateRoute>  
+                <MyAssignedTours></MyAssignedTours>
+                </PrivateRoute>,
             },
             {
                 path:"addStory",
-                element:<AddStory></AddStory>,
+                element: <PrivateRoute>  
+                <AddStory></AddStory>
+                </PrivateRoute>,
             },
             {
                 path:"manageStories",
-                element:<ManageStories></ManageStories>,
+                element: <PrivateRoute>  
+                <ManageStories></ManageStories>
+                </PrivateRoute>,
             },
             {
                 path:"editStory/:id",
-                element:<EditStory></EditStory>,
+                element: <PrivateRoute>  
+                <EditStory></EditStory>
+                </PrivateRoute>,
 
             },
             {
                 path:"addStoryGuide",
-                element:<AddStoryGuide></AddStoryGuide>,
+                element: <PrivateRoute>  
+                <AddStoryGuide></AddStoryGuide>
+                </PrivateRoute>,
             },
             {
                 path:"manageStoriesGuide",
-                element:<ManageStoriesGuide></ManageStoriesGuide>,
+                element: <PrivateRoute>  
+                <ManageStoriesGuide></ManageStoriesGuide>
+                </PrivateRoute>,
             },
             {
                 path:"editStoryGuide/:id",
-                element:<EditStoryGuide></EditStoryGuide>,
+                element: <PrivateRoute>  
+                <EditStoryGuide></EditStoryGuide>
+                </PrivateRoute>,
             },
         ]
     },

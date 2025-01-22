@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Maximize2, ChevronLeft, ChevronRight, X, ChevronDown } from "lucide-react";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import { Helmet } from "react-helmet";
 
 
 const PackageDetailsPage = () => {
@@ -19,7 +20,6 @@ const PackageDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [tourGuides, setTourGuides] = useState([]);
 
-  // Fetch tour guides
   useEffect(() => {
     fetch("http://localhost:5000/tour-guides")
       .then((res) => res.json())
@@ -46,7 +46,7 @@ const PackageDetailsPage = () => {
       return;
     }
   
-    // Find the selected guide object - now it will work because we're storing the ID
+   
     const selectedGuide = tourGuides.find((guide) => guide._id === tourGuide);
   
     if (!selectedGuide) {
@@ -62,7 +62,7 @@ const PackageDetailsPage = () => {
       price: packageData.price,
       tourDate,
       tourGuide: {
-        id: selectedGuide._id,  // Include the guide's ID
+        id: selectedGuide._id,  
         name: selectedGuide.name,
         email: selectedGuide.email,
       },
@@ -115,6 +115,10 @@ const PackageDetailsPage = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
+        <Helmet>
+            <title>Package Details Page / Deshventure
+            </title>
+        </Helmet>
       <h1 className="bg-gradient-to-r from-green-700 via-lime-500 to-emerald-700 bg-clip-text text-transparent text-center text-4xl font-bold mb-10">
         Package Details
       </h1>
@@ -181,13 +185,11 @@ const PackageDetailsPage = () => {
         </div>
       </div>
 
-      {/* About Section */}
       <div className="about mt-6">
         <h2 className="text-xl font-semibold">About the Tour</h2>
         <p>{packageData.aboutTour}</p>
       </div>
 
-      {/* Tour Plan Section */}
       <div className="tour-plan mt-6">
         <h2 className="text-xl font-semibold">Tour Plan</h2>
         <ul>
@@ -261,7 +263,7 @@ const PackageDetailsPage = () => {
           Select a guide
         </option>
         {tourGuides.map((guide) => (
-          <option key={guide._id} value={guide._id}>  {/* Change value to guide._id */}
+          <option key={guide._id} value={guide._id}>  
             {guide.name}
           </option>
         ))}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const EditStory = () => {
   const { id } = useParams();
@@ -147,6 +148,10 @@ const EditStory = () => {
 
   return (
     <div className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md my-8">
+            <Helmet>
+                <title> Edit Story / Deshventure
+                </title>
+            </Helmet>
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Edit Story</h2>
 
       <form onSubmit={handleSubmit}>

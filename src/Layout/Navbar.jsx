@@ -20,7 +20,7 @@ const linkDrop = (
       Dashboard
     </NavLink>
   </li>
-  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold mb-1 hover:rounded-2xl">
+  {/* <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold mb-1 hover:rounded-2xl">
     <NavLink
       to="myArtifacts"
       className={({ isActive }) =>
@@ -31,7 +31,7 @@ const linkDrop = (
     >
       Special Offers
     </NavLink>
-  </li>
+  </li> */}
   </>
 );
 
@@ -168,8 +168,11 @@ const linkDrop = (
   {/* Dropdown menu */}
   <ul
     tabIndex={0}
-    className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 shadow dropdown-start"
-  >
+    className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 pr-3 shadow dropdown-start">
+    <li className="bg-gradient-to-r from-green-600 to-lime-500 text-white rounded-lg mb-1 py-4">
+      <p>{user?.displayName}</p>
+      <p className="text-xs">{user?.email}</p>
+    </li>
     {linkDrop}
     <li className="w-28 mt-3 ml-10">
       <button

@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import StoryModal from '../../Component/StoryModal';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ManageStories = () => {
   const { user } = useContext(AuthContext);
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedStory, setSelectedStory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (user?.email) {
@@ -65,19 +69,33 @@ const ManageStories = () => {
     return <div className="text-center mt-10">Loading...</div>;
   }
 
+  const handleCardClick = (story) => {
+    setSelectedStory(story);
+    setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setSelectedStory(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+            <Helmet>
+                <title> Manage Stories / Deshventure
+                </title>
+            </Helmet>
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">My Stories</h2>
 
       {stories.length === 0 ? (
         <p className="text-center text-gray-600">No stories found.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {stories.map((story) => (
-            <div key={story._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div key={story._id}  className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105">
 
               {/* Story Image */}
-              <div className="relative h-48">
+              <div onClick={() => handleCardClick(story)} className="relative h-48 ">
                 <img
                   src={story.images[0] || "https://placehold.co/600x400"}
                   alt={story.title}
@@ -108,13 +126,13 @@ const ManageStories = () => {
                 <div className="flex justify-between">
                   <Link
                     to={`/dashboards/editStory/${story._id}`}
-                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    className="btn rounded-md bg-gradient-to-r from-green-600 to-lime-500 text-white  "
                   >
                     Edit
                   </Link>
                   <button
                     onClick={() => handleDelete(story._id)}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                    className="btn rounded-md bg-gradient-to-r from-red-700 to-red-400 text-white  hover:bg-red-600"
                   >
                     Delete
                   </button>
@@ -124,6 +142,13 @@ const ManageStories = () => {
           ))}
         </div>
       )}
+      {selectedStory && (
+  <StoryModal
+    story={selectedStory}
+    isOpen={isModalOpen}
+    onClose={handleCloseModal}
+  />
+)}
     </div>
   );
 };

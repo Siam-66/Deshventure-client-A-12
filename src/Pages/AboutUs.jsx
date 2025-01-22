@@ -1,6 +1,7 @@
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJs, FaDatabase } from "react-icons/fa";
 import { SiFirebase, SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
 import { GoArrowUpRight } from "react-icons/go";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   const techIcons = {
@@ -52,6 +53,10 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">
+      <Helmet>
+          <title> About Us / Deshventure
+          </title>
+      </Helmet>
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row justify-between items-center bg-white p-8 rounded-lg shadow-md">
           <div className="flex-1">

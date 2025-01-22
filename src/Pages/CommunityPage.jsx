@@ -2,12 +2,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 import { AuthContext } from '../Provider/AuthProvider';
+import StoryModal from '../Component/StoryModal';
+import { Helmet } from 'react-helmet';
 
 const CommunityPage = () => {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [selectedStory, setSelectedStory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchTouristStories();
@@ -27,11 +31,22 @@ const CommunityPage = () => {
     }
   };
 
-  const handleShare = () => {
+  const handleShare = (e) => {
+    e.stopPropagation(); 
     if (!user) {
       navigate('/login');
       return;
     }
+  };
+
+  const handleCardClick = (story) => {
+    setSelectedStory(story);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedStory(null);
+    setIsModalOpen(false);
   };
 
   if (loading) {
@@ -47,6 +62,10 @@ const CommunityPage = () => {
 
   return (
     <section className="py-12 bg-gray-50 min-h-screen">
+      <Helmet>
+          <title>Community Page / Deshventure
+          </title>
+      </Helmet>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">Tourist Community Stories</h1>
@@ -64,7 +83,8 @@ const CommunityPage = () => {
             {stories.map((story) => (
               <div 
                 key={story._id} 
-                className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
+                onClick={() => handleCardClick(story)}
+                className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105"
               >
                 <div className="relative h-64">
                   <img
@@ -73,7 +93,7 @@ const CommunityPage = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
+                    <span className="bg-gradient-to-r from-green-600 to-lime-500 text-white px-3 py-1 rounded-full text-sm">
                       {story.userRole}
                     </span>
                   </div>
@@ -115,6 +135,14 @@ const CommunityPage = () => {
           </div>
         )}
       </div>
+      
+      {selectedStory && (
+        <StoryModal
+          story={selectedStory}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
+      )}
     </section>
   );
 };

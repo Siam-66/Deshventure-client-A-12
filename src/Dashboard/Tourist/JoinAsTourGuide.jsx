@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const JoinAsTourGuide = () => {
   const { user } = useContext(AuthContext);
@@ -59,6 +60,10 @@ const JoinAsTourGuide = () => {
         backgroundImage: `url("https://i.ibb.co.com/XYYD2bM/application.jpg")`,
       }}
     >
+            <Helmet>
+                <title> Join As Tour Guide / Deshventure
+                </title>
+            </Helmet>
       <div className="bg-white bg-opacity-40 max-sm:mx-5 p-8 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center mb-6">
           Join as a Tour Guide

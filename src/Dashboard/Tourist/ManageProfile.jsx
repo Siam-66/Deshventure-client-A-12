@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const ManageProfile = () => {
   const { user } = useContext(AuthContext);
@@ -45,6 +46,10 @@ const ManageProfile = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+            <Helmet>
+                <title> Manage Profile / Deshventure
+                </title>
+            </Helmet>
       <div className="max-w-lg mx-auto border-2 border-lime-400 bg-base-100 rounded-lg shadow-xl p-6">
         <h1 className="mb-5 text-center text-3xl font-bold bg-gradient-to-r from-green-600 via-lime-500 to-emerald-600 bg-clip-text text-transparent">
           Welcome back

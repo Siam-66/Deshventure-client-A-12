@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
 const AddPackage = () => {
@@ -77,6 +78,10 @@ const AddPackage = () => {
 
   return (
     <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
+      <Helmet>
+          <title> Add Package / Deshventure
+          </title>
+      </Helmet>
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Add Packages</h2>
 
       {/* Name Section */}

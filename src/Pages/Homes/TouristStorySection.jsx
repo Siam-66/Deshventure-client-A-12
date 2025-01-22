@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FacebookShareButton, FacebookIcon } from 'react-share';
 import { AuthContext } from '../../Provider/AuthProvider';
+import StoryModal from '../../Component/StoryModal';
 
 const TouristStorySection = () => {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [selectedStory, setSelectedStory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchTouristStories();
@@ -18,7 +21,6 @@ const TouristStorySection = () => {
       const response = await fetch('http://localhost:5000/touristStories');
       if (response.ok) {
         const data = await response.json();
-        // Get 4 random stories
         const shuffled = data.sort(() => 0.5 - Math.random());
         setStories(shuffled.slice(0, 4));
       }
@@ -40,8 +42,18 @@ const TouristStorySection = () => {
     return <div className="text-center mt-10">Loading...</div>;
   }
 
+  const handleCardClick = (story) => {
+    setSelectedStory(story);
+    setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setSelectedStory(null);
+    setIsModalOpen(false);
+  };
+
   return (
-    <section className="py-12 bg-gray-50">
+    <div className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className=" items-center mb-8">
           <h2 className="text-3xl font-bold text-center text-gray-800">Tourist Stories</h2>
@@ -49,7 +61,8 @@ const TouristStorySection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stories.map((story) => (
-            <div key={story._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div key={story._id} onClick={() => handleCardClick(story)}
+            className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105">
               <div className="relative h-48">
                 <img
                   src={story.images[0] || "https://placehold.co/600x400"}
@@ -59,12 +72,12 @@ const TouristStorySection = () => {
               </div>
               
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{story.title}</h3>
-                <p className="text-gray-600 mb-4">
+                <h3 className="text-xl font-semibold h-20">{story.title}</h3>
+                <p className="text-gray-600  h-36">
                   {story.storyText.substring(0, 100)}...
                 </p>
                 
-                <div className="flex items-center justify-between mt-4">
+                <div className="flex items-center justify-between ">
                   <div className="flex items-center space-x-2">
                     <img
                       src={story.photo}
@@ -84,25 +97,33 @@ const TouristStorySection = () => {
                   </FacebookShareButton>
                 </div>
               </div>
+              
             </div>
           ))}
         </div>
         <div className="flex justify-center mt-8 gap-5">
             <Link 
               to="/CommunityPage" 
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+              className="bg-gradient-to-r from-blue-700 to-sky-500  text-white px-4 py-2 rounded"
             >
               View All Stories
             </Link>
             <Link 
               to="/dashboards/addStory" 
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+              className="bg-gradient-to-r from-green-600 to-lime-500 text-white px-4 py-2 rounded"
             >
               Share Your Story
             </Link>
           </div>
       </div>
-    </section>
+      {selectedStory && (
+  <StoryModal
+    story={selectedStory}
+    isOpen={isModalOpen}
+    onClose={handleCloseModal}
+  />
+)}
+    </div>
   );
 };
 

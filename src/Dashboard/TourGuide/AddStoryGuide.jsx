@@ -57,6 +57,7 @@ const AddStoryGuide = () => {
 
   return (
     <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
+
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Share Your Story</h2>
 
       {/* Title Section */}

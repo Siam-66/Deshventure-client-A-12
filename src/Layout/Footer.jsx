@@ -55,22 +55,22 @@ Deshventure  Ltd.
 
   <nav>
 <h6 className="footer-title md:text-xl ">Services</h6>
-<Link to="/allArtifacts" className="link link-hover">Home</Link>
-<Link to="/myArtifacts" className="link link-hover">All Trips</Link>
-<Link to="/myAddedArtifacts" className="link link-hover">Community</Link>
+<Link to="/" className="link link-hover">Home</Link>
+<Link to="/AllTripsPage" className="link link-hover">All Trips</Link>
+<Link to="/communityPage" className="link link-hover">Community</Link>
 
 </nav>
 <nav>
 <h6 className="footer-title md:text-xl">Company</h6>
-<Link to="/" className="link link-hover">Jobs</Link>
-<Link to="/" className="link link-hover">Contact</Link>
-<Link to="/aboutus" className="link link-hover">About us</Link>
+<Link  className="link link-hover">Jobs</Link>
+<Link  className="link link-hover">Contact</Link>
+<Link to="/aboutUs" className="link link-hover">About us</Link>
 
 </nav>
 <nav>
 <h6 className="footer-title md:text-xl">Legal</h6>
-<Link to="/" className="link link-hover">Terms of use</Link>
-<Link to="/" className="link link-hover">Privacy policy</Link>
+<Link to="/termsOfUse" className="link link-hover">Terms of use</Link>
+<Link to="/privacyPolicy" className="link link-hover">Privacy policy</Link>
 <Link to="/userAgreement" className="link link-hover">User Agreement</Link>
 </nav>
 

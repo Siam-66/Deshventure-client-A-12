@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import CelebrationModal from "./CelebrationModal";
+import { Helmet } from "react-helmet";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -124,6 +125,10 @@ const MyBookings = () => {
 
   return (
     <div className="container mx-auto p-4">
+            <Helmet>
+                <title> My Bookings / Deshventure
+                </title>
+            </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Bookings</h2>
       <table className="table-auto w-full border-collapse border border-gray-400">
         <thead>
@@ -143,7 +148,16 @@ const MyBookings = () => {
               <td className="border border-gray-400 px-4 py-2">{booking.tourGuide.name || "Not Assigned"}</td>
               <td className="border border-gray-400 px-4 py-2">{new Date(booking.tourDate).toLocaleDateString()}</td>
               <td className="border border-gray-400 px-4 py-2">{booking.price} BDT</td>
-              <td className="border border-gray-400 px-4 py-2">{booking.status}</td>
+              <td className="border border-gray-400 px-4 py-2">
+                  <span className={`px-2 py-1 rounded ${
+                    booking.status === "accepted" ? "bg-green-200 text-green-800" :
+                    booking.status === "rejected" ? "bg-red-200 text-red-800" :
+                    booking.status === "in review" ? "bg-yellow-200 text-yellow-800" :
+                    "bg-gray-200 text-gray-800"
+                  }`}>
+                    {booking.status}
+                  </span>
+                </td>
               <td className="border border-gray-400 px-4 py-2">
                 {booking.status === "pending" && (
                   <>

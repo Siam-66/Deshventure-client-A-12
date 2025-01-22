@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Select from "react-select";
+import { Helmet } from "react-helmet";
 
 const ManageUsers = () => {
   const { user } = useContext(AuthContext);
@@ -62,6 +63,10 @@ const ManageUsers = () => {
 
   return (
     <div>
+        <Helmet>
+          <title> Manage Users  / Deshventure
+          </title>
+      </Helmet>
       <h1>Manage Users</h1>
 
       {/* Search and Filter */}

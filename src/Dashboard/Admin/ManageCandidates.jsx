@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ManageCandidates = () => {
   const [applications, setApplications] = useState([]);
@@ -82,6 +83,10 @@ const ManageCandidates = () => {
 
   return (
     <div className="container mx-auto mt-10">
+      <Helmet>
+          <title> Manage Candidates / Deshventure
+          </title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-center mb-6">Manage Candidates</h1>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border border-gray-200">

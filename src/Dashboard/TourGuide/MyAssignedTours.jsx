@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MyAssignedTours = () => {
   const { user } = useContext(AuthContext);
@@ -70,6 +71,10 @@ const MyAssignedTours = () => {
 
   return (
     <div className="container mx-auto p-4">
+              <Helmet>
+                <title> My Assigned Tours / Deshventure
+                </title>
+            </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Assigned Tours</h2>
       
       <div className="overflow-x-auto">

@@ -7,9 +7,14 @@ import PlacesCanVisit from "./Homes/PlacesCanVisit";
 import TourismTravelGuide from "./Homes/TourismTravelGuide";
 import WhyChooseUs from "./Homes/WhyChooseUs";
 import TouristStorySection from "./Homes/TouristStorySection";
+import { Helmet } from "react-helmet";
 const Home = () => {
     return (
         <div>
+        <Helmet>
+            <title>Home / Deshventure
+            </title>
+        </Helmet>
             <Banner></Banner>
             <OverviewSection></OverviewSection>
             <TourismTravelGuide></TourismTravelGuide>

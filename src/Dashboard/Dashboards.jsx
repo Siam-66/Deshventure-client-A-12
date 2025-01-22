@@ -9,6 +9,8 @@ import { ImHappy2 } from "react-icons/im";
 import { BsDatabaseFillAdd } from "react-icons/bs";
 import { PiUserGearFill } from "react-icons/pi";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import { Helmet } from "react-helmet";
+import Image1 from "../assets/Deshventure.png";
 
 const Dashboards = () => {
   const { user } = useContext(AuthContext);
@@ -32,11 +34,17 @@ const Dashboards = () => {
 
   return (
     <div className="flex">
+            <Helmet>
+                <title>  Deshventure
+                </title>
+            </Helmet>
       <div className="w-64 min-h-screen bg-green-600">
         <ul className="menu">
+          <img className="w-60" src={Image1} alt="Sunflower Logo" />
+          
           {userRole === "tourist" && (
             <>
-              <p className="font-bold text-xl mb-4 text-white">Tourist Dashboard</p>
+              <p className="font-bold text-center text-xl mb-4 text-white">Tourist Dashboard</p>
               <li>
                 <NavLink to="/dashboards/manageProfile">
                   <FaHouseUser />Manage Profile
@@ -67,7 +75,7 @@ const Dashboards = () => {
 
           {userRole === "tour-guide" && (
             <>
-              <p className="font-bold text-xl mb-4 text-white">Tour Guide Dashboard</p>
+              <p className="font-bold text-center text-xl mb-4 text-white">Tour Guide Dashboard</p>
               <li>
                 <NavLink to="/dashboards/manageProfileGuide">
                   <FaHouseUser />Manage Profile
@@ -93,7 +101,7 @@ const Dashboards = () => {
 
           {userRole === "admin" && (
             <>
-              <p className="font-bold text-xl mb-4 text-white">Admin Dashboard</p>
+              <p className="font-bold text-center text-xl mb-4 text-white">Admin Dashboard</p>
               <li>
                 <NavLink to="/dashboards/manageProfileAdmin">
                   <FaHouseUser />Manage Profile
