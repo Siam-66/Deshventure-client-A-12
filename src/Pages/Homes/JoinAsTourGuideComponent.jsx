@@ -35,7 +35,7 @@ const JoinAsTourGuideComponent = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/application", {
+      const response = await fetch("https://assignment-12-deshventure-server.vercel.app/application", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSave),

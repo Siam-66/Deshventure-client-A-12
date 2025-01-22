@@ -21,7 +21,7 @@ const GoogleLoginButton = () => {
 
       console.log("Prepared user data:", userData);
 
-      const response = await fetch("http://localhost:5000/allUserData", {
+      const response = await fetch("https://assignment-12-deshventure-server.vercel.app/allUserData", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

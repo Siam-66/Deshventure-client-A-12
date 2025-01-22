@@ -8,7 +8,7 @@ const AllTripsPage = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/allTour");
+        const response = await fetch("https://assignment-12-deshventure-server.vercel.app/allTour");
         const data = await response.json();
         setPackages(data);
       } catch (error) {

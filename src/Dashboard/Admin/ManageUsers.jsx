@@ -18,7 +18,7 @@ const ManageUsers = () => {
     const fetchUserRole = async () => {
       if (user?.email) {
         try {
-          const response = await fetch(`http://localhost:5000/getRole?email=${user.email}`);
+          const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/getRole?email=${user.email}`);
           const data = await response.json();
           setUserRole(data.role);
         } catch (error) {
@@ -41,7 +41,7 @@ const ManageUsers = () => {
           limit: limit.toString(),
         }).toString();
 
-        const response = await fetch(`http://localhost:5000/getTourists?${query}`);
+        const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/getTourists?${query}`);
         const data = await response.json();
 
         setUsers(data.users);
@@ -93,44 +93,50 @@ const ManageUsers = () => {
         
 
       {/* Users Table */}
-      <table className="table-auto w-full border-collapse border border-gray-200">
+      <div className="overflow-x-auto"> 
+              <div className="min-w-full">
+            <table className="table-auto w-full border-collapse border border-gray-200">
         <thead>
           <tr>
-            <th className="border border-gray-200 px-4 py-2">Name</th>
-            <th className="border border-gray-200 px-4 py-2">Email</th>
-            <th className="border border-gray-200 px-4 py-2">Photo</th>
-            <th className="border border-gray-200 px-4 py-2">Role</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Name</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Email</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Photo</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Role</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-                <td className="border border-gray-200 px-4 py-2">
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
                 <img src={user.photo} alt={user.name} className="w-12 h-12 rounded-full" />
               </td>
-              <td className="border border-gray-200 px-4 py-2">{user.name}</td>
-              <td className="border border-gray-200 px-4 py-2">{user.email}</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{user.name}</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{user.email}</td>
  
-              <td className="border border-gray-200 px-4 py-2">{user.role}</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{user.role}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
+      </div>
+
+
 
       {/* Pagination */}
       <div className="flex justify-center items-center mt-4">
   <button
     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
     disabled={page === 1}
-    className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black  rounded-l-lg"
+    className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black  rounded-l-lg"
   >
     Prev
   </button>
-  <span className="px-4 py-2 text-lg font-medium text-black">{page}</span>
+  <span className="px-2 py-2 md:px-4 md:py-2 text-lg font-medium text-black">{page}</span>
   <button
     onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
     disabled={page === totalPages}
-    className="px-4 py-2 bg-gray-300 hover:bg-green-600 text-black  rounded-r-lg"
+    className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 text-black  rounded-r-lg"
   >
     Next
   </button>

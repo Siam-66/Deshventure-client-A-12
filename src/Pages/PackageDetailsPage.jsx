@@ -21,7 +21,7 @@ const PackageDetailsPage = () => {
   const [tourGuides, setTourGuides] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/tour-guides")
+    fetch("https://assignment-12-deshventure-server.vercel.app/tour-guides")
       .then((res) => res.json())
       .then((data) => {
         setTourGuides(data);
@@ -70,7 +70,7 @@ const PackageDetailsPage = () => {
     };
   
     try {
-      const response = await fetch("http://localhost:5000/bookings", {
+      const response = await fetch("https://assignment-12-deshventure-server.vercel.app/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData),

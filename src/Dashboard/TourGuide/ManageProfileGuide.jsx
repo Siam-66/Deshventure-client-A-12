@@ -9,7 +9,7 @@ const ManageProfileGuide = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/userData?email=${user.email}`)
+      fetch(`https://assignment-12-deshventure-server.vercel.app/userData?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setProfileData(data))
         .catch((err) => console.error("Error fetching profile data:", err));
@@ -23,7 +23,7 @@ const ManageProfileGuide = () => {
       photo: e.target.photo.value,
     };
 
-    fetch(`http://localhost:5000/updateUserData/${profileData._id}`, {
+    fetch(`https://assignment-12-deshventure-server.vercel.app/updateUserData/${profileData._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),

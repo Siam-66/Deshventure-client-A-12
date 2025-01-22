@@ -22,7 +22,7 @@ const EditStory = () => {
 
   const fetchStoryDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/stories/detail/${id}`);
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/detail/${id}`);
       if (response.ok) {
         const data = await response.json();
         setStory(data);
@@ -35,7 +35,7 @@ const EditStory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/stories/${id}`, {
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const EditStory = () => {
 
   const handleRemoveImage = async (imageUrl) => {
     try {
-      const response = await fetch(`http://localhost:5000/stories/${id}/remove-image`, {
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${id}/remove-image`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const EditStory = () => {
     if (!newImageUrl) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/stories/${id}/add-image`, {
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${id}/add-image`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

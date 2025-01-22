@@ -60,7 +60,7 @@ const Signup = () => {
 
       .then(() => {
         const userData = { name, email, photo, role: "tourist" };
-        return fetch("http://localhost:5000/allUserData", {
+        return fetch("https://assignment-12-deshventure-server.vercel.app/allUserData", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(userData),

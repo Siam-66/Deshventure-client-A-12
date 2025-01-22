@@ -15,12 +15,12 @@ const TourGuideProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allUserData/${id}`)
+    fetch(`https://assignment-12-deshventure-server.vercel.app/allUserData/${id}`)
       .then(res => res.json())
       .then(data => {
         setGuideData(data);
         if (data?.email) {
-          fetch(`http://localhost:5000/guide-stories/${data.email}`)
+          fetch(`https://assignment-12-deshventure-server.vercel.app/guide-stories/${data.email}`)
             .then(res => res.json())
             .then(storiesData => {
               setStories(storiesData);

@@ -20,7 +20,7 @@ const ManageStories = () => {
 
   const fetchUserStories = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/stories/${user.email}`);
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${user.email}`);
       if (response.ok) {
         const data = await response.json();
         setStories(data);
@@ -43,7 +43,7 @@ const ManageStories = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await fetch(`http://localhost:5000/stories/${storyId}`, {
+          const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${storyId}`, {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json"  

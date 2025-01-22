@@ -12,7 +12,7 @@ const TourismTravelGuide = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/allTour");
+        const response = await fetch("https://assignment-12-deshventure-server.vercel.app/allTour");
         const data = await response.json();
         setPackages(data);
         const randomIndexes = [];
@@ -30,7 +30,7 @@ const TourismTravelGuide = () => {
 
     const fetchTourGuides = async () => {
       try {
-        const response = await fetch("http://localhost:5000/tour-guides");
+        const response = await fetch("https://assignment-12-deshventure-server.vercel.app/tour-guides");
         const data = await response.json();
         setTourGuides(data);
         const randomIndexes = [];
@@ -52,7 +52,7 @@ const TourismTravelGuide = () => {
 
   return (
     <section className="py-10 bg-gray-100">
-      <div className="container mx-auto px-6 text-center">
+      <div className=" text-center">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">
           Tourism and Travel Guide
         </h2>

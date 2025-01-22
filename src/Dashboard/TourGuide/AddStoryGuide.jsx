@@ -28,7 +28,7 @@ const AddStoryGuide = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/stories", {
+      const response = await fetch("https://assignment-12-deshventure-server.vercel.app/stories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

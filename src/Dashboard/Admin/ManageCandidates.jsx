@@ -13,7 +13,7 @@ const ManageCandidates = () => {
   const fetchApplications = async (page = 1) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/applications?page=${page}&limit=10`);
+      const response = await axios.get(`https://assignment-12-deshventure-server.vercel.app/applications?page=${page}&limit=10`);
       setApplications(response.data.applications);
       setTotalApplications(response.data.total);
     } catch (error) {
@@ -38,7 +38,7 @@ const ManageCandidates = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.post(`http://localhost:5000/applications/accept/${id}`);
+          await axios.post(`https://assignment-12-deshventure-server.vercel.app/applications/accept/${id}`);
           Swal.fire("Accepted!", "User role has been updated.", "success");
           fetchApplications(currentPage); // Refresh the applications list
         } catch (error) {
@@ -60,7 +60,7 @@ const ManageCandidates = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.delete(`http://localhost:5000/applications/reject/${id}`);
+          await axios.delete(`https://assignment-12-deshventure-server.vercel.app/applications/reject/${id}`);
           Swal.fire("Rejected!", "Application has been deleted.", "success");
           fetchApplications(currentPage); // Refresh the applications list
         } catch (error) {
@@ -89,29 +89,30 @@ const ManageCandidates = () => {
       </Helmet>
       <h1 className="text-3xl font-bold text-center mb-6">Manage Candidates</h1>
       <div className="overflow-x-auto">
+        <div className="min-w-full">
         <table className="table-auto w-full border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <th className="px-4 py-2 border">Photo</th>
-              <th className="px-4 py-2 border">Name</th>
-              <th className="px-4 py-2 border">Email</th>
-              <th className="px-4 py-2 border">CV Link</th>
-              <th className="px-4 py-2 border">Actions</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Photo</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Name</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Email</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">CV Link</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Actions</th>
             </tr>
           </thead>
           <tbody>
             {applications.map((app) => (
               <tr key={app._id} className="text-center">
-                <td className="px-4 py-2 border">
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
                   <img
                     src={app.photo}
                     alt={app.name}
                     className="w-12 h-12 rounded-full mx-auto"
                   />
                 </td>
-                <td className="px-4 py-2 border">{app.name}</td>
-                <td className="px-4 py-2 border">{app.email}</td>
-                <td className="px-4 py-2 border">
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{app.name}</td>
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{app.email}</td>
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
                   <a
                     href={app.cvLink}
                     target="_blank"
@@ -121,16 +122,16 @@ const ManageCandidates = () => {
                     View CV
                   </a>
                 </td>
-                <td className="px-4 py-2 border">
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
                   <button
                     onClick={() => handleAccept(app._id)}
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded mr-2"
+                    className="bg-green-500 hover:bg-green-600 max-sm:text-xs text-white font-bold py-1 px-4 rounded mr-2"
                   >
                     Accept
                   </button>
                   <button
                     onClick={() => handleReject(app._id)}
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded"
+                    className="bg-red-500 hover:bg-red-600 max-sm:text-xs text-white font-bold py-1 px-4 rounded"
                   >
                     Reject
                   </button>
@@ -139,6 +140,7 @@ const ManageCandidates = () => {
             ))}
           </tbody>
         </table>
+        </div>
         {applications.length === 0 && (
           <p className="text-center text-gray-500 mt-4">No applications found.</p>
         )}
@@ -149,7 +151,7 @@ const ManageCandidates = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg "
+          className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg "
         >
           Prev
         </button>
@@ -157,7 +159,7 @@ const ManageCandidates = () => {
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            className={`px-4 py-2 ${currentPage === index + 1 ? "text-black" : "bg-gray-300"} `}
+            className={`px-2 py-2 md:px-4 md:py-2 ${currentPage === index + 1 ? "text-black" : "bg-gray-300"} `}
           >
             {index + 1}
           </button>
@@ -165,7 +167,7 @@ const ManageCandidates = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg "
+          className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg "
         >
           Next
         </button>

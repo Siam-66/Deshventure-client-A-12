@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
                     <PackageDetailsPage />
                 </PrivateRoute>,
                 loader: ({ params }) =>
-                fetch(`http://localhost:5000/allTour/${params.id}`).then((res) =>
+                fetch(`https://assignment-12-deshventure-server.vercel.app/allTour/${params.id}`).then((res) =>
                     res.json()
                 ),
             },
@@ -94,7 +94,7 @@ export const router = createBrowserRouter([
                 path: "tourGuideProfile/:id",
                 element: <TourGuideProfile />,
                 loader: ({ params }) =>
-                fetch(`http://localhost:5000/allUserData/${params.id}`).then((res) =>
+                fetch(`https://assignment-12-deshventure-server.vercel.app/allUserData/${params.id}`).then((res) =>
                     res.json()
                 ),
             },

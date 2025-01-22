@@ -18,7 +18,7 @@ const MyAssignedTours = () => {
   }, [user, currentPage]);
 
   const fetchAssignedTours = () => {
-    fetch(`http://localhost:5000/assigned-tours?guideEmail=${user.email}&page=${currentPage}&limit=${limit}`)
+    fetch(`https://assignment-12-deshventure-server.vercel.app/assigned-tours?guideEmail=${user.email}&page=${currentPage}&limit=${limit}`)
       .then((res) => res.json())
       .then((response) => {
         if (response.success) {
@@ -31,7 +31,7 @@ const MyAssignedTours = () => {
 
   const handleAccept = async (tourId) => {
     try {
-      const response = await fetch(`http://localhost:5000/tours/accept/${tourId}`, {
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/tours/accept/${tourId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "accepted" }),
@@ -47,7 +47,7 @@ const MyAssignedTours = () => {
 
   const handleReject = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/tours/reject/${selectedTourId}`, {
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/tours/reject/${selectedTourId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "rejected" }),
@@ -77,29 +77,30 @@ const MyAssignedTours = () => {
             </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Assigned Tours</h2>
       
-      <div className="overflow-x-auto">
-        <table className="table-auto w-full border-collapse border border-gray-400">
+    <div className="overflow-x-auto">
+      <div className="min-w-full">
+          <table className="table-auto w-full border-collapse border border-gray-400">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400 px-4 py-2">Package Name</th>
-              <th className="border border-gray-400 px-4 py-2">Tourist Name</th>
-              <th className="border border-gray-400 px-4 py-2">Tour Date</th>
-              <th className="border border-gray-400 px-4 py-2">Price</th>
-              <th className="border border-gray-400 px-4 py-2">Status</th>
-              <th className="border border-gray-400 px-4 py-2">Actions</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Package Name</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Tourist Name</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Tour Date</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Price</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Status</th>
+              <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Actions</th>
             </tr>
           </thead>
           <tbody>
             {assignedTours.map((tour) => (
               <tr key={tour._id}>
-                <td className="border border-gray-400 px-4 py-2">{tour.packageName}</td>
-                <td className="border border-gray-400 px-4 py-2">{tour.touristName}</td>
-                <td className="border border-gray-400 px-4 py-2">
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{tour.packageName}</td>
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{tour.touristName}</td>
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
                   {new Date(tour.tourDate).toLocaleDateString()}
                 </td>
-                <td className="border border-gray-400 px-4 py-2">{tour.price}</td>
-                <td className="border border-gray-400 px-4 py-2">
-                  <span className={`px-2 py-1 rounded ${
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{tour.price}</td>
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
+                  <span className={`md:px-2 md:py-1 rounded ${
                     tour.status === "accepted" ? "bg-green-200 text-green-800" :
                     tour.status === "rejected" ? "bg-red-200 text-red-800" :
                     tour.status === "in review" ? "bg-yellow-200 text-yellow-800" :
@@ -108,13 +109,13 @@ const MyAssignedTours = () => {
                     {tour.status}
                   </span>
                 </td>
-                <td className="border border-gray-400 px-4 py-2">
+                <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
 
                 
                   <button
                     onClick={() => handleAccept(tour._id)}
                     disabled={tour.status !== "in review"}
-                    className={`bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded mr-2 ${
+                    className={`bg-green-500 hover:bg-green-600 max-sm:text-xs text-white font-bold py-1 px-4 rounded mr-2 ${
                       tour.status !== "in review" ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                   >
@@ -128,7 +129,7 @@ const MyAssignedTours = () => {
                         setShowRejectModal(true);
                       }}
                       disabled={tour.status !== "in review"}
-                      className={`bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded ${
+                      className={`bg-red-500 hover:bg-red-600 max-sm:text-xs text-white font-bold py-1 px-4 rounded ${
                         tour.status !== "in review" ? "opacity-50 cursor-not-allowed" : ""
                       }`}
                     >
@@ -139,15 +140,16 @@ const MyAssignedTours = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
       </div>
+    </div>
 
       {/* Pagination */}
       <div className="flex justify-center mt-4">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg  disabled:cursor-not-allowed"
+          className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg  disabled:cursor-not-allowed"
         >
           Prev
         </button>
@@ -155,7 +157,7 @@ const MyAssignedTours = () => {
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            className={`px-4 py-2 ${
+            className={`px-2 py-2 md:px-4 md:py-2 ${
               currentPage === index + 1 
                 ? "text-black" 
                 : "bg-gray-300 "
@@ -167,7 +169,7 @@ const MyAssignedTours = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg  disabled:cursor-not-allowed"
+          className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg  disabled:cursor-not-allowed"
         >
           Next
         </button>

@@ -20,7 +20,7 @@ const Dashboards = () => {
     const fetchUserRole = async () => {
       if (user?.email) {
         try {
-          const response = await fetch(`http://localhost:5000/getRole?email=${user.email}`);
+          const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/getRole?email=${user.email}`);
           const data = await response.json();
           setUserRole(data.role);
         } catch (error) {
@@ -33,41 +33,41 @@ const Dashboards = () => {
   }, [user]);
 
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
             <Helmet>
                 <title>  Deshventure
                 </title>
             </Helmet>
-      <div className="w-64 min-h-screen bg-green-600">
-        <ul className="menu">
+      <div className="w-full md:w-64 md:min-h-screen bg-green-600">
+        <ul className="menu p-4">
           <img className="w-60" src={Image1} alt="Sunflower Logo" />
           
           {userRole === "tourist" && (
             <>
               <p className="font-bold text-center text-xl mb-4 text-white">Tourist Dashboard</p>
-              <li>
-                <NavLink to="/dashboards/manageProfile">
-                  <FaHouseUser />Manage Profile
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageProfile"  className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <FaHouseUser className="inline mr-2"/>Manage Profile
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/myBookings">
-                  <MdSaveAs />My Bookings
+              <li className="mb-2">
+                <NavLink to="/dashboards/myBookings" className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <MdSaveAs className="inline mr-2"/>My Bookings
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/AddStory">
-                  <BsChatSquareHeartFill />Add Stories
+              <li className="mb-2">
+                <NavLink to="/dashboards/AddStory"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <BsChatSquareHeartFill className="inline mr-2"/>Add Stories
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/manageStories">
-                  <GiLoveMystery />Manage Stories
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageStories"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <GiLoveMystery className="inline mr-2"/>Manage Stories
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/joinAsTourGuide">
-                  <ImHappy2 />Join as Tour Guide
+              <li className="mb-2">
+                <NavLink to="/dashboards/joinAsTourGuide"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <ImHappy2 className="inline mr-2"/>Join as Tour Guide
                 </NavLink>
               </li>
             </>
@@ -76,24 +76,24 @@ const Dashboards = () => {
           {userRole === "tour-guide" && (
             <>
               <p className="font-bold text-center text-xl mb-4 text-white">Tour Guide Dashboard</p>
-              <li>
-                <NavLink to="/dashboards/manageProfileGuide">
-                  <FaHouseUser />Manage Profile
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageProfileGuide"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <FaHouseUser className="inline mr-2"/>Manage Profile
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/myAssignedTours">
-                  <MdSaveAs />My Assigned Tours
+              <li className="mb-2">
+                <NavLink to="/dashboards/myAssignedTours"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <MdSaveAs className="inline mr-2"/>My Assigned Tours
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/addStory">
-                  <BsChatSquareHeartFill />Add Stories
+              <li className="mb-2">
+                <NavLink to="/dashboards/addStory"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <BsChatSquareHeartFill className="inline mr-2"/>Add Stories
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/manageStories">
-                  <GiLoveMystery />Manage Stories
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageStories"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <GiLoveMystery className="inline mr-2"/>Manage Stories
                 </NavLink>
               </li>
             </>
@@ -101,25 +101,25 @@ const Dashboards = () => {
 
           {userRole === "admin" && (
             <>
-              <p className="font-bold text-center text-xl mb-4 text-white">Admin Dashboard</p>
-              <li>
-                <NavLink to="/dashboards/manageProfileAdmin">
-                  <FaHouseUser />Manage Profile
+              <p className="font-bold  text-center text-xl mb-4 text-white">Admin Dashboard</p>
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageProfileAdmin"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <FaHouseUser className="inline mr-2"/>Manage Profile
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/addPackage">
-                  <BsDatabaseFillAdd />Add Package
+              <li className="mb-2">
+                <NavLink to="/dashboards/addPackage"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <BsDatabaseFillAdd className="inline mr-2"/>Add Package
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/manageUsers">
-                  <PiUserGearFill />Manage Users
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageUsers"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <PiUserGearFill className="inline mr-2"/>Manage Users
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboards/manageCandidates">
-                  <FaHouseUser />Manage Candidates
+              <li className="mb-2">
+                <NavLink to="/dashboards/manageCandidates"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+                  <FaHouseUser className="inline mr-2"/>Manage Candidates
                 </NavLink>
               </li>
             </>
@@ -127,14 +127,14 @@ const Dashboards = () => {
 
           <div className="divider"></div>
 
-          <li>
-            <NavLink to="/">
-              <RiArrowGoBackLine />Go Back Home
+          <li className="mb-2">
+            <NavLink to="/"className="block px-4 py-2 text-white hover:bg-green-700 rounded">
+              <RiArrowGoBackLine className="inline mr-2"/>Go Back Home
             </NavLink>
           </li>
         </ul>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 p-4 w-full">
         <Outlet></Outlet>
       </div>
     </div>

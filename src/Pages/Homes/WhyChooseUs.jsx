@@ -57,61 +57,63 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-r from-green-50 via-white to-green-50">
-      <div className="container mx-auto px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-extrabold text-gray-800 mb-6"
-        >
-          🌟 Why Choose Us? 🌟
-        </motion.h2>
-        
-        <motion.p
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg text-gray-600 mb-12"
-        >
-          Discover why we're the best at crafting unforgettable travel experiences!
-        </motion.p>
+    <div className="w-full overflow-hidden">
+      <section className="bg-gradient-to-r from-green-50 via-white to-green-50">
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6 text-center px-2"
+          >
+            🌟 Why Choose Us? 🌟
+          </motion.h2>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.2 }
-              }}
-              className="bg-white p-6 shadow-lg rounded-xl"
-            >
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 text-center px-2"
+          >
+            Discover why we're the best at crafting unforgettable travel experiences!
+          </motion.p>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+          >
+            {features.map((feature, index) => (
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-6xl mb-4"
+                key={index}
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                className="bg-white p-4 sm:p-6 rounded-xl shadow-lg mx-auto w-full"
               >
-                {feature.icon}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="text-4xl sm:text-6xl mb-3 sm:mb-4 text-center"
+                >
+                  {feature.icon}
+                </motion.div>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 text-center">
+                  {feature.title}
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600 text-center">
+                  {feature.description}
+                </p>
               </motion.div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+    </div>
   );
 };
 

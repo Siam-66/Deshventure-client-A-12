@@ -16,7 +16,7 @@ const MyBookings = () => {
 
   const checkBookingCount = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/bookings/count?email=${email}`);
+      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/bookings/count?email=${email}`);
       const data = await response.json();
       return data.count;
     } catch (error) {
@@ -28,7 +28,7 @@ const MyBookings = () => {
   // updated fetch bookings 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`)
+      fetch(`https://assignment-12-deshventure-server.vercel.app/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`)
         .then((res) => res.json())
         .then((response) => {
           if (response.success) {
@@ -51,7 +51,7 @@ const MyBookings = () => {
     setPaymentStatus("Processing payment...");
     
     try {
-      const response = await fetch("http://localhost:5000/payment", {
+      const response = await fetch("https://assignment-12-deshventure-server.vercel.app/payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -87,7 +87,7 @@ const MyBookings = () => {
   
         // Refresh bookings data
         const updatedBookings = await fetch(
-          `http://localhost:5000/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`
+          `https://assignment-12-deshventure-server.vercel.app/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`
         ).then(res => res.json());
         
         if (updatedBookings.success) {
@@ -105,10 +105,10 @@ const MyBookings = () => {
 
   // handle cancellation
   const handleCancel = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, { method: "DELETE" })
+    fetch(`https://assignment-12-deshventure-server.vercel.app/bookings/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then(() => {
-        fetch(`http://localhost:5000/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`)
+        fetch(`https://assignment-12-deshventure-server.vercel.app/bookings?email=${user.email}&page=${currentPage}&limit=${limit}`)
           .then((res) => res.json())
           .then((response) => {
             if (response.success) {
@@ -130,26 +130,28 @@ const MyBookings = () => {
                 </title>
             </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Bookings</h2>
-      <table className="table-auto w-full border-collapse border border-gray-400">
+  <div className="overflow-x-auto">
+      <div className="min-w-full">
+      <table className="table-auto w-full  border-collapse border border-gray-400">
         <thead>
           <tr className="bg-gray-200">
-            <th className="border border-gray-400 px-4 py-2">Package Name</th>
-            <th className="border border-gray-400 px-4 py-2">Tour Guide</th>
-            <th className="border border-gray-400 px-4 py-2">Tour Date</th>
-            <th className="border border-gray-400 px-4 py-2">Price</th>
-            <th className="border border-gray-400 px-4 py-2">Status</th>
-            <th className="border border-gray-400 px-4 py-2">Actions</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Package Name</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Tour Guide</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Tour Date</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Price</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Status</th>
+            <th className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">Actions</th>
           </tr>
         </thead>
         <tbody>
           {bookings.map((booking) => (
             <tr key={booking._id}>
-              <td className="border border-gray-400 px-4 py-2">{booking.packageName}</td>
-              <td className="border border-gray-400 px-4 py-2">{booking.tourGuide.name || "Not Assigned"}</td>
-              <td className="border border-gray-400 px-4 py-2">{new Date(booking.tourDate).toLocaleDateString()}</td>
-              <td className="border border-gray-400 px-4 py-2">{booking.price} BDT</td>
-              <td className="border border-gray-400 px-4 py-2">
-                  <span className={`px-2 py-1 rounded ${
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{booking.packageName}</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{booking.tourGuide.name || "Not Assigned"}</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{new Date(booking.tourDate).toLocaleDateString()}</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">{booking.price} BDT</td>
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
+                  <span className={`md:px-2 md:py-1 rounded ${
                     booking.status === "accepted" ? "bg-green-200 text-green-800" :
                     booking.status === "rejected" ? "bg-red-200 text-red-800" :
                     booking.status === "in review" ? "bg-yellow-200 text-yellow-800" :
@@ -158,7 +160,7 @@ const MyBookings = () => {
                     {booking.status}
                   </span>
                 </td>
-              <td className="border border-gray-400 px-4 py-2">
+              <td className="border border-gray-400 px-1 md:px-2 py-2 text-xs lg:px-4 md:text-base">
                 {booking.status === "pending" && (
                   <>
                     <button
@@ -166,13 +168,13 @@ const MyBookings = () => {
                         setSelectedBooking(booking);
                         setIsModalOpen(true);
                       }}
-                      className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded mr-2"
+                      className="bg-green-500 hover:bg-green-600 max-sm:text-xs text-white font-bold py-1 px-4 rounded mr-2"
                     >
-                      Pay Now
+                      Pay
                     </button>
                     <button
                       onClick={() => handleCancel(booking._id)}
-                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded"
+                      className="bg-red-500 hover:bg-red-600 max-sm:text-xs text-white font-bold py-1 px-2 rounded"
                     >
                       Cancel
                     </button>
@@ -183,13 +185,14 @@ const MyBookings = () => {
           ))}
         </tbody>
       </table>
-
+      </div>
+  </div>
       {/* Pagination */}
       <div className="flex justify-center mt-4">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg"
+          className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-l-lg"
         >
           Prev
         </button>
@@ -197,7 +200,7 @@ const MyBookings = () => {
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            className={`px-4 py-2 ${currentPage === index + 1 ? "text-black" : "bg-gray-300"} `}
+            className={`px-2 py-2 md:px-4 md:py-2 ${currentPage === index + 1 ? "text-black" : "bg-gray-300"} `}
           >
             {index + 1}
           </button>
@@ -205,7 +208,7 @@ const MyBookings = () => {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg"
+          className="px-2 py-2 md:px-4 md:py-2 bg-gray-300 hover:bg-green-600 hover:text-white text-black rounded-r-lg"
         >
           Next
         </button>

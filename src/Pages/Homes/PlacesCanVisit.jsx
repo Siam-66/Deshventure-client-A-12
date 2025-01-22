@@ -20,7 +20,7 @@ const PlacesCanVisit = () => {
   Discover stunning destinations, from serene beaches to vibrant cities, and create unforgettable memories!
 </p>
 
-      <div className="flex gap-1 mt-10">
+      <div className="flex mt-10">
         
         {photos.map((photo) => (
           <div

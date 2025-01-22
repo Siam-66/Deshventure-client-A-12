@@ -44,7 +44,7 @@ const AddPackage = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/addtour", {
+      const response = await fetch("https://assignment-12-deshventure-server.vercel.app/addtour", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
