@@ -2,8 +2,8 @@
 
 ## 🌐 Live Link
 ```javascript
-## 🌐 Live Website Link
-[**Live Link/**](https://deshventure.netlify.app/)
+[**Live Link**](https://deshventure.netlify.app/)
+
 
 ```
 
@@ -23,7 +23,7 @@ Admin Password: [Admin66444888]
 - JWT token-based security
 - Google sign-in integration
 - Protected route management
-- Role-specific dashboards
+- Role-specific dashboards 
 
 ### 2. Tour Package System
 - Dynamic package displays with MongoDB random selection
