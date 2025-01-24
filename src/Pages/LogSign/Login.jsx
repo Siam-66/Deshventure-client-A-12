@@ -6,6 +6,7 @@ import GoogleLoginButton from "./GoogleLoginButton";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
@@ -24,6 +25,11 @@ const Login = () => {
 
     userLogin(email, password)
       .then((result) => {
+        // axios.post('https://assignment-12-deshventure-server.vercel.app/jwt',user,{withCredentials:true})
+        // .then(res=>{
+        //   console.log(res.data);
+        // })
+
         const user = result.user;
         setUser(user);
         navigate(location?.state?.from || "/");

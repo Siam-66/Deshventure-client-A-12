@@ -100,7 +100,7 @@ const linkDrop = (
   );
 
   return (
-    <div className="navbar bg-base-100/85 z-50 sticky top-0 ">
+    <div className="navbar bg-base-100/85 z-50 sticky top-0  ">
       <div className="navbar-start">
         <div className="dropdown">
           <button
@@ -168,7 +168,7 @@ const linkDrop = (
   {/* Dropdown menu */}
   <ul
     tabIndex={0}
-    className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-52 p-2 pr-3 shadow dropdown-start">
+    className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-56 p-2 pr-3 shadow dropdown-start">
     <li className="bg-gradient-to-r from-green-600 to-lime-500 text-white rounded-lg mb-1 py-4">
       <p>{user?.displayName}</p>
       <p className="text-xs">{user?.email}</p>

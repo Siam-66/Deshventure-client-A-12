@@ -57,7 +57,7 @@ const TouristStorySection = () => {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Tourist Stories</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="card  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6  ">
           {stories.map((story) => (
             <div 
               key={story._id} 
@@ -72,7 +72,7 @@ const TouristStorySection = () => {
                 />
               </div>
               
-              <div className="p-4">
+              <div className="card-body">
                 <h3 className="text-xl font-semibold h-20 overflow-hidden">{story.title}</h3>
                 <p className="text-gray-600 h-36 overflow-hidden">
                   {story.storyText.substring(0, 100)}...

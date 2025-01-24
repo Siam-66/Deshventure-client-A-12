@@ -4,15 +4,62 @@ import Swal from "sweetalert2";
 
 const AddPackage = () => {
   const [name, setName] = useState("");
-  const [gallery, setGallery] = useState([""]);
+  const [gallery, setGallery] = useState([]);
   const [aboutTour, setAboutTour] = useState("");
   const [tourPlan, setTourPlan] = useState([{ day: "", details: "" }]);
   const [price, setPrice] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
-  const handleGalleryChange = (index, value) => {
-    const updatedGallery = [...gallery];
-    updatedGallery[index] = value;
-    setGallery(updatedGallery);
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
+  const handleImageUpload = async (event) => {
+    const files = Array.from(event.target.files);
+    
+    if (gallery.length + files.length > 5) {
+      Swal.fire({
+        icon: "error",
+        title: "Too Many Images",
+        text: "You can upload a maximum of 5 images."
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const uploadPromises = files.map(async (file) => {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        const response = await fetch(image_hosting_api, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Image upload failed');
+        }
+
+        const result = await response.json();
+        return result.data.display_url;
+      });
+
+      const uploadedImageUrls = await Promise.all(uploadPromises);
+      setGallery([...gallery, ...uploadedImageUrls]);
+    } catch (error) {
+      console.error("Image upload error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Upload Error",
+        text: "Failed to upload images. Please try again."
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleRemoveImage = (indexToRemove) => {
+    setGallery(gallery.filter((_, index) => index !== indexToRemove));
   };
 
   const addTourDay = () => {
@@ -27,7 +74,7 @@ const AddPackage = () => {
 
   const resetForm = () => {
     setName("");
-    setGallery([""]);
+    setGallery([]);
     setAboutTour("");
     setTourPlan([{ day: "", details: "" }]);
     setPrice("");
@@ -79,8 +126,7 @@ const AddPackage = () => {
   return (
     <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
       <Helmet>
-          <title> Add Package / Deshventure
-          </title>
+        <title>Add Package / Deshventure</title>
       </Helmet>
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Add Packages</h2>
 
@@ -97,29 +143,39 @@ const AddPackage = () => {
         />
       </div>
 
-      {/* Updated Gallery Section */}
+      {/* Gallery Section with Image Upload */}
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">Gallery</h3>
-        {gallery.map((url, index) => (
-          <div key={index} className="mb-4">
-            <label className="block text-gray-600 text-sm mb-1">Image URL {index + 1}</label>
-            <input
-              type="url"
-              value={url}
-              onChange={(e) => handleGalleryChange(index, e.target.value)}
-              placeholder={`Enter image URL ${index + 1}`}
-              className="w-full px-3 py-2 border rounded-md text-gray-800"
-              required
-            />
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={() => setGallery([...gallery, ""])}
-          className="text-blue-600 text-sm hover:underline"
-        >
-          + Add another image
-        </button>
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">Gallery Images (Max 5)</h3>
+        
+        {/* Image Upload Input */}
+        <input 
+          type="file" 
+          multiple 
+          accept="image/*" 
+          onChange={handleImageUpload}
+          disabled={isUploading || gallery.length >= 5}
+          className="mb-4 w-full"
+        />
+
+        {/* Uploaded Images Preview */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {gallery.map((imageUrl, index) => (
+            <div key={index} className="relative">
+              <img 
+                src={imageUrl} 
+                alt={`Package image ${index + 1}`} 
+                className="w-full h-40 object-cover rounded-md"
+              />
+              <button
+                type="button"
+                onClick={() => handleRemoveImage(index)}
+                className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full text-sm"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Tour Plan Section */}
@@ -165,7 +221,7 @@ const AddPackage = () => {
 
       {/* About The Tour Section */}
       <div className="mb-6">
-        <label className="block text-gray-600  font-semibold text-lg mb-1">About The Tour</label>
+        <label className="block text-gray-600 font-semibold text-lg mb-1">About The Tour</label>
         <textarea
           value={aboutTour}
           onChange={(e) => setAboutTour(e.target.value)}
@@ -179,9 +235,10 @@ const AddPackage = () => {
       <div className="text-center">
         <button
           type="submit"
-          className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white w-full py-2 text-xl rounded-md shadow transition"
+          disabled={isUploading}
+          className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white w-full py-2 text-xl rounded-md shadow transition disabled:opacity-50"
         >
-          Submit
+          {isUploading ? "Uploading..." : "Submit"}
         </button>
       </div>
     </form>

@@ -5,6 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { AuthContext } from "../../Provider/AuthProvider";
 import GoogleLoginButton from "./GoogleLoginButton";
 import { Helmet } from "react-helmet-async";
+// import axios from "axios";
 
 const Signup = () => {
     const { createNewUser , updateUserProfile } = useContext(AuthContext);
@@ -53,6 +54,11 @@ const Signup = () => {
 
       createNewUser(email, password)
       .then((result) => {
+        // axios.post('https://assignment-12-deshventure-server.vercel.app/jwt',user,{withCredentials:true})
+        // .then(res=>{
+        //   console.log(res.data);
+        // })
+
         const user = result.user;
         (user);
         return updateUserProfile({ displayName: name, photoURL: photo });

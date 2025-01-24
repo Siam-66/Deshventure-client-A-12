@@ -110,8 +110,8 @@ const ManageStories = () => {
 
               {/* Story Content */}
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{story.title}</h3>
-                <p className="text-gray-600 mb-4">
+                <h3 className="text-xl font-semibold h-20 mb-2">{story.title}</h3>
+                <p className="text-gray-600 h-50 mb-4">
                   {story.storyText.substring(0, 150)}...
                 </p>
                 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const EditStory = () => {
   const { id } = useParams();
@@ -14,7 +14,10 @@ const EditStory = () => {
     storyText: "",
     images: [],
   });
-  const [newImageUrl, setNewImageUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   useEffect(() => {
     fetchStoryDetails();
@@ -29,6 +32,74 @@ const EditStory = () => {
       }
     } catch (error) {
       console.error("Error fetching story details:", error);
+    }
+  };
+
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    
+    if (!file) return;
+
+    if (story.images.length >= 5) {
+      Swal.fire({
+        icon: "error",
+        title: "Too Many Images",
+        text: "You can upload a maximum of 5 images."
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+
+      const response = await fetch(image_hosting_api, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error('Image upload failed');
+      }
+
+      const result = await response.json();
+      const newImageUrl = result.data.display_url;
+
+      const uploadResponse = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${id}/add-image`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          imageUrl: newImageUrl,
+          email: user?.email 
+        }),
+      });
+
+      if (uploadResponse.ok) {
+        setStory({
+          ...story,
+          images: [...story.images, newImageUrl]
+        });
+        Swal.fire({
+          icon: "success",
+          title: "Added!",
+          text: "Image added successfully.",
+        });
+      } else {
+        const errorData = await uploadResponse.json();
+        throw new Error(errorData.error || 'Failed to add image');
+      }
+    } catch (error) {
+      console.error("Image upload error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Upload Error",
+        text: error.message || "Failed to upload image. Please try again."
+      });
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -106,52 +177,8 @@ const EditStory = () => {
     }
   };
 
-  const handleAddImage = async () => {
-    if (!newImageUrl) return;
-
-    try {
-      const response = await fetch(`https://assignment-12-deshventure-server.vercel.app/stories/${id}/add-image`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ 
-          imageUrl: newImageUrl,
-          email: user?.email 
-        }),
-      });
-
-      if (response.ok) {
-        setStory({
-          ...story,
-          images: [...story.images, newImageUrl]
-        });
-        setNewImageUrl("");
-        Swal.fire({
-          icon: "success",
-          title: "Added!",
-          text: "Image added successfully.",
-        });
-      } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to add image');
-      }
-    } catch (error) {
-      console.error("Error adding image:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Error!",
-        text: error.message || "Failed to add the image.",
-      });
-    }
-  };
-
   return (
     <div className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md my-8">
-            <Helmet>
-                <title> Edit Story / Deshventure
-                </title>
-            </Helmet>
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Edit Story</h2>
 
       <form onSubmit={handleSubmit}>
@@ -185,7 +212,7 @@ const EditStory = () => {
             {story.images.map((imageUrl, index) => (
               <div key={index} className="relative">
                 <img
-                  src={imageUrl.trim()} 
+                  src={imageUrl} 
                   alt={`Story image ${index + 1}`}
                   className="w-full h-40 object-cover rounded"
                 />
@@ -203,35 +230,32 @@ const EditStory = () => {
 
         {/* Add New Image Section */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">Add New Image</h3>
-          <div className="flex gap-2">
-            <input
-              type="url"
-              value={newImageUrl}
-              onChange={(e) => setNewImageUrl(e.target.value.trim())} 
-              placeholder="Enter image URL"
-              className="flex-1 px-3 py-2 border rounded-md text-gray-800"
-            />
-            <button
-              type="button"
-              onClick={handleAddImage}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-              Add
-            </button>
-          </div>
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">Add New Image (Max 5)</h3>
+          <input 
+            type="file" 
+            accept="image/*" 
+            onChange={handleImageUpload}
+            disabled={isUploading || story.images.length >= 5}
+            className="w-full"
+          />
         </div>
 
         {/* Submit Button */}
         <div className="text-center">
           <button
             type="submit"
-            className="bg-gradient-to-r from-green-600 via-lime-500 to-emerald-300 text-white w-full py-2 text-xl rounded-md shadow transition"
+            disabled={isUploading}
+            className="bg-gradient-to-r from-green-600  to-lime-500 text-white w-full py-2 text-xl rounded-md shadow transition disabled:opacity-50"
           >
-            Update Story
+            {isUploading ? "Uploading..." : "Update Story"}
           </button>
         </div>
       </form>
+      <div className="mt-5 w-1/5">
+      <Link to="/dashboards/manageStories" className=" flex justify-center items-center bg-gradient-to-r from-green-600 to-lime-500 text-white w-full py-2 text-xl rounded-md">
+      <RiArrowGoBackLine className="inline mr-2"/>Go Back
+      </Link>
+      </div>
     </div>
   );
 };

@@ -100,7 +100,7 @@ const CommunityPage = () => {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-2xl font-semibold mb-3 text-gray-800">{story.title}</h3>
+                  <h3 className="text-2xl font-semibold mb-3 h-14 text-gray-800">{story.title}</h3>
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {story.storyText}
                   </p>
