@@ -168,7 +168,7 @@ const EditStoryGuide = () => {
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Edit Story</h2>
 
       <form onSubmit={handleSubmit}>
-        {/* Title Section */}
+
         <div className="mb-6">
           <label className="block text-gray-600 font-semibold text-lg mb-1">Story Title</label>
           <input
@@ -180,7 +180,6 @@ const EditStoryGuide = () => {
           />
         </div>
 
-        {/* Story Text Section */}
         <div className="mb-6">
           <label className="block text-gray-600 font-semibold text-lg mb-1">Story Content</label>
           <textarea

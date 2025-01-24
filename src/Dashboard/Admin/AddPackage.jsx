@@ -147,7 +147,6 @@ const AddPackage = () => {
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-700 mb-2">Gallery Images (Max 5)</h3>
         
-        {/* Image Upload Input */}
         <input 
           type="file" 
           multiple 

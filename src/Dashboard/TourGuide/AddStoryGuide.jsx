@@ -111,7 +111,6 @@ const AddStoryGuide = () => {
       </Helmet>
       <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Share Your Story</h2>
 
-      {/* Title Section */}
       <div className="mb-6">
         <label className="block text-gray-600 font-semibold text-lg mb-1">Story Title</label>
         <input
@@ -124,7 +123,6 @@ const AddStoryGuide = () => {
         />
       </div>
 
-      {/* Story Text Section */}
       <div className="mb-6">
         <label className="block text-gray-600 font-semibold text-lg mb-1">Your Story</label>
         <textarea
@@ -140,7 +138,6 @@ const AddStoryGuide = () => {
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-700 mb-2">Story Images (Max 5)</h3>
         
-        {/* Image Upload Input */}
         <input 
           type="file" 
           multiple 
