@@ -1,12 +1,14 @@
 # DeshVenture - Your Ultimate Travel Companion
 
+DeshVenture is a tourist guide site is an online platform that serves as a comprehensive resource for travelers. It provides detailed information on popular destinations in Bangladesh, helping users plan their trips effectively. The site features in-depth descriptions of various tourist attractions, ensuring visitors know what to expect. Additionally, it offers insights into local culture, cuisine, and activities, enriching the travel experience. Whether you're looking for famous landmarks or hidden gems, The Tourist Guide site has everything you need to make the most of your visit to Bangladesh.
+
 ## 🌐 Live Link
 [**Live Link**](https://deshventure.netlify.app/)
 
 ## 🔑 Admin Access
 ```
-Admin Email: admin66@demo.com
-Admin Password: Admin66444888
+Admin Email: 
+Admin Password:
 ```
 
 ## ⭐ Key Features
