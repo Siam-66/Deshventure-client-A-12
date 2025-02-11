@@ -52,7 +52,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
+    <div className="min-h-screen bg-gray-100 py-10 container mx-auto">
       <Helmet>
           <title> About Us / Deshventure
           </title>

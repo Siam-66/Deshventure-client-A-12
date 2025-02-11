@@ -57,7 +57,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden container mx-auto">
       <section className="bg-gradient-to-r from-green-50 via-white to-green-50">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <motion.h2

@@ -11,7 +11,7 @@ const PlacesCanVisit = () => {
   ];
 
   return (
-    <div className="mt-16 px-4 md:px-12 lg:px-32">
+    <div className="mt-16 px-4 md:px-12 lg:px-32 container mx-auto">
       <h1 className="text-3xl font-bold text-center">
         Places Can be Visited
       </h1>

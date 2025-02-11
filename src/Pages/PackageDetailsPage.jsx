@@ -114,7 +114,7 @@ const PackageDetailsPage = () => {
   }, [selectedImageIndex]);
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
+    <div className="p-4 max-w-7xl container mx-auto">
         <Helmet>
             <title>Package Details Page / Deshventure
             </title>

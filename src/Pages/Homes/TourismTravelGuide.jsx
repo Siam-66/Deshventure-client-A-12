@@ -51,7 +51,7 @@ const TourismTravelGuide = () => {
   }, []);
 
   return (
-    <section className="py-10 bg-gray-100">
+    <section className="py-10 bg-gray-100 container mx-auto">
       <div className=" text-center">
         <h2 className="text-3xl font-bold mb-6 text-gray-800">
           Tourism and Travel Guide
@@ -90,7 +90,7 @@ const TourismTravelGuide = () => {
               {randomPackages.map((pkg) => (
                 <div
                   key={pkg._id}
-                  className="card bg-white shadow-lg rounded-md p-4"
+                  className="card  bg-white shadow-lg rounded-md p-4"
                 >
                   <img
                     src={pkg.gallery[0]}

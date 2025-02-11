@@ -54,7 +54,7 @@ const JoinAsTourGuideComponent = () => {
 
   return (
     <div id="becomeGuide"
-      className="h-[40rem] flex items-center justify-center bg-cover bg-center"
+      className="container mx-auto h-[40rem] flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage: `url("https://i.ibb.co.com/XYYD2bM/application.jpg")`,
       }}
