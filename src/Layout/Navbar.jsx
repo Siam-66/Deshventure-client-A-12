@@ -1,10 +1,29 @@
-import { useContext, } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Image1 from "../assets/Deshventure.png";
-import { FaUserCircle} from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+import { Moon, Sun } from "lucide-react";
 import { AuthContext } from "../Provider/AuthProvider";
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  // Handle theme toggle
+  const handleThemeToggle = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+    document.documentElement.classList.toggle("dark");
+  };
+  // Initialize theme on component mount and handle theme changes
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, []);
 
 const linkDrop = (
   <>
@@ -100,7 +119,8 @@ const linkDrop = (
   );
 
   return (
-    <div className="navbar bg-base-100/85 z-50 sticky top-0 md:px-24 px-1">
+    <div className="navbar bg-base-100/85 dark:bg-gray-800 dark:text-white z-50 sticky top-0 md:px-24 px-1">
+      {/* Navbar content... */}
       <div className="navbar-start">
         <div className="dropdown">
           <button
@@ -125,23 +145,33 @@ const linkDrop = (
           </button>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 dark:bg-gray-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 dark:bg-gray-700 rounded-box w-52"
           >
             {links}
           </ul>
         </div>
         <NavLink to="/" className="flex items-center cursor-pointer">
           <img className="md:w-20 w-12" src={Image1} alt="Sunflower Logo" />
-          <span className="font-bold md:text-3xl text-lg">Deshventure</span>
+          <span className="font-bold md:text-3xl text-lg dark:text-white">Deshventure</span>
         </NavLink>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal gap-2 px-1 text-xl">{links}</ul>
+        <ul className="menu menu-horizontal gap-2 px-1 text-xl dark:text-white">{links}</ul>
       </div>
 
-{/* User Profile & Log In */}
       <div className="navbar-end flex items-center gap-4">
+        <button
+          onClick={handleThemeToggle}
+          className="btn btn-circle btn-ghost dark:text-white"
+          aria-label="Toggle theme"
+        >
+          {theme === "light" ? (
+            <Moon className="h-6 w-6" />
+          ) : (
+            <Sun className="h-6 w-6" />
+          )}
+        </button>
         
         <div className="flex items-center   rounded-3xl">
 

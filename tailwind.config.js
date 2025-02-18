@@ -1,6 +1,6 @@
-import daisyui from 'daisyui';
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',  // Add this line here, at the top level
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -18,8 +18,8 @@ export default {
       },
     },
   },
-  plugins: [daisyui],
+  plugins: [require("daisyui")],
   daisyui: {
-  themes: ["light"],
+    themes: ["light", "dark"],
   },
 }
