@@ -3,7 +3,7 @@ import Image1 from "../assets/Deshventure.png";
 
 const Footer = () => {
   return (
-    <div className="bg-base-200 dark:bg-gray-950">
+    <div className="bg-base-200 dark:bg-gray-900">
       {/* Main Footer */}
       <footer className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 ">
         {/* Top Section - Logo and Description */}

@@ -77,7 +77,7 @@ const TourGuideProfile = () => {
             <title>Tour Guide Profile / Deshventure
             </title>
         </Helmet>
-      <div className="bg-white rounded-lg shadow-xl overflow-hidden">
+      <div className="bg-white rounded-lg shadow-xl overflow-hidden dark:bg-gray-900">
         <div className="h-48 bg-gradient-to-r from-green-600 to-lime-500"></div>
 
         <div className="relative px-6 pb-6">
@@ -92,8 +92,8 @@ const TourGuideProfile = () => {
           </div>
 
           <div className="pt-20">
-            <h1 className="text-3xl font-bold text-gray-800">{guideData.name}</h1>
-            <p className="text-gray-600 flex items-center gap-2 mt-2">
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 ">{guideData.name}</h1>
+            <p className="text-gray-600 flex items-center gap-2 mt-2 dark:text-gray-400">
               <MapPin className="w-4 h-4" />
               {guideData.location || 'Location not specified'}
             </p>
@@ -128,15 +128,15 @@ const TourGuideProfile = () => {
           </div>
 
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">About</h2>
-            <p className="text-gray-600 leading-relaxed">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-gray-200">About</h2>
+            <p className="text-gray-600 leading-relaxed dark:text-gray-400">
               {guideData.about || 
                 'An experienced tour guide passionate about creating memorable experiences for tourists. Specialized in cultural tours and historical sites.'}
             </p>
           </div>
 
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Specialties</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-gray-200">Specialties</h2>
             <div className="flex flex-wrap gap-2">
               {(guideData.specialties || ['Cultural Tours', 'Historical Sites', 'Adventure Tours'])
                 .map((specialty, index) => (
@@ -152,14 +152,14 @@ const TourGuideProfile = () => {
 
       {/* Stories Section */}
       <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Guide Stories</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 dark:text-gray-200">Guide Stories</h2>
 
         {stories.length === 0 ? (
           <p className="text-center text-gray-600">No stories found.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {stories.map((story) => (
-              <div key={story._id} onClick={() => handleCardClick(story)} className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105">
+              <div key={story._id} onClick={() => handleCardClick(story)} className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105 dark:bg-gray-800">
                 
                 <div className="relative h-48">
                   <img
@@ -176,7 +176,7 @@ const TourGuideProfile = () => {
 
                 <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">{story.title}</h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 mb-4 dark:text-gray-400">
                     {story.storyText.substring(0, 150)}...
                   </p>
                   

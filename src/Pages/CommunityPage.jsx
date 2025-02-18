@@ -61,21 +61,21 @@ const CommunityPage = () => {
   }
 
   return (
-    <section className="py-12 bg-gray-50 min-h-screen">
+    <section className="py-12 bg-gray-50 min-h-screen dark:bg-gray-950">
       <Helmet>
           <title>Community Page / Deshventure
           </title>
       </Helmet>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Tourist Community Stories</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4 dark:text-gray-200">Tourist Community Stories</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto dark:text-gray-400">
             Discover amazing travel experiences shared by tourists from around the world. Each story is a unique adventure waiting to inspire your next journey.
           </p>
         </div>
 
         {stories.length === 0 ? (
-          <div className="text-center text-gray-600">
+          <div className="text-center text-gray-600 dark:text-gray-400">
             <p>No stories have been shared yet. Be the first to share your adventure!</p>
           </div>
         ) : (
@@ -84,7 +84,7 @@ const CommunityPage = () => {
               <div 
                 key={story._id} 
                 onClick={() => handleCardClick(story)}
-                className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105"
+                className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105 dark:bg-gray-900"
               >
                 <div className="relative h-64">
                   <img
@@ -100,8 +100,8 @@ const CommunityPage = () => {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-2xl font-semibold mb-3 h-14 text-gray-800">{story.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <h3 className="text-2xl font-semibold mb-3 h-14 text-gray-800 dark:text-gray-200">{story.title}</h3>
+                  <p className="text-gray-600 mb-4 line-clamp-3 dark:text-gray-400">
                     {story.storyText}
                   </p>
                   
@@ -113,8 +113,8 @@ const CommunityPage = () => {
                         className="w-10 h-10 rounded-full border-2 border-gray-200"
                       />
                       <div>
-                        <span className="block text-sm font-medium text-gray-800">{story.name}</span>
-                        <span className="block text-xs text-gray-500">
+                        <span className="block text-sm font-medium text-gray-800 dark:text-gray-200">{story.name}</span>
+                        <span className="block text-xs text-gray-500 dark:text-gray-400">
                           {new Date(story.timestamp).toLocaleDateString()}
                         </span>
                       </div>

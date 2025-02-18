@@ -119,7 +119,7 @@ const linkDrop = (
   );
 
   return (
-    <div className="navbar bg-base-100/85 dark:bg-gray-800 dark:text-white z-50 sticky top-0 md:px-24 px-1">
+    <div className="navbar bg-base-100/85 dark:bg-gray-900/85 dark:text-white z-50 sticky top-0 md:px-24 px-1">
       {/* Navbar content... */}
       <div className="navbar-start">
         <div className="dropdown">
@@ -187,7 +187,7 @@ const linkDrop = (
   >
     <div className="w-10 rounded-full">
       <img
-        className="w-12 h-12 rounded-full border-2 border-yellow-700"
+        className="w-12 h-12 rounded-full border-2 border-green-700"
         alt={user?.displayName}
         src={user?.photoURL}
         

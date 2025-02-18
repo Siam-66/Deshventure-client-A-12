@@ -152,15 +152,15 @@ const PackageDetailsPage = () => {
       <div className="my-16">
         <h2 className="text-2xl font-semibold mb-6 text-center">Our Tour Guides</h2>
         <div className="relative">
-          <div className="overflow-x-auto pb-4">
-            <div className="flex space-x-6 px-4">
+          <div className="overflow-x-auto  p-6 dark:bg-gray-900">
+            <div className="flex space-x-6 px-4 ">
               {tourGuides.map((guide) => (
 
               
 
                 <div
                   key={guide._id}
-                  className="flex flex-col items-center space-y-2 cursor-pointer min-w-[150px]"
+                  className="flex flex-col  items-center space-y-2 cursor-pointer min-w-[150px]"
                   
                 >
                 <Link to={`/tourGuideProfile/${guide._id}`}>
@@ -173,7 +173,7 @@ const PackageDetailsPage = () => {
                   </div>
                   <span className="font-medium text-center">{guide.name}</span>
                   <hr />
-                  <span className="text-sm text-gray-600">Tour Guide</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Tour Guide</span>
                   </Link>
                 </div>
                 
@@ -212,7 +212,7 @@ const PackageDetailsPage = () => {
               type="text"
               value={packageData.name}
               readOnly
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
             />
           </div>
           <div>
@@ -221,7 +221,7 @@ const PackageDetailsPage = () => {
               type="text"
               value={user?.displayName || ""}
               readOnly
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
             />
           </div>
           <div>
@@ -230,7 +230,7 @@ const PackageDetailsPage = () => {
               type="text"
               value={user?.email || ""}
               readOnly
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
             />
           </div>
           <div>
@@ -239,7 +239,7 @@ const PackageDetailsPage = () => {
               type="text"
               value={packageData.price}
               readOnly
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
             />
           </div>
           <div>
@@ -247,7 +247,7 @@ const PackageDetailsPage = () => {
             <DatePicker
               selected={tourDate}
               onChange={(date) => setTourDate(date)}
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
             />
           </div>
 
@@ -257,7 +257,7 @@ const PackageDetailsPage = () => {
       <select
         value={tourGuide}
         onChange={(e) => setTourGuide(e.target.value)}
-        className="w-full p-2 appearance-none bg-transparent"
+        className="w-full p-2 appearance-none bg-transparent dark:bg-gray-900"
       >
         <option value="" disabled>
           Select a guide

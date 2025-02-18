@@ -57,7 +57,7 @@ const Login = () => {
           </title>
       </Helmet>
       <ToastContainer />
-      <div className="card bg-base-200 w-full max-w-sm shrink-0">
+      <div className="card bg-base-200 w-full max-w-sm shrink-0 dark:bg-gray-900">
         <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">
