@@ -198,7 +198,7 @@ const linkDrop = (
   {/* Dropdown menu */}
   <ul
     tabIndex={0}
-    className="menu menu-sm dropdown-content bg-base-100  rounded-box z-[1] mt-3 w-56 p-2 pr-3 shadow dropdown-start">
+    className="menu menu-sm dropdown-content bg-base-100 dark:bg-gray-900 rounded-box z-[1] mt-3 w-56 p-2 pr-3 shadow dropdown-start">
     <li className="bg-gradient-to-r from-green-600 to-lime-500 text-white rounded-lg mb-1 py-4">
       <p>{user?.displayName}</p>
       <p className="text-xs">{user?.email}</p>
@@ -207,7 +207,7 @@ const linkDrop = (
     <li className="w-28 mt-3 ml-10">
       <button
         onClick={logOut}
-        className="px-4 py-2 text-center rounded-3xl md:text-lg text-sm font-semibold border-lime-500 hover:bg-gradient-to-r from-green-600 to-lime-500 text-black hover:text-white border"
+        className="px-4 py-2 text-center dark:text-gray-200 rounded-3xl md:text-lg text-sm font-semibold border-lime-500 hover:bg-gradient-to-r from-green-600 to-lime-500 text-black hover:text-white border"
       >
         Log Out
       </button>

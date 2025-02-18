@@ -105,40 +105,40 @@ const AddStory = () => {
   };
 
   return (
-    <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
+    <form className="max-w-3xl mx-auto bg-gray-200 dark:bg-gray-900 shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
       <Helmet>
         <title>Add Story / Deshventure</title>
       </Helmet>
-      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Share Your Story</h2>
+      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10 dark:text-gray-200">Share Your Story</h2>
 
       {/* Title Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-semibold text-lg mb-1">Story Title</label>
+        <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">Story Title</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Enter your story title"
-          className="w-full px-3 py-2 border rounded-md text-gray-800"
+          className="w-full px-3 py-2 border rounded-md text-gray-800 "
           required
         />
       </div>
 
       {/* Story Text Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-semibold text-lg mb-1">Your Story</label>
+        <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">Your Story</label>
         <textarea
           value={storyText}
           onChange={(e) => setStoryText(e.target.value)}
           placeholder="Share your travel experience..."
-          className="w-full px-3 py-2 border rounded-md text-gray-800 h-40"
+          className="w-full px-3 py-2 border rounded-md text-gray-800 h-40 "
           required
         />
       </div>
 
       {/* Images Section */}
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">Story Images (Max 5)</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mb-2 dark:text-gray-200">Story Images (Max 5)</h3>
         
         {/* Image Upload Input */}
         <input 
@@ -147,7 +147,7 @@ const AddStory = () => {
           accept="image/*" 
           onChange={handleImageUpload}
           disabled={isUploading || images.length >= 5}
-          className="mb-4 w-full"
+          className="mb-4 w-full border rounded-md px-3 py-2 dark:bg-gray-950"
         />
 
         {/* Uploaded Images Preview */}

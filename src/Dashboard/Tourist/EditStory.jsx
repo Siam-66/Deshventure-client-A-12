@@ -178,36 +178,36 @@ const EditStory = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md my-8">
-      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Edit Story</h2>
+    <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 shadow-lg p-6 rounded-md my-8">
+      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10 dark:text-gray-200">Edit Story</h2>
 
       <form onSubmit={handleSubmit}>
         {/* Title Section */}
         <div className="mb-6">
-          <label className="block text-gray-600 font-semibold text-lg mb-1">Story Title</label>
+          <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">Story Title</label>
           <input
             type="text"
             value={story.title}
             onChange={(e) => setStory({ ...story, title: e.target.value })}
-            className="w-full px-3 py-2 border rounded-md text-gray-800"
+            className="w-full px-3 py-2 border rounded-md text-gray-800 dark:text-gray-400"
             required
           />
         </div>
 
         {/* Story Text Section */}
         <div className="mb-6">
-          <label className="block text-gray-600 font-semibold text-lg mb-1">Story Content</label>
+          <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">Story Content</label>
           <textarea
             value={story.storyText}
             onChange={(e) => setStory({ ...story, storyText: e.target.value })}
-            className="w-full px-3 py-2 border rounded-md text-gray-800 h-40"
+            className="w-full px-3 py-2 border rounded-md text-gray-800 h-40 dark:text-gray-400"
             required
           />
         </div>
 
         {/* Current Images Section */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">Current Images</h3>
+          <h3 className="text-lg font-semibold text-gray-700 mb-2 dark:text-gray-200">Current Images</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {story.images.map((imageUrl, index) => (
               <div key={index} className="relative">
@@ -230,7 +230,7 @@ const EditStory = () => {
 
         {/* Add New Image Section */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">Add New Image (Max 5)</h3>
+          <h3 className="text-lg font-semibold text-gray-700 mb-2 dark:text-gray-200">Add New Image (Max 5)</h3>
           <input 
             type="file" 
             accept="image/*" 

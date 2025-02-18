@@ -11,10 +11,29 @@ import { PiUserGearFill } from "react-icons/pi";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { Helmet } from "react-helmet";
 import Image1 from "../assets/Deshventure.png";
+import { Moon, Sun } from "lucide-react";
+
 
 const Dashboards = () => {
   const { user } = useContext(AuthContext);
   const [userRole, setUserRole] = useState(null);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+    // Handle theme toggle
+    const handleThemeToggle = () => {
+      const newTheme = theme === "light" ? "dark" : "light";
+      setTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+      document.documentElement.setAttribute("data-theme", newTheme);
+      document.documentElement.classList.toggle("dark");
+    };
+    // Initialize theme on component mount and handle theme changes
+    useEffect(() => {
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    }, []);
 
   useEffect(() => {
     const fetchUserRole = async () => {
@@ -39,6 +58,20 @@ const Dashboards = () => {
                 </title>
             </Helmet>
       <div className="w-full md:w-64 md:min-h-screen bg-green-600">
+        <div className="flex justify-end items-center p-1 ">
+          <button
+          onClick={handleThemeToggle}
+          className="btn btn-circle btn-ghost dark:text-white "
+          aria-label="Toggle theme"
+        >
+          {theme === "light" ? (
+            <Moon className="size-8" />
+          ) : (
+            <Sun className="size-8" />
+          )}
+        </button>
+        </div>
+
         <ul className="menu p-4">
           <div>
             <img className="w-60" src={Image1} alt="Sunflower Logo" />
@@ -137,7 +170,7 @@ const Dashboards = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1 p-4 w-full">
+      <div className="flex-1 p-4 w-full dark:bg-gray-950">
         <Outlet></Outlet>
       </div>
     </div>

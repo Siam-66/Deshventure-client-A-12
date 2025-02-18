@@ -65,43 +65,43 @@ const JoinAsTourGuide = () => {
                 </title>
             </Helmet>
       <div className="bg-white bg-opacity-40 max-sm:mx-5 p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-center mb-6">
+        <h1 className="text-3xl font-bold text-center mb-6 dark:text-gray-100">
           Join as a Tour Guide
         </h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="font-semibold">Application Title:</label>
+            <label className="font-semibold dark:text-gray-100">Application Title:</label>
             <input
               type="text"
               name="title"
               value={applicationData.title}
               onChange={handleInputChange}
-              className="border p-2 w-full rounded-md"
-              placeholder="Enter application title"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
+              placeholder="Enter application title "
               required
             />
           </div>
           <div>
-            <label className="font-semibold">
+            <label className="font-semibold dark:text-gray-100">
               Why do you want to be a Tour Guide?
             </label>
             <textarea
               name="reason"
               value={applicationData.reason}
               onChange={handleInputChange}
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
               placeholder="Explain your reasons"
               required
             ></textarea>
           </div>
           <div>
-            <label className="font-semibold">CV Link:</label>
+            <label className="font-semibold dark:text-gray-200">CV Link:</label>
             <input
               type="url"
               name="cvLink"
               value={applicationData.cvLink}
               onChange={handleInputChange}
-              className="border  p-2 w-full rounded-md"
+              className="border  p-2 w-full rounded-md dark:bg-gray-900"
               placeholder="Enter link to your CV"
               required
             />
