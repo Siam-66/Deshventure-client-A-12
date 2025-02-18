@@ -53,16 +53,18 @@ const TouristStorySection = () => {
   };
 
   return (
-    <div className="w-full overflow-hidden bg-gray-50 container mx-auto mt-10">
+    <div className="w-full overflow-hidden bg-gray-50 container mx-auto mt-10 dark:bg-gray-950">
       <div className=" mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Tourist Stories</h2>
-
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-4 dark:text-gray-200">Tourist Stories </h2>
+        <p className="text-center text-gray-700 dark:text-gray-400 mb-5">
+        The traveler sees what he sees, the tourist sees what he has come to see.
+        </p>
         <div className="card  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6  ">
           {stories.map((story) => (
             <div 
               key={story._id} 
               onClick={() => handleCardClick(story)}
-              className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105"
+              className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition duration-300 hover:scale-105 dark:bg-gray-900"
             >
               <div className="relative h-48">
                 <img
@@ -73,8 +75,8 @@ const TouristStorySection = () => {
               </div>
               
               <div className="card-body">
-                <h3 className="text-xl font-semibold h-20 overflow-hidden">{story.title}</h3>
-                <p className="text-gray-600 h-36 overflow-hidden">
+                <h3 className="text-xl font-semibold h-20 overflow-hidden dark:text-gray-200">{story.title}</h3>
+                <p className="text-gray-600 h-36 overflow-hidden dark:text-gray-400">
                   {story.storyText.substring(0, 100)}...
                 </p>
                 

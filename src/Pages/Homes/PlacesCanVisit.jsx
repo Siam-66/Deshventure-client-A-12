@@ -15,7 +15,7 @@ const PlacesCanVisit = () => {
       <h1 className="text-3xl font-bold text-center">
         Places Can be Visited
       </h1>
-      <p className="text-center text-gray-600 mt-4">
+      <p className="text-center text-gray-600 mt-4 dark:text-gray-400">
         Discover stunning destinations, from serene beaches to vibrant cities, and create unforgettable memories!
       </p>
       <div className="grid grid-cols-3 md:grid-cols-6 gap-1 mt-10">

@@ -51,31 +51,31 @@ const TourismTravelGuide = () => {
   }, []);
 
   return (
-    <section className="py-10 bg-gray-100 container mx-auto">
+    <section className="py-10 bg-gray-100 container mx-auto dark:bg-gray-950">
       <div className=" text-center">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">
+        <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">
           Tourism and Travel Guide
         </h2>
-        <p className="text-gray-600 text-lg mb-10">
+        <p className="text-gray-600 text-lg mb-10 dark:text-gray-400">
           Explore our exclusive travel packages and meet our experienced tour guides.
         </p>
 
-        <div className="tabs tabs-boxed justify-center mb-8">
+        <div className="tabs tabs-boxed justify-center mb-8 dark:bg-gray-900 md:w-[35rem] max-sm:w-[29rem] items-center flex mx-auto max-sm:text-xs bg-gray-200 ">
           <button
             className={`tab ${
               activeTab === 0
-                ? "tab-active bg-gradient-to-r from-green-600 to-lime-500 text-xl  text-white"
-                : " text-xl "
+                ? "tab-active bg-gradient-to-r from-green-600 to-lime-500 text-xl  text-white max-sm:text-base"
+                : " text-xl  max-sm:text-base"
             }`}
             onClick={() => setActiveTab(0)}
           >
-            Our Packages
+            Glimpse At Our Packages
           </button>
           <button
             className={`tab ${
               activeTab === 1
-                ? "tab-active bg-gradient-to-r from-green-600 to-lime-500 text-xl  text-white"
-                : "text-xl"
+                ? "tab-active bg-gradient-to-r from-green-600 to-lime-500 text-xl  text-white max-sm:text-base"
+                : "text-xl max-sm:text-base"
             }`}
             onClick={() => setActiveTab(1)}
           >
@@ -90,17 +90,17 @@ const TourismTravelGuide = () => {
               {randomPackages.map((pkg) => (
                 <div
                   key={pkg._id}
-                  className="card  bg-white shadow-lg rounded-md p-4"
+                  className="card  bg-white dark:bg-gray-900 shadow-lg rounded-md p-4"
                 >
                   <img
                     src={pkg.gallery[0]}
                     alt={pkg.name}
                     className="rounded-md w-full h-48 object-cover mb-4"
                   />
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
                     {pkg.name}
                   </h3>
-                  <p className="text-gray-600 h-[9rem] mb-2">{pkg.aboutTour}</p>
+                  <p className="text-gray-600 h-[9rem] mb-2 dark:text-gray-400">{pkg.aboutTour}</p>
                   <p className="text-green-600 font-semibold mb-4">
                     Price: {pkg.price}
                   </p>
@@ -120,16 +120,16 @@ const TourismTravelGuide = () => {
               {randomTourGuides.map((guide) => (
                 <div
                   key={guide._id}
-                  className="flex flex-col items-center space-y-4 p-4 bg-white shadow-lg rounded-md"
+                  className="flex flex-col items-center space-y-4 p-4 bg-white shadow-lg rounded-md dark:bg-gray-900"
                 >
-                  <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-green-500 ring-offset-2">
+                  <div onClick={() => navigate(`/tourGuideProfile/${guide._id}`)} className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-green-500 ring-offset-2 hover:scale-110 duration-300">
                     <img
                       src={guide.photo}
                       alt={guide.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover "
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                     {guide.name}
                   </h3>
                   <p className="text-gray-600 text-sm">{guide.bio}</p>

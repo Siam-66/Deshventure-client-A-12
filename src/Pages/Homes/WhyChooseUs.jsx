@@ -57,14 +57,14 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden container mx-auto">
-      <section className="bg-gradient-to-r from-green-50 via-white to-green-50">
+    <div className="w-full overflow-hidden container mx-auto ">
+      <section className="bg-white dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6 text-center px-2"
+            className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-4 sm:mb-6 text-center px-2 dark:text-gray-200"
           >
             🌟 Why Choose Us? 🌟
           </motion.h2>
@@ -73,7 +73,7 @@ const WhyChooseUs = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 text-center px-2"
+            className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 text-center px-2 dark:text-gray-400"
           >
             Discover why we're the best at crafting unforgettable travel experiences!
           </motion.p>
@@ -92,7 +92,7 @@ const WhyChooseUs = () => {
                   scale: 1.02,
                   transition: { duration: 0.2 }
                 }}
-                className="bg-white p-4 sm:p-6 rounded-xl shadow-lg mx-auto w-full"
+                className="bg-white p-4 sm:p-6 rounded-xl shadow-lg mx-auto w-full dark:bg-gray-900"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -102,10 +102,10 @@ const WhyChooseUs = () => {
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 text-center">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 text-center dark:text-gray-200">
                   {feature.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 text-center">
+                <p className="text-sm sm:text-base text-gray-600 text-center dark:text-gray-400">
                   {feature.description}
                 </p>
               </motion.div>

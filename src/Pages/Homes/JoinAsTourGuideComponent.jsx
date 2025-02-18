@@ -71,7 +71,7 @@ const JoinAsTourGuideComponent = () => {
               name="title"
               value={applicationData.title}
               onChange={handleInputChange}
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
               placeholder="Enter application title"
               required
             />
@@ -84,7 +84,7 @@ const JoinAsTourGuideComponent = () => {
               name="reason"
               value={applicationData.reason}
               onChange={handleInputChange}
-              className="border p-2 w-full rounded-md"
+              className="border p-2 w-full rounded-md dark:bg-gray-900"
               placeholder="Explain your reasons"
               required
             ></textarea>
@@ -96,7 +96,7 @@ const JoinAsTourGuideComponent = () => {
               name="cvLink"
               value={applicationData.cvLink}
               onChange={handleInputChange}
-              className="border  p-2 w-full rounded-md"
+              className="border  p-2 w-full rounded-md dark:bg-gray-900"
               placeholder="Enter link to your CV"
               required
             />

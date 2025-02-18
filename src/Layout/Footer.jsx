@@ -3,9 +3,9 @@ import Image1 from "../assets/Deshventure.png";
 
 const Footer = () => {
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 dark:bg-gray-950">
       {/* Main Footer */}
-      <footer className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <footer className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8 ">
         {/* Top Section - Logo and Description */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between border-b border-gray-200 pb-8">
           <div className="mb-6 sm:mb-0">

@@ -11,13 +11,13 @@ const OverviewSection = () => {
   ];
 
   return (
-    <section className="relative bg-gray-100 py-10 container mx-auto">
+    <section className="relative bg-gray-100 dark:bg-gray-950 py-10 container mx-auto">
       <div className=" text-center">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">
+        <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">
           Discover Bangladesh
         </h2>
 
-        <p className="text-gray-600 text-lg mb-5 lg:px-[15rem]">
+        <p className="text-gray-600 text-lg mb-5 lg:px-[15rem] dark:text-gray-500">
           Explore the beauty, adventure, and unique experiences waiting for you. 
           Our platform is your gateway to breathtaking destinations and unforgettable memories.
         </p>
