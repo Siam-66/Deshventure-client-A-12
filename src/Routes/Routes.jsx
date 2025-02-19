@@ -10,6 +10,7 @@ import ForgetPassword from "../Pages/LogSign/ForgetPassword";
 import AllTripsPage from "../Pages/AllTripsPage";
 import PackageDetailsPage from "../Pages/PackageDetailsPage";
 import AboutUs from "../Pages/AboutUs";
+import ContactUs from "../Pages/ContactUs";
 import PrivateRoute from "../Routes/PrivateRoute";
 import TourGuideProfile from "../Pages/TourGuideProfile";
 import CommunityPage from "../Pages/CommunityPage";
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path:"aboutUs",
                 element:<AboutUs></AboutUs>,
+            },
+            {
+                path:"contactUs",
+                element:<ContactUs></ContactUs>,
             },
             {
                 path:"login",

@@ -1,159 +1,85 @@
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJs, FaDatabase } from "react-icons/fa";
-import { SiFirebase, SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
-import { GoArrowUpRight } from "react-icons/go";
-import { Helmet } from "react-helmet";
+import React from "react";
 
 const AboutUs = () => {
-  const techIcons = {
-    HTML: <FaHtml5 className="text-orange-500" />,
-    "Tailwind CSS": <SiTailwindcss className="text-lime-400" />,
-    JavaScript: <FaJs className="text-yellow-500" />,
-    Firebase: <SiFirebase className="text-orange-400" />,
-    MongoDB: <SiMongodb className="text-green-500" />,
-    ExpressJS: <SiExpress className="text-gray-800" />,
-    ReactJS: <FaReact className="text-lime-500" />,
-    NodeJS: <FaNodeJs className="text-green-600" />,
-  };
+    return (
+        <div className="bg-base-100 py-16 dark:bg-gray-950">
+            <div className="container mx-auto px-6 lg:px-20">
+                {/* Header */}
+                <h2 className="text-center text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-200 mb-6">
+                    About <span className="text-green-600">DeshAdventure</span>
+                </h2>
+                <p className="text-center text-lg text-gray-600 mb-12 lg:px-36 dark:text-gray-400">
+                    Embark on unforgettable journeys with{" "}
+                    <span className="font-bold text-green-600">DeshAdventure</span>. We are a passionate team dedicated to making your adventures thrilling, safe, and truly extraordinary.
+                </p>
 
-  const projects = [
+                {/* About Section */}
+                <div className="grid gap-10 lg:grid-cols-2 items-center">
+                    <div className="lg:order-1 order-2">
+                        <h3 className="text-3xl font-bold text-gray-900 mb-4 dark:text-gray-200">Our Mission</h3>
+                        <p className="text-lg text-gray-600 leading-relaxed dark:text-gray-400">
+                            At DeshAdventure, we believe that adventure is the ultimate way to explore the world. Our mission is to connect thrill-seekers with breathtaking destinations, immersive outdoor experiences, and expert guidance.
+                        </p>
+                    </div>
+                    <div className="lg:order-2 order-1">
+                        <img 
+                            src="https://images.javatpoint.com/tourist-places/images/tourist-places-in-bangladesh20.jpg" 
+                            alt="Adventure"
+                            className="rounded-lg shadow-2xl w-full transform hover:scale-105 transition duration-500"
+                        />
+                    </div>
+                </div>
 
-    {
-      name: "Celestora",
-      description: "Explore the Past, Unfold history",
-      link: "https://celestora.netlify.app/",
-    },
+                {/* Why Choose Us */}
+                <div className="mt-20 text-center">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-8 dark:text-gray-200">Why Choose DeshAdventure?</h3>
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="p-8 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                            <div className="text-green-600 mb-4">
+                                <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-200 mb-3 md:h-12">Expert Guides</h4>
+                            <p className="text-gray-600 dark:text-gray-400">Our professional guides ensure a safe and exciting adventure every time.</p>
+                        </div>
+                        <div className="p-8 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                            <div className="text-blue-600 mb-4">
+                                <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-200 mb-3 md:h-12">Unforgettable Experiences</h4>
+                            <p className="text-gray-600 dark:text-gray-400">From trekking to kayaking, we bring you the most thrilling outdoor experiences.</p>
+                        </div>
+                        <div className="p-8 bg-white rounded-xl dark:bg-gray-900 shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                            <div className="text-red-600 mb-4">
+                                <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div> 
+                            <h4 className="text-xl font-semibold text-gray-900 dark:text-gray-200 mb-3 md:h-12">Eco-Friendly Travel</h4>
+                            <p className="text-gray-600 dark:text-gray-400">We promote responsible tourism to preserve nature and its beauty.</p>
+                        </div>
+                    </div>
+                </div>
 
-    {
-        name: "Sunflower",
-        description: "Track Your Visa",
-        link: "https://siam-66..io/assignment-3/",
-      },
-      {
-        name: "Lingo Bingo",
-        description: "Boost Your Vocabulary",
-        link: "https://lingo-bingo-siam.netlify.app/",
-      },
-  
-    {
-      name: "Gadget Heaven",
-      description: "E-commerce platform for tech enthusiasts",
-      link: "https://assignment-8-main.netlify.app/",
-    },
-    {
-      name: "Dream 11",
-      description: "Build Your Dream Team",
-      link: "https://assignment-main-7.netlify.app/",
-    },
-    {
-      name: "Paddy",
-      description: "Pet to Adoption",
-      link: "https://siam-66.github.io/assignment-6/",
-    },
-
-
-  ];
-
-  return (
-    <div className="min-h-screen bg-gray-100 py-10 container mx-auto dark:bg-gray-950">
-      <Helmet>
-          <title> About Us / Deshventure
-          </title>
-      </Helmet>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row justify-between items-center bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md">
-          <div className="flex-1">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-green-500 to-lime-900 bg-clip-text text-transparent">
-              Siam Mahmud
-            </h1>
-            <p className="text-lg text-gray-600 mt-2 dark:text-gray-400">Frontend Developer from Bangladesh</p>
-            <p className="text-gray-600 mt-4 dark:text-gray-400">
-              Currently, I am focusing on front-end development and MERN stack development. My goal
-              is to continually learn and advance in the field of web development.
-            </p>
-            <div className="mt-6 flex space-x-4">
-            <a href="mailto:siammahmud66@gmail.com">
-              <button className="btn bg-gradient-to-r from-green-600 to-lime-400 text-white">
-                Contact Me
-              </button>
-              </a>
-              <a href="https://github.com/Siam-66?tab=repositories" target="_blank">
-                <button className="btn btn-outline hover:bg-gradient-to-r from-green-600 to-lime-400  hover:border-white">
-                  View Projects
-                </button>
-              </a>
+                {/* Call-to-Action */}
+                <div className="text-center mt-20">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4 dark:text-gray-200">Start Your Adventure Today!</h3>
+                    <p className="text-lg text-gray-600 mb-6 dark:text-gray-400">
+                        Join thousands of adventurers exploring the wonders of the world with us.
+                    </p>
+                    <a 
+                        href="/contactUs"
+                        className="inline-block px-8 py-3 bg-gradient-to-r from-green-600 to-lime-500 text-white text-lg font-semibold rounded-lg hover:bg-green-700 transition duration-300 transform hover:scale-105"
+                    >
+                        Contact Us
+                    </a>
+                </div>
             </div>
-          </div>
-          <div className="flex-1 mt-8 lg:mt-0">
-            <div className="p-6 rounded-lg shadow-md">
-              <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">Tech Stack</h3>
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                {Object.keys(techIcons).map((tech) => (
-                  <div
-                    key={tech}
-                    className="flex items-center space-x-2 bg-white dark:bg-gray-800 p-3 rounded-md hover:bg-gradient-to-r from-green-600 to-lime-400 "
-                  >
-                    {techIcons[tech]}
-                    <span className="text-green-700 hover:text-white font-bold">{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
-
-        <section className="mt-10 shadow-md p-5 rounded-md">
-          <h2 className="text-3xl font-semibold text-gray-700 dark:text-gray-200">Recent Projects</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            {projects.map((project) => (
-              <div key={project.name} className="p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md relative">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-2 right-2 text-green-700 hover:underline"
-                >
-                  <GoArrowUpRight  className="size-6"/>
-                </a>
-                <h3 className="text-xl font-semibold text-green-600">{project.name}</h3>
-                <p className="text-gray-600 mt-2 dark:text-gray-400">{project.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-10 shadow-md p-2 rounded-md dark:bg-gray-900">
-          <h2 className="text-3xl font-semibold dark:text-gray-200 text-gray-700">Currently Learning</h2>
-          <ul className="list-disc ml-6 mt-4 text-gray-600 space-y-2 dark:text-gray-400 ">
-            <li>Backend</li>
-            <li>Firebase</li>
-            <li>MongoDB</li>
-            <li>JavaScript</li>
-          </ul>
-        </section>
-
-        <section className="mt-10">
-          <h2 className="text-3xl font-semibold text-gray-700 dark:text-gray-200">Get in Touch</h2>
-          <div className="bg-white p-6 dark:bg-gray-900 rounded-lg md:flex items-center justify-between shadow-md mt-4">
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Feel free to reach out for collaborations or just a friendly chat!
-            </p>
-            <div className="mt-4 flex space-x-6">
-              <a href="mailto:siammahmud66@gmail.com" className="text-green-600 font-semibold underline">
-                siammahmud66@gmail.com
-              </a>
-              <a
-                href="https://github.com/Siam-66"
-                target="_blank"
-                className="text-gray-700 font-semibold underline dark:text-gray-400"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default AboutUs;

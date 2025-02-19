@@ -78,36 +78,40 @@ const Testimonials = () => {
     };
 
     return (
-<div className="bg-gray-100 py-12 dark:bg-gray-950">
-            <h2 className="text-3xl font-bold text-center mb-10">What Our Users Say</h2>
-            <Slider {...settings} className="max-w-5xl mx-auto">
-                {testimonials.map((testimonial, index) => (
-                    <div key={index} className="relative text-center">
-                        {/* Background Image */}
-                        <div
-                            className="absolute inset-0 w-full h-[300px]"
-                            style={{
-                                backgroundImage: `url(${testimonial.background})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                filter: "blur(8px)",
-                            }}
-                        ></div>
-                        {/* Overlay */}
-                        <div className="absolute inset-0 bg-black bg-opacity-50  w-full h-[300px]"></div>
-                        {/* Content */}
-                        <div className="relative z-10 p-6 text-white">
-                            <img
-                                src={testimonial.avatar}
-                                alt={testimonial.name}
-                                className="mx-auto rounded-full w-20 h-20 mb-4 border-4 border-white"
-                            />
-                            <p className="text-lg italic mb-2 ">"{testimonial.feedback}"</p>
-                            <h4 className="text-xl font-semibold">{testimonial.name}</h4>
-                        </div>
-                    </div>
-                ))}
-            </Slider>
+        <div className="bg-gray-100 py-12 dark:bg-gray-950">
+            <div className="container mx-auto px-4">
+                <h2 className="text-3xl font-bold text-center mb-10">What Our Users Say</h2>
+                <div className="max-w-5xl mx-auto overflow-hidden">
+                    <Slider {...settings}>
+                        {testimonials.map((testimonial, index) => (
+                            <div key={index} className="relative text-center ">
+                                {/* Background Image */}
+                                <div
+                                    className="absolute inset-0 w-full h-[300px] "
+                                    style={{
+                                        backgroundImage: `url(${testimonial.background})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        filter: "blur(8px)",
+                                    }}
+                                ></div>
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-black bg-opacity-50 w-full h-[300px]"></div>
+                                {/* Content */}
+                                <div className="relative z-10 p-6 text-white">
+                                    <img
+                                        src={testimonial.avatar}
+                                        alt={testimonial.name}
+                                        className="mx-auto rounded-full w-20 h-20 mb-4 border-4 border-white"
+                                    />
+                                    <p className="text-lg italic mb-2">"{testimonial.feedback}"</p>
+                                    <h4 className="text-xl font-semibold">{testimonial.name}</h4>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
+            </div>
         </div>
     );
 };

@@ -60,8 +60,8 @@ const linkDrop = (
       to="/"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
-          : "px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-2 md:text-base lg:text-xl py-2"
+          : "px-2 md:text-base lg:text-xl py-2"
       }
     >
       Home
@@ -73,8 +73,8 @@ const linkDrop = (
       to="allTripsPage"
       className={({ isActive }) =>
         isActive
-          ? " bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
-          : "px-3 py-2"
+          ? " bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-2 md:text-base lg:text-xl py-2"
+          : "px-2 md:text-base lg:text-xl py-2"
       }
     >
     All Trips
@@ -87,8 +87,8 @@ const linkDrop = (
       to="CommunityPage"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
-          : "px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-2 md:text-base lg:text-xl py-2"
+          : "px-2 md:text-base lg:text-xl py-2"
       }
     >
       Community
@@ -105,14 +105,29 @@ const linkDrop = (
       to="aboutUs"
       className={({ isActive }) =>
         isActive
-          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"
-          : "px-3 py-2"
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-2 md:text-base lg:text-xl py-2"
+          : "px-2 md:text-base lg:text-xl py-2"
       }
     >
       About Us
     </NavLink>
   </li>
 
+  {user?.email && (
+  <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold hover:rounded-2xl">
+    <NavLink
+      to="CommunityPage"
+      className={({ isActive }) =>
+        isActive
+          ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-2 md:text-base lg:text-xl py-2"
+          : "px-2 md:text-base lg:text-xl py-2"
+      }
+    >
+      Contact Us
+    </NavLink>
+  </li>
+  
+    )}
 
 </>
   );
@@ -124,7 +139,7 @@ const linkDrop = (
         <div className="dropdown">
           <button
             tabIndex={0}
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost md:hidden"
             aria-label="Open menu"
           >
             <svg
@@ -150,13 +165,13 @@ const linkDrop = (
           </ul>
         </div>
         <NavLink to="/" className="flex items-center cursor-pointer">
-          <img className="md:w-20 w-12" src={Image1} alt="Sunflower Logo" />
-          <span className="font-bold md:text-3xl text-lg dark:text-white">Deshventure</span>
+          <img className="lg:w-20  w-12" src={Image1} alt="Sunflower Logo" />
+          <span className="font-bold lg:text-3xl md:text-lg text-lg dark:text-white">Deshventure</span>
         </NavLink>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal gap-2 px-1 text-xl dark:text-white">{links}</ul>
+      <div className="navbar-center max-sm:hidden lg:flex">
+        <ul className="menu menu-horizontal lg:gap-2  dark:text-white">{links}</ul>
       </div>
 
       <div className="navbar-end flex items-center ">

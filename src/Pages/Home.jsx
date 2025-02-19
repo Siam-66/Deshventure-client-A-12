@@ -9,6 +9,8 @@ import WhyChooseUs from "./Homes/WhyChooseUs";
 import TouristStorySection from "./Homes/TouristStorySection";
 import { Helmet } from "react-helmet";
 import Testimonials from "./Homes/Testimonials";
+import FAQSection from "./Homes/FAQSection";
+import SuccessSection from "./Homes/SuccessSection";
 const Home = () => {
     return (
         <div>
@@ -21,9 +23,11 @@ const Home = () => {
             <TourismTravelGuide></TourismTravelGuide>
             <PlacesCanVisit></PlacesCanVisit>
             <TouristStorySection></TouristStorySection>
+            <SuccessSection></SuccessSection>
             <Testimonials></Testimonials>
             <WhyChooseUs></WhyChooseUs>
             <JoinAsTourGuideComponent></JoinAsTourGuideComponent>
+            <FAQSection></FAQSection>
         </div>
     );
 };
