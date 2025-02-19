@@ -20,7 +20,7 @@ const WelcomePage = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-100 dark:bg-gray-950 p-6">
+        <div className="min-h-screen flex items-center justify-center bg-base-100 dark:bg-gray-950 p-2">
             <motion.div
                 className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-4xl w-full text-center"
                 variants={containerVariants}
@@ -29,10 +29,10 @@ const WelcomePage = () => {
             >
                 {/* Welcome Title */}
                 <motion.h1
-                    className="text-5xl font-bold text-gray-900 dark:text-gray-200 mb-4"
+                    className="md:text-5xl text-3xl font-bold text-gray-900 dark:text-gray-200 mb-4"
                     variants={itemVariants}
                 >
-                    Welcome <br className="md:hidden" /> to Your Dashboard! 🎉
+                    Welcome to Your <br className="md:hidden" /> Dashboard! 🎉
                 </motion.h1>
 
                 {/* Welcome Message */}

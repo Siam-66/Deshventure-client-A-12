@@ -60,7 +60,7 @@ const TourismTravelGuide = () => {
           Explore our exclusive travel packages and meet our experienced tour guides.
         </p>
 
-        <div className="tabs tabs-boxed justify-center mb-8 dark:bg-gray-900 md:w-[35rem] max-sm:w-[29rem] items-center flex mx-auto max-sm:text-xs bg-gray-200 ">
+        <div className="tabs tabs-boxed justify-center mb-8 dark:bg-gray-900 md:w-[21rem] max-sm:w-[18rem]  items-center flex mx-auto max-sm:text-xs bg-gray-200 ">
           <button
             className={`tab ${
               activeTab === 0
@@ -69,7 +69,7 @@ const TourismTravelGuide = () => {
             }`}
             onClick={() => setActiveTab(0)}
           >
-            Glimpse At Our Packages
+            Our Packages
           </button>
           <button
             className={`tab ${
@@ -79,7 +79,7 @@ const TourismTravelGuide = () => {
             }`}
             onClick={() => setActiveTab(1)}
           >
-            Meet Our Tour Guides
+            Our Guides
           </button>
         </div>
 
