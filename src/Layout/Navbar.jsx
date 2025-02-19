@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Image1 from "../assets/Deshventure.png";
-import { FaUserCircle } from "react-icons/fa";
 import { Moon, Sun } from "lucide-react";
 import { AuthContext } from "../Provider/AuthProvider";
 
@@ -160,7 +159,9 @@ const linkDrop = (
         <ul className="menu menu-horizontal gap-2 px-1 text-xl dark:text-white">{links}</ul>
       </div>
 
-      <div className="navbar-end flex items-center gap-4">
+      <div className="navbar-end flex items-center ">
+
+        {/* Theme toggle button */}
         <button
           onClick={handleThemeToggle}
           className="btn btn-circle btn-ghost dark:text-white"
@@ -222,7 +223,6 @@ const linkDrop = (
           (
             
             <div className="flex items-center ">
-            <FaUserCircle className="md:size-10 size-8  text-lime-500" />
             <NavLink
               to="login"
               className="px-5 py-2  rounded-3xl md:text-xl text-xs font-semibold bg-gradient-to-r from-green-600 to-lime-500 border text-white"

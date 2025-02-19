@@ -69,7 +69,7 @@ const ManageProfileAdmin = () => {
       <Helmet>
         <title>Admin Profile / Deshventure</title>
       </Helmet>
-      <div className="max-w-lg mx-auto border-2 border-lime-400 bg-base-100 rounded-lg shadow-xl p-6">
+      <div className="max-w-lg mx-auto border-2 dark:bg-gray-900 border-lime-400 bg-base-100 rounded-lg shadow-xl p-6">
         <h1 className="mb-5 text-center text-3xl font-bold bg-gradient-to-r from-green-600 via-lime-500 to-emerald-600 bg-clip-text text-transparent">
           Welcome back {profileData.name}
         </h1>
@@ -81,30 +81,30 @@ const ManageProfileAdmin = () => {
           />
         </div>
         <div className="mb-4">
-          <h2 className="text-2xl font-semibold text-gray-700">Admin Information</h2>
-          <p className="text-lg text-gray-700"><strong>Name:</strong> {profileData.name}</p>
-          <p className="text-lg text-gray-700"><strong>Email:</strong> {profileData.email}</p>
-          <p className="text-lg text-gray-700"><strong>Role:</strong> {profileData.role}</p>
+          <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">Admin Information</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-200"><strong>Name:</strong> {profileData.name}</p>
+          <p className="text-lg text-gray-700 dark:text-gray-200"><strong>Email:</strong> {profileData.email}</p>
+          <p className="text-lg text-gray-700 dark:text-gray-200"><strong>Role:</strong> {profileData.role}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4 my-6">
-          <div className="p-4 bg-green-100 rounded-lg text-center shadow">
+          <div className="p-4 bg-green-100 dark:bg-gray-800 rounded-lg text-center shadow">
             <p className="text-xl font-bold">{stats.totalPayment}</p>
             <p>Total Payment</p>
           </div>
-          <div className="p-4 bg-green-100 rounded-lg text-center shadow">
+          <div className="p-4 bg-green-100 dark:bg-gray-800 rounded-lg text-center shadow">
             <p className="text-xl font-bold">{stats.totalPackages}</p>
             <p>Total Packages</p>
           </div>
-          <div className="p-4 bg-green-100 rounded-lg text-center shadow">
+          <div className="p-4 bg-green-100 dark:bg-gray-800 rounded-lg text-center shadow">
             <p className="text-xl font-bold">{stats.totalStories}</p>
             <p>Total Stories</p>
           </div>
-          <div className="p-4 bg-green-100 rounded-lg text-center shadow">
+          <div className="p-4 bg-green-100 dark:bg-gray-800 rounded-lg text-center shadow">
             <p className="text-xl font-bold">{stats.totalTourists}</p>
             <p>Total Tourists</p>
           </div>
-          <div className="p-4 bg-green-100 rounded-lg text-center shadow">
+          <div className="p-4 bg-green-100 dark:bg-gray-800 rounded-lg text-center shadow">
             <p className="text-xl font-bold">{stats.totalTourGuides}</p>
             <p>Total Tour Guides</p>
           </div>

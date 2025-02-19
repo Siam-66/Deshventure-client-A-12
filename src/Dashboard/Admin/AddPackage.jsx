@@ -124,15 +124,15 @@ const AddPackage = () => {
   };
 
   return (
-    <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md" onSubmit={handleSubmit}>
+    <form className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-md dark:bg-gray-900" onSubmit={handleSubmit}>
       <Helmet>
         <title>Add Package / Deshventure</title>
       </Helmet>
-      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10">Add Packages</h2>
+      <h2 className="text-3xl text-center font-bold text-gray-800 mb-10 dark:text-gray-200">Add Packages</h2>
 
       {/* Name Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-semibold text-lg mb-1">Package Name</label>
+        <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">Package Name</label>
         <input
           type="text"
           value={name}
@@ -145,7 +145,7 @@ const AddPackage = () => {
 
       {/* Gallery Section with Image Upload */}
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">Gallery Images (Max 5)</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mb-2 dark:text-gray-200">Gallery Images (Max 5)</h3>
         
         <input 
           type="file" 
@@ -153,7 +153,7 @@ const AddPackage = () => {
           accept="image/*" 
           onChange={handleImageUpload}
           disabled={isUploading || gallery.length >= 5}
-          className="mb-4 w-full"
+          className="mb-4 w-full  px-3 py-2 border rounded-md text-gray-400 dark:bg-zinc-900" 
         />
 
         {/* Uploaded Images Preview */}
@@ -179,10 +179,10 @@ const AddPackage = () => {
 
       {/* Tour Plan Section */}
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">Tour Plan</h3>
+        <h3 className="text-lg font-semibold text-gray-700 mb-2 dark:text-gray-200">Tour Plan</h3>
         {tourPlan.map((plan, index) => (
           <div key={index} className="mb-4">
-            <label className="block text-gray-600 text-sm mb-1">Day {index + 1}</label>
+            <label className="block text-gray-600 text-sm mb-1 dark:text-gray-200">Day {index + 1}</label>
             <input
               type="text"
               value={plan.day}
@@ -207,7 +207,7 @@ const AddPackage = () => {
 
       {/* Price Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-semibold text-lg mb-1">Price</label>
+        <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">Price</label>
         <input
           type="text"
           value={price}
@@ -220,7 +220,7 @@ const AddPackage = () => {
 
       {/* About The Tour Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-semibold text-lg mb-1">About The Tour</label>
+        <label className="block text-gray-600 font-semibold text-lg mb-1 dark:text-gray-200">About The Tour</label>
         <textarea
           value={aboutTour}
           onChange={(e) => setAboutTour(e.target.value)}

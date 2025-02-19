@@ -8,6 +8,7 @@ import TourismTravelGuide from "./Homes/TourismTravelGuide";
 import WhyChooseUs from "./Homes/WhyChooseUs";
 import TouristStorySection from "./Homes/TouristStorySection";
 import { Helmet } from "react-helmet";
+import Testimonials from "./Homes/Testimonials";
 const Home = () => {
     return (
         <div>
@@ -20,6 +21,7 @@ const Home = () => {
             <TourismTravelGuide></TourismTravelGuide>
             <PlacesCanVisit></PlacesCanVisit>
             <TouristStorySection></TouristStorySection>
+            <Testimonials></Testimonials>
             <WhyChooseUs></WhyChooseUs>
             <JoinAsTourGuideComponent></JoinAsTourGuideComponent>
         </div>
