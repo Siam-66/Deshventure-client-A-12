@@ -28,7 +28,7 @@ const linkDrop = (
   <>
     <li className="hover:bg-gradient-to-r from-green-600 to-lime-500 hover:text-white font-semibold mb-1 hover:rounded-2xl">
     <NavLink
-      to="dashboards"
+      to="dashboards/welcomePage"
       className={({ isActive }) =>
         isActive
           ? "bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-2xl px-3 py-2"

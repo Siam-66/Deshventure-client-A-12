@@ -18,6 +18,8 @@ import TermsOfUse from "../Component/TermsOfUse";
 import PrivacyPolicy from "../Component/PrivacyPolicy ";
 import UserAgreement from "../Component/UserAgreement";
 
+import WelcomePage from "../Dashboard/WelcomePage";
+
 import AddPackage from "../Dashboard/Admin/AddPackage";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import ManageCandidates from "../Dashboard/Admin/ManageCandidates";
@@ -136,6 +138,12 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>  
                 <ManageProfile></ManageProfile>
                 </PrivateRoute>,
+            },
+            {
+                path:"welcomePage",
+                element: <PrivateRoute>  
+                <WelcomePage></WelcomePage>
+                </PrivateRoute>,WelcomePage
             },
             {
                 path:"joinAsTourGuide",
